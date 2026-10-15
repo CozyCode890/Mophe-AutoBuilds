@@ -22,6 +22,18 @@
     "apk": "brave-arm64-v8a-kveld9-v1.97.56.apk"
   },
   {
+    "app": "depthwallpaper",
+    "arch": "arm64-v8a",
+    "source": "rushiranpise",
+    "status": "success",
+    "version": "2.1.07",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "depthwallpaper-arm64-v8a-morphe-patches-v2.1.07.apk"
+  },
+  {
     "app": "instagram",
     "arch": "arm64-v8a",
     "source": "hushgram",
@@ -34,28 +46,64 @@
     "apk": "instagram-arm64-v8a-hushgram-patches-v450.0.0.50.77.apk"
   },
   {
+    "app": "minimalwidgets",
+    "arch": "arm64-v8a",
+    "source": "rushiranpise",
+    "status": "success",
+    "version": "2.1.04",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "minimalwidgets-arm64-v8a-morphe-patches-v2.1.04.apk"
+  },
+  {
     "app": "pinterest",
     "arch": "arm64-v8a",
     "source": "hushpinterest",
     "status": "success",
-    "version": "14.39.0",
+    "version": "14.40.0",
     "patches": [
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "pinterest-arm64-v8a-hushpinterest-patches-v14.39.0.apk"
+    "apk": "pinterest-arm64-v8a-hushpinterest-patches-v14.40.0.apk"
   },
   {
-    "app": "reddit",
+    "app": "pocketcasts",
     "arch": "arm64-v8a",
-    "source": "morphe",
+    "source": "rushiranpise",
     "status": "success",
-    "version": "2026.24.0",
+    "version": "8.16",
     "patches": [
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "reddit-arm64-v8a-morphe-v2026.24.0.apk"
+    "apk": "pocketcasts-arm64-v8a-morphe-patches-v8.16.apk"
+  },
+  {
+    "app": "protonpass",
+    "arch": "arm64-v8a",
+    "source": "rushiranpise",
+    "status": "success",
+    "version": "1.41.3",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "protonpass-arm64-v8a-morphe-patches-v1.41.3.apk"
+  },
+  {
+    "app": "serverauditor",
+    "arch": "arm64-v8a",
+    "source": "rushiranpise",
+    "status": "success",
+    "version": "7.11.2",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "serverauditor-arm64-v8a-morphe-patches-v7.11.2.apk"
   },
   {
     "app": "telegram",
@@ -74,37 +122,11 @@
     "arch": "arm64-v8a",
     "source": "hushthreads",
     "status": "success",
-    "version": "450.0.0.51.78",
+    "version": "451.0.0.51.80",
     "patches": [
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "threads-arm64-v8a-hushthreads-patches-v450.0.0.51.78.apk"
-  },
-  {
-    "app": "youtube-music",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "9.20.53",
-    "patches": [
-      "GmsCore support",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "youtube-music-arm64-v8a-morphe-v9.20.53.apk"
-  },
-  {
-    "app": "youtube",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "21.20.405",
-    "patches": [
-      "GmsCore support",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "youtube-arm64-v8a-morphe-v21.20.405.apk"
+    "apk": "threads-arm64-v8a-hushthreads-patches-v451.0.0.51.80.apk"
   }
 ]
