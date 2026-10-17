@@ -25,7 +25,7 @@ requires going through apkcombo.com/r2, which does not challenge bots.
 import re
 import logging
 import time
-from urllib.parse import quote, unquote, urlencode
+from urllib.parse import quote, unquote
 
 from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests

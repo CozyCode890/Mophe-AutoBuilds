@@ -29,7 +29,7 @@
   },
   {
     "app_name": "twitter",
-    "source": "piko",
+    "source": "piko-newx",
     "arches": [
       "arm64-v8a"
     ]
@@ -91,43 +91,8 @@
     ]
   },
   {
-    "app_name": "protonpass",
-    "source": "rushiranpise",
-    "arches": [
-      "arm64-v8a"
-    ]
-  },
-  {
-    "app_name": "serverauditor",
-    "source": "rushiranpise",
-    "arches": [
-      "arm64-v8a"
-    ]
-  },
-  {
-    "app_name": "vocabulary",
-    "source": "morning-entree",
-    "arches": [
-      "arm64-v8a"
-    ]
-  },
-  {
     "app_name": "gboard",
     "source": "jasonwu",
-    "arches": [
-      "arm64-v8a"
-    ]
-  },
-  {
-    "app_name": "gboard",
-    "source": "flexboard",
-    "arches": [
-      "arm64-v8a"
-    ]
-  },
-  {
-    "app_name": "habitkit",
-    "source": "paresh",
     "arches": [
       "arm64-v8a"
     ]

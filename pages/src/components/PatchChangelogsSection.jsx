@@ -17,15 +17,17 @@ export function PatchChangelogsSection({ patchChangelogs, onFilterByApp }) {
   const getSourceDisplayName = (source) => {
     const map = {
       morphe: 'Morphe Patches',
-      piko: 'Piko Patches',
+      'piko-newx': 'Piko NewX Patches',
       paresh: 'Paresh Patches',
       rookie: 'Rookie Patches',
       rushiranpise: 'Rushi Patches',
-      browzomje: 'Browzomje Patches',
       hushgram: 'HushGram Patches',
       hushpinterest: 'HushPinterest Patches',
       hushtelegram: 'HushTelegram Patches',
       hushthreads: 'HushThreads Patches',
+      jasonwu: 'Jasonwu Patches',
+      kveld9: 'kveld9 Patches',
+      hoodles: 'Hoodles Patches',
     };
     return map[source.toLowerCase()] || `${source.charAt(0).toUpperCase() + source.slice(1)} Patches`;
   };

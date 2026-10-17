@@ -1,9 +1,10 @@
 import React from 'react';
-import { LayoutGrid, ScrollText, Info, Sun, Moon, GitBranch } from 'lucide-react';
+import { LayoutGrid, ScrollText, Info, PackagePlus, Sun, Moon, GitBranch } from 'lucide-react';
 
 export function Sidebar({ activeTab, setActiveTab, theme, toggleTheme }) {
   const tabs = [
     { id: 'store', label: 'Store', icon: LayoutGrid },
+    { id: 'request', label: 'Request build', icon: PackagePlus },
     { id: 'logs', label: 'Build Logs', icon: ScrollText },
     { id: 'info', label: 'Info', icon: Info },
   ];

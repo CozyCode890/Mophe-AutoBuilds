@@ -18,7 +18,7 @@
     },
     {
       "app_name": "twitter",
-      "source": "piko"
+      "source": "piko-newx"
     },
     {
       "app_name": "pinterest",
@@ -53,28 +53,8 @@
       "source": "rushiranpise"
     },
     {
-      "app_name": "protonpass",
-      "source": "rushiranpise"
-    },
-    {
-      "app_name": "serverauditor",
-      "source": "rushiranpise"
-    },
-    {
-      "app_name": "vocabulary",
-      "source": "morning-entree"
-    },
-    {
       "app_name": "gboard",
       "source": "jasonwu"
-    },
-    {
-      "app_name": "gboard",
-      "source": "flexboard"
-    },
-    {
-      "app_name": "habitkit",
-      "source": "paresh"
     },
     {
       "app_name": "duolingo",

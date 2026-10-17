@@ -1,0 +1,755 @@
+name: Build Request
+
+run-name: "${{ github.event.issue.title || inputs.app_name }}"
+
+# The Pages site is static, so "Request a build" submits a structured GitHub
+# issue (title starts with "[Build request]") instead of calling an API.
+# This workflow turns that issue into a build:
+#
+#   1. parse the payload from the issue body (or from the bot's stored comment),
+#   2. validate it and write the files the manual build needs,
+#   3. commit them, dispatch Manual Patch and Update, wait for it,
+#   4. report the result (download links) back on the issue.
+#
+# Requests build right away - no approval is involved, and the same flow runs
+# for everyone. A request is a one-off build: the APK is published in the
+# release but the app is not listed in the store and is not rebuilt on updates.
+# When a maintainer adds the "keep" label, the workflow reruns with
+# --register-catalog and the app becomes a catalog app (patch-config.json /
+# arch-config.json) that the scheduled pipeline maintains.
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: 'App name (lowercase letters, digits, dashes)'
+        required: true
+        type: string
+      package:
+        description: 'Android package name (e.g. com.example.app)'
+        required: true
+        type: string
+      source:
+        description: 'Patch source id from sources/ (leave empty when using repo_url)'
+        required: false
+        type: string
+        default: ''
+      repo_url:
+        description: 'Custom patch repository (owner/repo or full GitHub URL)'
+        required: false
+        type: string
+        default: ''
+      architecture:
+        description: 'Architecture to build'
+        required: false
+        type: choice
+        options:
+          - arm64-v8a
+          - armeabi-v7a
+          - universal
+        default: 'arm64-v8a'
+      request_code:
+        description: 'Optional request code (auto-generated when empty)'
+        required: false
+        type: string
+        default: ''
+
+# Requests are processed one at a time so the build files, the catalog commit
+# and the rollback cannot race each other.
+concurrency:
+  group: build-request
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  request:
+    name: Process build request
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+      EVENT_NAME: ${{ github.event_name }}
+      EVENT_ACTION: ${{ github.event.action }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      LABEL_NAME: ${{ github.event.label.name }}
+      INPUT_APP: ${{ inputs.app_name }}
+      INPUT_PACKAGE: ${{ inputs.package }}
+      INPUT_SOURCE: ${{ inputs.source }}
+      INPUT_REPO: ${{ inputs.repo_url }}
+      INPUT_ARCH: ${{ inputs.architecture }}
+      INPUT_CODE: ${{ inputs.request_code }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure labels exist
+        run: |
+          set -euo pipefail
+          for label in building completed failed invalid keep; do
+            gh label create "$label" --repo "$REPO" --color ededed --force > /dev/null 2>&1 || true
+          done
+
+      - name: Resolve request
+        id: ctx
+        run: |
+          set -euo pipefail
+          mkdir -p .request
+
+          relevant=false
+          active=false
+          has_issue=false
+          register=false
+          keep_mode=false
+          payload_ok=true
+
+          case "$EVENT_NAME" in
+            workflow_dispatch)
+              relevant=true
+              active=true
+              keep_mode=true
+              ;;
+            issues)
+              if [ "$EVENT_ACTION" = "opened" ]; then relevant=true; fi
+              if [ "$EVENT_ACTION" = "labeled" ] && [ "$LABEL_NAME" = "keep" ]; then
+                relevant=true
+                keep_mode=true
+              fi
+              ;;
+          esac
+
+          if [ "$relevant" = true ] && [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            code="$INPUT_CODE"
+            if ! printf '%s' "$code" | grep -Eq '^[a-z0-9]{4,16}$'; then
+              code="req$(date +%s)"
+            fi
+            jq -n --arg app "$INPUT_APP" --arg pkg "$INPUT_PACKAGE" --arg src "$INPUT_SOURCE" \
+                  --arg repo "$INPUT_REPO" --arg arch "$INPUT_ARCH" --arg code "$code" \
+                  '{app_name: $app, package: $pkg, source: $src, repo_url: $repo, arch: $arch, code: $code}' \
+              > .request/payload.json
+          fi
+
+          if [ "$relevant" = true ] && [ "$EVENT_NAME" = "issues" ]; then
+            has_issue=true
+            gh api "repos/$REPO/issues/$ISSUE_NUMBER" > .request/issue.json
+
+            title=$(jq -r '.title // ""' .request/issue.json)
+            state=$(jq -r '.state // ""' .request/issue.json)
+            labels=$(jq -r '[.labels[].name] | join(",")' .request/issue.json)
+
+            is_request=false
+            case "$title" in
+              "[Build request]"*) is_request=true ;;
+            esac
+
+            if [ "$keep_mode" = true ]; then
+              # "keep" may be added after the issue was closed, so the state is
+              # not checked; a failed or invalid request is never kept.
+              already_handled=false
+              case ",$labels," in
+                *,failed,*|*,invalid,*) already_handled=true ;;
+              esac
+              if [ "$already_handled" = false ]; then
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments?per_page=100" --jq '.[].body' \
+                  > .request/comments.txt || true
+                if python3 scripts/request_app.py extract-marker \
+                     --text-file .request/comments.txt --result-file .request/marker.json 2>/dev/null; then
+                  jq -c '.payload' .request/marker.json > .request/payload.json
+                  active=true
+                else
+                  payload_ok=false
+                fi
+              fi
+            elif [ "$is_request" = true ]; then
+              already_handled=false
+              case ",$labels," in
+                *,completed,*|*,failed,*|*,invalid,*|*,building,*) already_handled=true ;;
+              esac
+
+              if [ "$state" = "open" ] && [ "$already_handled" = false ]; then
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments?per_page=100" --jq '.[].body' \
+                  > .request/comments.txt || true
+
+                if python3 scripts/request_app.py extract-marker \
+                     --text-file .request/comments.txt --result-file .request/marker.json 2>/dev/null; then
+                  jq -c '.payload' .request/marker.json > .request/payload.json
+                else
+                  register=true
+                  jq -r '.body // ""' .request/issue.json > .request/body.md
+                  if python3 scripts/request_app.py parse-issue \
+                       --body-file .request/body.md --result-file .request/parsed.json 2>/dev/null; then
+                    jq -c '.payload' .request/parsed.json > .request/payload.json
+                  else
+                    payload_ok=false
+                  fi
+                fi
+
+                if [ "$payload_ok" = true ]; then
+                  active=true
+                fi
+              fi
+            fi
+          fi
+
+          {
+            echo "relevant=$relevant"
+            echo "active=$active"
+            echo "has_issue=$has_issue"
+            echo "register=$register"
+            echo "payload_ok=$payload_ok"
+            echo "keep_mode=$keep_mode"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Register request
+        if: steps.ctx.outputs.has_issue == 'true' && steps.ctx.outputs.register == 'true' && steps.ctx.outputs.payload_ok == 'true'
+        run: |
+          set -euo pipefail
+          app=$(jq -r '.app_name // ""' .request/payload.json)
+          pkg=$(jq -r '.package // ""' .request/payload.json)
+          source=$(jq -r '.source // ""' .request/payload.json)
+          repo=$(jq -r '.repo_url // ""' .request/payload.json)
+          arch=$(jq -r '.arch // "arm64-v8a"' .request/payload.json)
+          payload=$(cat .request/payload.json)
+
+          source_label="$source"
+          if [ -n "$repo" ]; then source_label="$repo (custom repository)"; fi
+
+          {
+            echo "### Build request registered"
+            echo
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| App | \`$app\` |"
+            echo "| Package | \`$pkg\` |"
+            echo "| Patch source | \`$source_label\` |"
+            echo "| Architecture | \`$arch\` |"
+            echo
+            echo "<!-- morphe-build-request $payload -->"
+            echo
+            echo "**Validation and the build are starting now.** Progress is posted in this thread."
+            echo
+            echo "This is a one-off build, so it is not listed in the store. A maintainer can add the \`keep\` label to publish the app in the catalog and rebuild it on future updates."
+          } > .request/register.md
+
+          gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/register.md)" > /dev/null
+
+      - name: Reject unreadable request
+        if: steps.ctx.outputs.has_issue == 'true' && steps.ctx.outputs.payload_ok != 'true'
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then
+            {
+              echo "### Keep label ignored"
+              echo
+              echo "This issue does not carry a stored build request, so there is nothing to keep."
+              echo "Requests submitted from the site always store one in a comment."
+            } > .request/unreadable.md
+            gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/unreadable.md)" > /dev/null || true
+          else
+            {
+              echo "### Request could not be read"
+              echo
+              echo "No valid request payload was found in this issue. Please submit the request from the site form instead:"
+              echo
+              echo "https://yashrajrocxx.github.io/Mophe-AutoBuilds/ (Request a build)"
+              echo
+              echo "This issue is being closed."
+            } > .request/unreadable.md
+            gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/unreadable.md)" > /dev/null || true
+            gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=invalid' > /dev/null || true
+            gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=not_planned > /dev/null || true
+          fi
+
+      - name: Note skipped keep
+        if: steps.ctx.outputs.has_issue == 'true' && steps.ctx.outputs.keep_mode == 'true' && steps.ctx.outputs.active != 'true' && steps.ctx.outputs.payload_ok == 'true'
+        run: |
+          set -euo pipefail
+          {
+            echo "### Keep label ignored"
+            echo
+            echo "This request is marked failed or rejected, so there is nothing to keep."
+            echo "Fix the patch source or package name and submit a new request first."
+          } > .request/keep-skip.md
+          gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/keep-skip.md)" > /dev/null || true
+
+      - name: Validate request
+        id: validate
+        if: steps.ctx.outputs.active == 'true'
+        run: |
+          set -euo pipefail
+          args=""
+          if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then
+            args="--register-catalog"
+          fi
+          exit_code=0
+          # shellcheck disable=SC2086
+          python3 scripts/request_app.py validate \
+            --payload-file .request/payload.json \
+            --result-file .request/result.json \
+            --root . $args || exit_code=$?
+          echo "exit=$exit_code" >> "$GITHUB_OUTPUT"
+          cat .request/result.json 2>/dev/null || echo "{}"
+
+          if [ "$exit_code" -ne 0 ]; then
+            code=$(jq -r '.code // "invalid"' .request/result.json 2>/dev/null || echo invalid)
+            reason=$(jq -r '.reason // "The request was rejected."' .request/result.json 2>/dev/null || echo "The request was rejected.")
+
+            if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then
+              # A keep that cannot be registered (for example because the app is
+              # already a catalog app) only gets a comment; the issue stays as
+              # it is.
+              {
+                echo "### Keep label"
+                echo
+                echo "$reason"
+              } > .request/reject.md
+              if [ "$EVENT_NAME" = "issues" ]; then
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/reject.md)" > /dev/null || true
+              fi
+            else
+              {
+                echo "### Request not accepted"
+                echo
+                echo "$reason"
+                echo
+                echo "Rejected with: \`$code\`."
+                if [ "$code" = "app-exists" ] || [ "$code" = "package-in-use" ]; then
+                  echo
+                  echo "Already available builds are listed in the [app store](https://yashrajrocxx.github.io/Mophe-AutoBuilds/) and in the [latest release](https://github.com/$REPO/releases/latest)."
+                fi
+              } > .request/reject.md
+
+              if [ "$EVENT_NAME" = "issues" ]; then
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/reject.md)" > /dev/null || true
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=invalid' > /dev/null || true
+                gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=not_planned > /dev/null || true
+              fi
+            fi
+
+            {
+              echo "### Build request rejected"
+              echo
+              echo "$reason"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Verify patch repository
+        id: repo
+        if: steps.ctx.outputs.active == 'true' && steps.validate.outputs.exit == '0'
+        run: |
+          set -euo pipefail
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+          kind=$(jq -r '.source_kind // "known"' .request/result.json)
+          [ "$kind" = "custom" ] || exit 0
+
+          owner_repo=$(jq -r '.repo // ""' .request/result.json)
+          [ -n "$owner_repo" ] || exit 0
+
+          reject() {
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Request not accepted"
+              echo
+              echo "$1"
+            } > .request/repo-reject.md
+            if [ "$EVENT_NAME" = "issues" ]; then
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/repo-reject.md)" > /dev/null || true
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=invalid' > /dev/null || true
+              gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=not_planned > /dev/null || true
+            fi
+            exit 0
+          }
+
+          info=$(gh api "repos/$owner_repo" 2>/dev/null) || info=""
+          if [ -z "$info" ]; then
+            reject "The patch repository \`$owner_repo\` was not found."
+          fi
+
+          visibility=$(echo "$info" | jq -r '.visibility // "unknown"')
+          if [ "$visibility" != "public" ]; then
+            reject "The patch repository \`$owner_repo\` is not public, so the build runner cannot download its releases."
+          fi
+
+          assets=$(gh api "repos/$owner_repo/releases?per_page=5" \
+            --jq '[.[].assets[].name | select(test("\\.(mpp|jar)$"))] | length' 2>/dev/null || echo 0)
+          case "$assets" in
+            ''|*[!0-9]*) assets=0 ;;
+          esac
+          if [ "$assets" -eq 0 ]; then
+            reject "The recent releases of \`$owner_repo\` do not contain a \`.mpp\` patch bundle or a patch \`.jar\`."
+          fi
+
+          echo "Patch repository $owner_repo verified."
+
+      - name: Commit build files
+        id: commit
+        if: steps.ctx.outputs.active == 'true' && steps.validate.outputs.exit == '0' && steps.repo.outputs.ok == 'true'
+        run: |
+          set -euo pipefail
+          app=$(jq -r '.app' .request/result.json)
+          pkg=$(jq -r '.package' .request/result.json)
+          source=$(jq -r '.source' .request/result.json)
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          jq -r '.files[]' .request/result.json | while read -r file; do
+            git add -f "$file"
+          done
+
+          if git diff --cached --quiet; then
+            # A repeated request for the same app writes identical files; the
+            # build inputs are already on main, so the build can still run.
+            echo "No new files to commit for $app; using the existing build inputs."
+            git pull --rebase origin main > /dev/null 2>&1 || true
+          else
+            if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then
+              commit_message="feat(catalog): keep $app ($source) in the build catalog"
+            else
+              commit_message="feat(build-request): add $app ($source) build inputs"
+            fi
+            git commit -m "$commit_message"
+
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              { echo "A concurrent change touched the repository; please submit the request again."; } > .request/commit-fail.md
+              if [ "$EVENT_NAME" = "issues" ]; then
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/commit-fail.md)" > /dev/null || true
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=failed' > /dev/null || true
+                gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=not_planned > /dev/null || true
+              fi
+              echo "proceed=false" >> "$GITHUB_OUTPUT"
+              exit 1
+            fi
+
+            pushed=false
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then
+                pushed=true
+                break
+              fi
+              sleep 5
+              git pull --rebase origin main || { git rebase --abort || true; break; }
+            done
+            if [ "$pushed" != true ]; then
+              echo "Failed to push the build files." >&2
+              exit 1
+            fi
+
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+          # Duplicate guard: a concurrent request must not take this app name or
+          # package for a different app. Platform configs of this app are
+          # skipped by file name so its own copies never count.
+          duplicates=$(jq --arg app "$app" '[.patch_list[] | select(.app_name == $app)] | length' patch-config.json)
+          pkg_dupes=0
+          for f in apps/*/*.json; do
+            [ -f "$f" ] || continue
+            if [ "$(basename "$f" .json)" = "$app" ]; then
+              continue
+            fi
+            if [ "$(jq -r '.package // ""' "$f")" = "$pkg" ]; then
+              pkg_dupes=$((pkg_dupes + 1))
+            fi
+          done
+
+          if [ "$duplicates" -gt 1 ] || [ "$pkg_dupes" -gt 0 ]; then
+            git reset --hard origin/main
+            {
+              echo "### Request not accepted"
+              echo
+              echo "An app with the same name or package appeared in the catalog while this request was processed."
+            } > .request/duplicate.md
+            if [ "$EVENT_NAME" = "issues" ]; then
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/duplicate.md)" > /dev/null || true
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=invalid' > /dev/null || true
+              gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=not_planned > /dev/null || true
+            fi
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "proceed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Dispatch manual build
+        id: dispatch
+        if: steps.commit.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          app=$(jq -r '.app' .request/result.json)
+          source=$(jq -r '.source' .request/result.json)
+          arch=$(jq -r '.arch' .request/result.json)
+          code=$(jq -r '.code // ""' .request/result.json)
+          if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then
+            # A fresh code so the run lookup cannot match an earlier build of
+            # the same request.
+            code="keep$(date +%s)"
+          fi
+          if [ -z "$code" ]; then code="req$(date +%s)"; fi
+
+          dispatch_failed() {
+            {
+              echo "### Build could not be started"
+              echo
+              echo "$1"
+              echo
+              echo "The committed files were rolled back."
+            } > .request/dispatch-fail.md
+            if [ "$EVENT_NAME" = "issues" ]; then
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/dispatch-fail.md)" > /dev/null || true
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=failed' > /dev/null || true
+            fi
+            sha="${{ steps.commit.outputs.sha }}"
+            if [ -n "$sha" ]; then
+              git fetch origin main
+              git checkout -B main origin/main
+              git revert --no-edit "$sha" || git revert --abort || true
+              git push origin main || true
+            fi
+            exit 1
+          }
+
+          gh workflow run manual-patch.yml --repo "$REPO" --ref main \
+            -f app_name="$app" \
+            -f source="$source" \
+            -f architecture="$arch" \
+            -f replace_in_release=true \
+            -f request_code="$code" || dispatch_failed "Dispatching the manual build failed."
+
+          run_id=""
+          for attempt in $(seq 1 20); do
+            run_id=$(gh run list --repo "$REPO" --workflow manual-patch.yml --limit 20 \
+              --json databaseId,displayTitle \
+              --jq "[.[] | select(.displayTitle | contains(\"$code\"))][0].databaseId" 2>/dev/null || true)
+            if [ -n "$run_id" ] && [ "$run_id" != "null" ]; then break; fi
+            run_id=""
+            sleep 10
+          done
+          if [ -z "$run_id" ]; then
+            dispatch_failed "The dispatched build could not be located."
+          fi
+
+          run_url="https://github.com/$REPO/actions/runs/$run_id"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "run_url=$run_url" >> "$GITHUB_OUTPUT"
+
+          if [ "$EVENT_NAME" = "issues" ]; then
+            if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then
+              {
+                echo "### Kept in the build catalog"
+                echo
+                echo "The app was added to the build catalog and a build was dispatched to publish it."
+                echo
+                echo "- Build run: $run_url"
+                echo "- The store, README and Obtainium bundle update when the build finishes."
+                echo
+                echo "Future patch or version updates for this app build automatically."
+              } > .request/started.md
+            else
+              {
+                echo "### Build started"
+                echo
+                echo "A manual build was dispatched for this request."
+                echo
+                echo "- Build run: $run_url"
+                echo "- Direct download links are posted here when it finishes (usually 10-25 minutes)."
+                echo
+                echo "This is a one-off build: it is not listed in the store and is not rebuilt automatically."
+                echo "A maintainer can add the \`keep\` label to publish the app in the catalog."
+              } > .request/started.md
+            fi
+            gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/started.md)" > /dev/null || true
+            if [ "${{ steps.ctx.outputs.keep_mode }}" != "true" ]; then
+              # keep runs comment on an already closed issue and do not need
+              # the in-progress label.
+              gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=building' > /dev/null || true
+            fi
+          fi
+
+      - name: Wait for build and report
+        id: wait
+        if: steps.dispatch.outputs.run_id != ''
+        run: |
+          set -euo pipefail
+          app=$(jq -r '.app' .request/result.json)
+          source=$(jq -r '.source' .request/result.json)
+          arch=$(jq -r '.arch' .request/result.json)
+          run_id="${{ steps.dispatch.outputs.run_id }}"
+          run_url="${{ steps.dispatch.outputs.run_url }}"
+          keep_mode="${{ steps.ctx.outputs.keep_mode }}"
+
+          conclusion=""
+          deadline=$(( $(date +%s) + 4200 ))
+          while :; do
+            gh api "repos/$REPO/actions/runs/$run_id" > .request/run.json 2>/dev/null || echo '{}' > .request/run.json
+            status=$(jq -r '.status // "unknown"' .request/run.json)
+            if [ "$status" = "completed" ]; then
+              conclusion=$(jq -r '.conclusion // ""' .request/run.json)
+              break
+            fi
+            if [ "$(date +%s)" -ge "$deadline" ]; then
+              conclusion="timed-out"
+              break
+            fi
+            sleep 30
+          done
+
+          run_created=$(jq -r '.created_at // ""' .request/run.json)
+          failed_steps=$(gh api "repos/$REPO/actions/runs/$run_id/jobs" \
+            --jq '[.jobs[].steps[]? | select(.conclusion == "failure") | .name] | join(", ")' 2>/dev/null || echo "")
+
+          gh api "repos/$REPO/releases/tags/latest" > .request/release.json 2>/dev/null || echo '{}' > .request/release.json
+          asset_jq='[.assets[]? | select(.name | test("^" + $app + "-" + $arch + ".*\\.apk$"))] | sort_by(.updated_at) | last'
+          asset_name=$(jq -r --arg app "$app" --arg arch "$arch" "$asset_jq | .name // \"\"" .request/release.json)
+          asset_updated=$(jq -r --arg app "$app" --arg arch "$arch" "$asset_jq | .updated_at // \"\"" .request/release.json)
+
+          fresh=false
+          if [ -n "$asset_name" ] && [ -n "$run_created" ] && [ -n "$asset_updated" ] && [[ "$asset_updated" > "$run_created" ]]; then
+            fresh=true
+          fi
+
+          outcome="failed"
+          if [ -n "$asset_name" ] && { [ "$conclusion" = "success" ] || [ "$fresh" = true ]; }; then
+            outcome="ok"
+          fi
+          if [ "$conclusion" = "success" ] && [ -z "$asset_name" ]; then
+            outcome="publish-incomplete"
+          fi
+
+          version=""
+          if [ -n "$asset_name" ]; then
+            gh release download latest --repo "$REPO" --pattern manifest.json --clobber --dir .request || true
+            if [ -f .request/manifest.json ]; then
+              version=$(jq -r --arg key "$app|$source|$arch" '.entries[$key].built_version // ""' .request/manifest.json 2>/dev/null || true)
+            fi
+          fi
+
+          echo "outcome=$outcome" >> "$GITHUB_OUTPUT"
+
+          if [ "$outcome" = "ok" ]; then
+            {
+              echo "### Build finished"
+              echo
+              echo "- App: \`$app\` (\`$arch\`)"
+              if [ -n "$version" ]; then
+                echo "- Version: \`$version\`"
+              fi
+              echo "- APK: https://github.com/$REPO/releases/download/latest/$asset_name"
+              echo "- Release: https://github.com/$REPO/releases/latest"
+              echo "- Build run: $run_url"
+              echo
+              if [ "$keep_mode" = "true" ]; then
+                echo "The app is now a catalog app: the store, README and Obtainium bundle were updated and future updates build automatically."
+              else
+                echo "This was a one-off build, so it is not listed in the store."
+                echo "A maintainer can add the \`keep\` label to publish the app in the catalog and rebuild it on future updates."
+              fi
+            } > .request/result-ok.md
+          elif [ "$outcome" = "publish-incomplete" ]; then
+            {
+              echo "### Build finished, publishing incomplete"
+              echo
+              echo "The patch build succeeded but no APK for \`$app\` (\`$arch\`) was found in the release."
+              if [ "$keep_mode" = "true" ]; then
+                echo "The catalog entry was kept; the next scheduled run will publish it."
+              else
+                echo "The request stays on file; submit a new request to try again."
+              fi
+              echo
+              echo "- Build run: $run_url"
+            } > .request/result-publish.md
+          else
+            {
+              echo "### Build failed"
+              echo
+              echo "- App: \`$app\` (\`$arch\`)"
+              echo "- Build run: $run_url${failed_steps:+ - Failed step(s): \`$failed_steps\`}"
+              echo
+              if [ "$keep_mode" = "true" ]; then
+                echo "The catalog entry was rolled back, so the scheduled pipeline will not retry it."
+                echo "Fix the patch source or package name and add the \`keep\` label again."
+              else
+                echo "The committed files were rolled back."
+                echo "Fix the patch source or package name and submit a new request."
+              fi
+            } > .request/result-failed.md
+          fi
+
+          if [ "$EVENT_NAME" = "issues" ]; then
+            case "$outcome" in
+              ok)
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/result-ok.md)" > /dev/null || true
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=completed' > /dev/null || true
+                gh api -X DELETE "repos/$REPO/issues/$ISSUE_NUMBER/labels/building" > /dev/null 2>&1 || true
+                gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=completed > /dev/null || true
+                ;;
+              publish-incomplete)
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/result-publish.md)" > /dev/null || true
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=failed' > /dev/null || true
+                gh api -X DELETE "repos/$REPO/issues/$ISSUE_NUMBER/labels/building" > /dev/null 2>&1 || true
+                gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=completed > /dev/null || true
+                ;;
+              *)
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/result-failed.md)" > /dev/null || true
+                gh api "repos/$REPO/issues/$ISSUE_NUMBER/labels" -f 'labels[]=failed' > /dev/null || true
+                gh api -X DELETE "repos/$REPO/issues/$ISSUE_NUMBER/labels/building" > /dev/null 2>&1 || true
+                gh api -X PATCH "repos/$REPO/issues/$ISSUE_NUMBER" -f state=closed -f state_reason=not_planned > /dev/null || true
+
+                sha="${{ steps.commit.outputs.sha }}"
+                rollback_note=""
+                if [ -n "$sha" ]; then
+                  git fetch origin main
+                  git checkout -B main origin/main
+                  if git revert --no-edit "$sha"; then
+                    if git push origin main || { git pull --rebase origin main && git push origin main; }; then
+                      rollback_note=""
+                    else
+                      rollback_note="The committed files could not be rolled back automatically (push failed). Remove them manually."
+                    fi
+                  else
+                    git revert --abort || true
+                    rollback_note="The committed files could not be rolled back automatically (conflicting change). Remove them manually."
+                  fi
+                fi
+                if [ -n "$rollback_note" ]; then
+                  printf '### Rollback needed\n\n%s\n' "$rollback_note" > .request/rollback.md
+                  gh api "repos/$REPO/issues/$ISSUE_NUMBER/comments" -f body="$(cat .request/rollback.md)" > /dev/null || true
+                  echo "$rollback_note" >&2
+                fi
+                ;;
+            esac
+          fi
+
+          cat .request/result-ok.md .request/result-publish.md .request/result-failed.md 2>/dev/null | tee -a "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Write job summary
+        if: always()
+        run: |
+          publish="one-off"
+          if [ "${{ steps.ctx.outputs.keep_mode }}" = "true" ]; then publish="catalog"; fi
+          {
+            echo "## Build request"
+            echo
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Event | \`$EVENT_NAME\` |"
+            echo "| Publish | \`$publish\` |"
+            if [ -f .request/result.json ] && [ "$(jq -r '.status // ""' .request/result.json)" = "ok" ]; then
+              echo "| App | \`$(jq -r '.app' .request/result.json)\` |"
+              echo "| Package | \`$(jq -r '.package' .request/result.json)\` |"
+              echo "| Source | \`$(jq -r '.source' .request/result.json)\` |"
+              echo "| Architecture | \`$(jq -r '.arch' .request/result.json)\` |"
+            fi
+            if [ -n "${{ steps.dispatch.outputs.run_url }}" ]; then
+              echo "| Build run | ${{ steps.dispatch.outputs.run_url }} |"
+            fi
+            echo "| Outcome | \`${{ steps.wait.outputs.outcome || 'no build dispatched' }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"

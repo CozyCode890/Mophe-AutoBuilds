@@ -19,9 +19,9 @@ import json
 import html
 import logging
 from pathlib import Path
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Any
 from urllib.request import Request, urlopen
-from urllib.error import HTTPError, URLError
+from urllib.error import HTTPError
 import datetime
 
 try:
@@ -199,24 +199,16 @@ def format_app_display(app_name: str) -> str:
         "youtube-music": "YouTube Music",
         "reddit": "Reddit",
         "instagram": "Instagram",
-        "x": "X (Twitter)",
+        "twitter": "X (Twitter)",
         "pinterest": "Pinterest",
         "telegram": "Telegram",
-        "vn": "VN Video Editor",
         "sdmaidse": "SD Maid 2 / SE",
         "threads": "Threads",
         "google-photos": "Google Photos",
-        "tradingview": "TradingView",
         "pocketcasts": "Pocket Casts",
         "depthwallpaper": "Depth Wallpaper",
         "minimalwidgets": "Minimal Widgets",
-        "protonpass": "Proton Pass",
-        "serverauditor": "Server Auditor",
-        "vocabulary": "Vocabulary",
-        "pinnit": "Pinnit",
         "gboard": "Gboard",
-        "taskmanager": "TaskManager",
-        "habitkit": "HabitKit",
         "duolingo": "Duolingo",
         "brave": "Brave Browser",
     }
@@ -293,13 +285,13 @@ def main() -> int:
 
     # Build Header
     lines = [
-        f"🚀 <b>Morphe AutoBuilds — Pipeline Report</b>",
-        f"━━━━━━━━━━━━━━━━━━━━━━━━━",
+        "🚀 <b>Morphe AutoBuilds — Pipeline Report</b>",
+        "━━━━━━━━━━━━━━━━━━━━━━━━━",
         f"<b>Workflow:</b> {escape_html(workflow)}",
         f"<b>Status:</b> {status_emoji} <b>{escape_html(status_text)}</b>",
         f"<b>Time:</b> <code>{now_utc}</code>",
         "",
-        f"📊 <b>Summary:</b>",
+        "📊 <b>Summary:</b>",
         f"• Rebuilt APKs: <b>{successful_count}</b>",
         f"• Carried Over: <b>{counts.get('carried', 0)}</b>",
     ]
@@ -309,7 +301,7 @@ def main() -> int:
     # Rebuilt Apps Section
     if successful_builds:
         lines.append("")
-        lines.append(f"📦 <b>Newly Built Applications:</b>")
+        lines.append("📦 <b>Newly Built Applications:</b>")
         for b in successful_builds:
             app = b.get("app", "App")
             arch = b.get("arch", "universal")
@@ -329,7 +321,7 @@ def main() -> int:
     # Failed Builds Section
     if failed_builds:
         lines.append("")
-        lines.append(f"❌ <b>Build Failures:</b>")
+        lines.append("❌ <b>Build Failures:</b>")
         for b in failed_builds:
             app = b.get("app", "App")
             arch = b.get("arch", "universal")
@@ -344,7 +336,7 @@ def main() -> int:
     # Failed Patches Section (warnings)
     if failed_patches_map:
         lines.append("")
-        lines.append(f"⚠️ <b>Non-fatal Failed Patches:</b>")
+        lines.append("⚠️ <b>Non-fatal Failed Patches:</b>")
         for app, patches in failed_patches_map.items():
             if patches:
                 app_display = format_app_display(app)
@@ -355,7 +347,7 @@ def main() -> int:
 
     # Links Footer
     lines.append("")
-    lines.append(f"━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
     footer_links = []
     if release_url:
         footer_links.append(f"<a href=\"{release_url}\">📦 GitHub Release</a>")

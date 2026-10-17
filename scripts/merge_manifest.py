@@ -36,6 +36,24 @@ def main() -> int:
     manifest["updated_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     entries = manifest.setdefault("entries", {})
 
+    # One-off request builds (apps built for a requester but not kept in the
+    # catalog) stay downloadable in the release, but must not show up in the
+    # store, the README or the Obtainium bundle. patch-config.json is the list
+    # of published apps, so records for anything else are skipped.
+    catalog_apps = None
+    catalog_path = Path("patch-config.json")
+    if catalog_path.exists():
+        try:
+            with catalog_path.open("r", encoding="utf-8") as f:
+                catalog_data = json.load(f)
+            catalog_apps = {
+                str(item.get("app_name") or "").strip().lower()
+                for item in catalog_data.get("patch_list", [])
+                if isinstance(item, dict)
+            }
+        except Exception as e:
+            print(f"[WARN] could not read patch-config.json ({e}); merging every record")
+
     # Embed patch changelogs if available
     patch_changelogs_path = Path("patch_changelogs.json")
     if patch_changelogs_path.exists():
@@ -60,6 +78,11 @@ def main() -> int:
             if isinstance(rec, list):
                 # This is likely a build_report file, skip it for manifest
                 continue
+            if catalog_apps is not None:
+                rec_app = str(rec.get("app_name") or "").strip().lower()
+                if rec_app and rec_app not in catalog_apps:
+                    print(f"  skip {rec_file}: '{rec_app}' is not in the build catalog (one-off request build)")
+                    continue
             key = rec.get("key")
             apk = rec.get("apk", "")
             resolved_version = (rec.get("resolved_version") or "").strip()
@@ -111,6 +134,16 @@ def main() -> int:
             except Exception as e:
                 print(f"  skip bad build report {rec_file}: {e}")
                 
+    if all_reports and catalog_apps is not None:
+        filtered_reports = []
+        for report in all_reports:
+            report_app = str(report.get("app") or "").strip().lower()
+            if report_app and report_app not in catalog_apps:
+                print(f"  skip build report for '{report_app}' (one-off request build)")
+                continue
+            filtered_reports.append(report)
+        all_reports = filtered_reports
+
     if all_reports:
         with open("build_report.json", "w", encoding="utf-8") as f:
             json.dump(all_reports, f, indent=2)

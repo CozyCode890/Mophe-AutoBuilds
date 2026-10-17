@@ -51,7 +51,7 @@ def main() -> int:
         result[f"{app}|{src}"] = {"include": include, "exclude": exclude}
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    out_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"[OK] Wrote {out_path} ({len(result)} patch lists)")
     return 0
 

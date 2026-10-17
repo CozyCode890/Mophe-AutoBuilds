@@ -4,35 +4,37 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 4%;
-    --card: 0 0% 100%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 42%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 4%;
-    --destructive: 0 0% 4%;
+    /* Neutral palette: #fcfcfc #eaeaea #d4d4d4 #737373 #0a0a0a */
+    --background: 0 0% 99%;       /* #fcfcfc */
+    --foreground: 0 0% 4%;        /* #0a0a0a */
+    --card: 0 0% 99%;             /* #fcfcfc */
+    --muted: 0 0% 92%;            /* #eaeaea */
+    --muted-foreground: 0 0% 45%; /* #737373 */
+    --border: 0 0% 83%;           /* #d4d4d4 */
+    --input: 0 0% 83%;            /* #d4d4d4 */
+    --ring: 0 0% 4%;              /* #0a0a0a */
+    --destructive: 0 0% 4%;       /* #0a0a0a */
     --radius: 0.75rem;
 
-    --surface: 0 0% 98%;
-    --hover: 0 0% 94%;
-    --sidebar: 0 0% 98%;
+    --surface: 0 0% 92%;          /* #eaeaea */
+    --hover: 0 0% 92%;            /* #eaeaea */
+    --sidebar: 0 0% 99%;          /* #fcfcfc */
   }
 
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 96%;
-    --card: 0 0% 6%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 62%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 96%;
-    --destructive: 0 0% 96%;
+    /* Neutral steps derived from the same palette, lightened for contrast */
+    --background: 0 0% 4%;        /* #0a0a0a */
+    --foreground: 0 0% 99%;       /* #fcfcfc */
+    --card: 0 0% 7%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 99%;             /* #fcfcfc */
+    --destructive: 0 0% 99%;
 
-    --surface: 0 0% 6%;
-    --hover: 0 0% 12%;
+    --surface: 0 0% 7%;
+    --hover: 0 0% 14%;
     --sidebar: 0 0% 3%;
   }
 }

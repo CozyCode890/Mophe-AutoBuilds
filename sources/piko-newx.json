@@ -1,6 +1,6 @@
 [
   {
-    "name": "flexboard"
+    "name": "piko-newx-patches"
   },
   {
     "provider": "github",
@@ -10,8 +10,8 @@
   },
   {
     "provider": "github",
-    "user": "JZ6",
-    "repo": "Flexboard",
+    "user": "crimera",
+    "repo": "piko-newx",
     "tag": "latest"
   }
 ]

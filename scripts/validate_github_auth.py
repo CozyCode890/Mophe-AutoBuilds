@@ -10,8 +10,7 @@ def main() -> int:
     repo_slug = os.environ.get("GITHUB_REPOSITORY")
     
     # Debug info
-    is_github_actions = os.environ.get("GITHUB_ACTIONS") == "true"
-    print(f"Diagnostics:", file=sys.stderr)
+    print("Diagnostics:", file=sys.stderr)
     print(f"  GITHUB_ACTIONS: {os.environ.get('GITHUB_ACTIONS')}", file=sys.stderr)
     print(f"  GITHUB_REPOSITORY: {repo_slug}", file=sys.stderr)
     print(f"  Token present: {'Yes' if token else 'No'}", file=sys.stderr)

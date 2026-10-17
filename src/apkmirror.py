@@ -1,6 +1,5 @@
 import os
 import re
-import json
 import logging
 import time
 from bs4 import BeautifulSoup
@@ -683,7 +682,11 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
         logging.info(f"URL:{response.url} [{content_size}/{content_size}] -> Variant Page")
         soup = BeautifulSoup(response.content, "html.parser")
 
-        want_bundle = config.get("type") == "BUNDLE"
+        # Match the download button to the variant type we actually selected.
+        # When an APK-configured app falls back to a BUNDLE variant (because
+        # APKMirror only lists the .apkm, e.g. Gboard), the full bundle must be
+        # taken — never the base-APK-only (forcebaseapk) button.
+        want_bundle = try_type == "BUNDLE"
         final_download_page_url = _pick_download_button(soup, want_bundle)
         if final_download_page_url:
             time.sleep(1.0)
@@ -727,15 +730,6 @@ def _pick_download_button(soup, want_bundle: bool) -> str | None:
                 return base_url + href
     return base_url + buttons[0]
 
-def get_architecture_criteria(arch: str) -> dict:
-    """Map architecture names to APKMirror criteria"""
-    arch_mapping = {
-        "arm64-v8a": "arm64-v8a",
-        "armeabi-v7a": "armeabi-v7a", 
-        "universal": "universal"
-    }
-    return arch_mapping.get(arch, "universal")
-    
 def get_latest_version(app_name: str, config: dict) -> str:
     # First try: get from main app page
     try:

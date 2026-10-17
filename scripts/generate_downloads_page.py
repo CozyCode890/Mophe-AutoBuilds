@@ -81,7 +81,7 @@ def main() -> int:
     parts += ["</body>", "</html>", ""]
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text("\n".join(parts), encoding="utf-8")
+    out_path.write_text("\n".join(parts), encoding="utf-8", newline="\n")
     print(f"[OK] Wrote {out_path} ({len(rows)} APK links)")
     return 0
 

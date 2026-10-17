@@ -39,11 +39,7 @@ NAME_MAP = {
     "pocketcasts":      "Pocket Casts",
     "depthwallpaper":   "Depth Wallpaper",
     "minimalwidgets":   "Minimal Widgets",
-    "protonpass":       "Proton Pass",
-    "serverauditor":    "Server Auditor (Termius)",
-    "vocabulary":       "Vocabulary",
     "gboard":           "Gboard",
-    "habitkit":         "HabitKit",
     "duolingo":         "Duolingo",
     "brave":            "Brave Browser",
 }
@@ -77,17 +73,13 @@ def extract_identity_prefix(apk_name: str) -> str:
 
 SOURCE_MAP = {
     "morphe": "Morphe",
-    "piko": "Piko",
+    "piko-newx": "Piko NewX",
     "paresh": "Paresh",
     "rookie": "Rookie",
     "rushiranpise": "Rushi",
     "hoodles": "Hoodles",
     "kveld9": "Kveld9",
     "jasonwu": "Jasonwu",
-    "flexboard": "Flexboard",
-    "morning-entree": "Morning Entree",
-    "browzomje": "Browzomje",
-    "hxreborn": "HxReborn",
     "hushgram": "Hushgram",
     "hushpinterest": "HushPinterest",
     "hushtelegram": "HushTelegram",
@@ -152,10 +144,10 @@ def build_obtainium_app(
 
     # ── Regex patterns (NO /.../ delimiters — Obtainium uses raw regex strings) ──
     # Obtainium's HTML source matches against the full download link URL.
-    # For single-source apps, head is "{app}-{arch}-" so future upstream patch source
-    # renames (e.g. dh6k -> kveld9) do not break existing Obtainium installs.
-    # For multi-source apps (e.g. gboard with jasonwu & flexboard), head includes
-    # the source to prevent regex collision across links in downloads.html.
+    # For single-source apps, head is "{app}-{arch}-" so future upstream patch
+    # source renames do not break existing Obtainium installs. For multi-source
+    # apps the head includes the source to prevent regex collisions across
+    # links in downloads.html.
     if is_multi_source:
         head = f"{app_name}-{arch}-{source}-"
     else:
@@ -264,12 +256,12 @@ def main() -> int:
         pages_obtainium = pages_public / "obtainium.json"
         with pages_obtainium.open("w", encoding="utf-8", newline="\n") as f:
             json.dump(bundle_data, f, indent=2)
-        print(f"[OK] Copied obtainium.json to pages/public/obtainium.json")
+        print("[OK] Copied obtainium.json to pages/public/obtainium.json")
 
         pages_manifest = pages_public / "manifest.json"
         with pages_manifest.open("w", encoding="utf-8", newline="\n") as f:
             json.dump(manifest, f, indent=2)
-        print(f"[OK] Copied manifest.json to pages/public/manifest.json")
+        print("[OK] Copied manifest.json to pages/public/manifest.json")
 
     return 0
 

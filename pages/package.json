@@ -1,5 +1,5 @@
 {
-  "name": "pages_tmp",
+  "name": "morphe-autobuilds-pages",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,11 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
     "lucide-react": "^1.31.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "tailwind-merge": "^3.6.0"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",

@@ -6,10 +6,8 @@ import time
 import logging
 import struct
 import zipfile
-from typing import List, Optional
-from github.GithubException import BadCredentialsException
+from typing import Iterable, List, Optional
 from src import gh
-from sys import exit
 import subprocess
 from pathlib import Path
 from urllib.parse import urlparse, unquote, parse_qs, quote
@@ -90,8 +88,9 @@ def find_file(files: list[Path], prefix: str = None, suffix: str = None, contain
     
     return None
 
-def find_apksigner() -> str | None:
-    on_path = shutil.which("apksigner")
+def _find_build_tool(name: str) -> str | None:
+    """Locate a tool from the Android build-tools, preferring PATH."""
+    on_path = shutil.which(name)
     if on_path:
         return on_path
 
@@ -109,15 +108,24 @@ def find_apksigner() -> str | None:
             continue
         versions = sorted(build_tools_dir.iterdir(), reverse=True)
         for version_dir in versions:
-            apksigner_path = version_dir / "apksigner"
-            if apksigner_path.exists() and apksigner_path.is_file():
-                return str(apksigner_path)
+            tool_path = version_dir / name
+            if tool_path.exists() and tool_path.is_file():
+                return str(tool_path)
 
-    logging.error(
-        "No apksigner found. Install Android SDK build-tools and either put "
-        "apksigner on PATH or set ANDROID_HOME/ANDROID_SDK_ROOT."
-    )
     return None
+
+def find_apksigner() -> str | None:
+    apksigner = _find_build_tool("apksigner")
+    if not apksigner:
+        logging.error(
+            "No apksigner found. Install Android SDK build-tools and either put "
+            "apksigner on PATH or set ANDROID_HOME/ANDROID_SDK_ROOT."
+        )
+    return apksigner
+
+def find_zipalign() -> str | None:
+    """zipalign ships in the same Android build-tools as apksigner."""
+    return _find_build_tool("zipalign")
 
 def run_process(
     command: List[str],
@@ -164,6 +172,42 @@ def run_process(
         # Do not exit() here; callers (workflow) may want to retry with a different
         # version/source or emit a clearer error message.
         raise e
+
+# Every ABI that shows up in real APKs. Kept explicit so a target can name
+# exactly what it wants to keep.
+KNOWN_ABIS = ("arm64-v8a", "armeabi-v7a", "armeabi", "x86", "x86_64", "riscv64")
+
+def strip_apk_abis(apk_path: Path, keep: Iterable[str]) -> None:
+    """Remove native libraries for every ABI except the ones in `keep`.
+
+    zip exits with "Nothing to do" when no pattern matches, which is expected
+    for APKs that only carry one ABI, so the exit code is ignored and the
+    archive is listed afterwards to report what actually remains.
+    """
+    dropped = [abi for abi in KNOWN_ABIS if abi not in keep]
+    patterns = [f"lib/{abi}/*" for abi in dropped]
+    try:
+        run_process(["zip", "--delete", str(apk_path), *patterns], silent=True, check=False)
+    except FileNotFoundError:
+        logging.warning(f"zip is not installed; skipping ABI stripping of {apk_path.name}")
+        return
+
+    try:
+        with zipfile.ZipFile(apk_path) as archive:
+            remaining = sorted({
+                name.split("/")[1]
+                for name in archive.namelist()
+                if name.startswith("lib/") and name.count("/") >= 2
+            })
+    except zipfile.BadZipFile:
+        logging.warning(f"Could not read {apk_path.name} to verify ABI stripping")
+        return
+
+    leftover = [abi for abi in remaining if abi in dropped]
+    if leftover:
+        logging.warning(f"{apk_path.name} still carries other ABIs: {', '.join(leftover)}")
+    elif remaining:
+        logging.info(f"{apk_path.name} native libraries: {', '.join(remaining)}")
 
 def find_files(files: list[Path], prefix: str = None, suffix: str = None, contains: str = None, exclude: list = None) -> list[Path]:
     exclude = exclude or []
@@ -220,15 +264,6 @@ def strip_arch_suffix(version: str) -> str:
         version.strip(),
         flags=re.IGNORECASE,
     )
-
-def get_highest_version(versions: list[str]) -> str | None:
-    if not versions:
-        return None
-    highest_version = versions[0]
-    for v in versions[1:]:
-        if normalize_version(v) > normalize_version(highest_version):
-            highest_version = v
-    return highest_version
 
 def is_version_compatible(actual: str, target: str | None) -> bool:
     """Check if actual APK version is compatible with the requested target version.
@@ -428,7 +463,7 @@ def get_supported_versions(package_name: str, cli: str, patches: list[Path]) -> 
     # Detect CLI error/usage output (wrong syntax, unrecognized args, etc.)
     first_line = lines[0].strip().lower()
     if 'usage:' in first_line or 'unmatched argument' in first_line or 'error' in first_line:
-        logging.warning(f"CLI returned error/usage output, cannot determine version")
+        logging.warning("CLI returned error/usage output, cannot determine version")
         return []
 
     if len(lines) <= 2:
@@ -502,11 +537,6 @@ def get_supported_versions(package_name: str, cli: str, patches: list[Path]) -> 
     logging.info(f"CLI parsed versions: {versions}")
     return versions
 
-
-def get_supported_version(package_name: str, cli: str, patches: list[Path]) -> Optional[str]:
-    """Backwards compatible helper: returns the highest compatible version, if any."""
-    versions = get_supported_versions(package_name, cli, patches)
-    return versions[0] if versions else None
 
 def extract_filename(response, fallback_url=None) -> str:
     cd = response.headers.get('content-disposition')
@@ -673,13 +703,6 @@ def detect_codeberg_release(user: str, repo: str, tag: str) -> dict:
     return normalize_release(data.get("tag_name"), data.get("published_at"), data.get("assets") or [])
 
 def detect_github_release(user: str, repo: str, tag: str) -> dict:
-    if tag == "latest":
-        release_lookup = "latest"
-    elif tag in ["", "dev", "prerelease"]:
-        release_lookup = tag or "most recent"
-    else:
-        release_lookup = tag
-
     # Small sleep to avoid hammering the API and mitigate transient 401s
     time.sleep(1)
 
@@ -751,11 +774,3 @@ def detect_github_release(user: str, repo: str, tag: str) -> dict:
             
             logging.error(f"Error fetching release {tag} for {user}/{repo} after {max_retries} attempts: {e}")
             raise
-
-def detect_source_type(cli_file: Path, patches_file: Path) -> str:
-    """Detect if we're using Morphe or ReVanced based on downloaded files"""
-    if cli_file and "morphe" in cli_file.name.lower() and patches_file and patches_file.suffix == ".mpp":
-        return "morphe"
-    elif cli_file and "revanced" in cli_file.name.lower() and patches_file and patches_file.suffix in [".jar", ".rvp"]:
-        return "revanced"
-    return "unknown"

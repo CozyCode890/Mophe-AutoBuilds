@@ -5,6 +5,7 @@ import json
 import argparse
 import subprocess
 import shutil
+import importlib.util
 from pathlib import Path
 
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
@@ -37,14 +38,16 @@ def check_prerequisites():
     print("  [OK] Java found in PATH")
     
     # 2. Python dependencies check
-    try:
-        import bs4
-        import requests
-    except ImportError:
-        print("[ERROR] Python packages 'requests' or 'beautifulsoup4' are missing.")
-        print("        Please run: pip install requests beautifulsoup4")
+    missing = [
+        name
+        for name in ("bs4", "curl_cffi", "github", "dotenv")
+        if importlib.util.find_spec(name) is None
+    ]
+    if missing:
+        print(f"[ERROR] Python packages are missing: {', '.join(missing)}")
+        print("        Please run: pip install -r requirements.txt")
         return False
-    print("  [OK] Python dependencies (requests, bs4) are installed")
+    print("  [OK] Python dependencies are installed")
 
     # 3. apksigner check
     root = Path(__file__).resolve().parent

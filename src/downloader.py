@@ -2,6 +2,8 @@ import json
 import logging
 import time
 from pathlib import Path
+# Platform modules are imported for download_platform(), which resolves them
+# dynamically through globals()[platform] (# noqa: F401).
 from src import (
     utils,
     apkpure,
@@ -70,8 +72,10 @@ def download_required(source: str) -> tuple[list[Path], str]:
             if asset_name.endswith(".asc"):
                 continue
 
-            # Keep the existing Morphe-specific asset filtering.
-            if "morphe-patches" in entry_name or "morphe-cli" in entry_name:
+            # Keep the existing Morphe-specific asset filtering. Piko NewX
+            # releases also carry metadata (e.g. patches-list.json); only its
+            # patch bundle / CLI jars should be downloaded.
+            if "morphe-patches" in entry_name or "morphe-cli" in entry_name or "piko-newx" in entry_name:
                 if asset_name.endswith(".mpp") or (
                     asset_name.lower().endswith(".jar")
                 ):

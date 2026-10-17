@@ -1,4 +1,5 @@
 import logging
+import re
 from src import session, utils
 from bs4 import BeautifulSoup
 
@@ -13,7 +14,6 @@ def get_latest_version(app_name: str, config: dict) -> str:
         try:
             response = session.get(url)
             if response.status_code == 200:
-                content_size = len(response.content)
                 logging.info(f"Found: {response.url}")
                 soup = BeautifulSoup(response.content, "html.parser")
                 version_spans = soup.select('#versions-items-list .version')
@@ -86,8 +86,6 @@ def get_download_link(version: str, app_name: str, config: dict) -> str:
             data_code = app_name_h1['data-code']
 
             target_norm = utils.normalize_version(version)
-            closest_entry = None   # best fallback if exact not found
-            closest_diff = None
 
             page = 1
             while True:
@@ -113,19 +111,6 @@ def get_download_link(version: str, app_name: str, config: dict) -> str:
                         dl = _fetch_version_url(base_url, data_code, entry, session)
                         if dl:
                             return dl
-
-                    # Track closest version as fallback
-                    try:
-                        entry_norm = utils.normalize_version(entry_ver)
-                        diff = abs(
-                            sum((a - b) * (1000 ** i) for i, (a, b) in
-                                enumerate(zip(reversed(entry_norm), reversed(target_norm))))
-                        )
-                        if closest_diff is None or diff < closest_diff:
-                            closest_diff = diff
-                            closest_entry = entry
-                    except Exception:
-                        pass
 
                 # Stop paginating once we've scrolled past the target version.
                 if all(utils.normalize_version(entry.get("version", "0")) < target_norm

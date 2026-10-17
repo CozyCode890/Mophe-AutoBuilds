@@ -48,14 +48,14 @@ def extract_version_from_filename(apk_name: str) -> str:
     """Extract the app version from the APK filename.
 
     APKs are named ``{app}-{arch}-{name}-v{version}.apk``, e.g.
-    ``instagram-arm64-v8a-piko-v430.0.0.53.80.apk`` -> ``430.0.0.53.80``.
+    ``youtube-arm64-v8a-morphe-v21.16.256.apk`` -> ``21.16.256``.
 
     The version marker is the rightmost ``-v`` immediately followed by a dotted
     version (``-v<digit>.<digit>...``). We require the dotted shape because
     architecture tokens also contain ``-v<digit>``: ``arm64-v8a`` and
     ``armeabi-v7a``. A naive ``-v\\d`` match grabs ``8a-...`` / ``7a-...`` from
     those arch tokens instead of the real version. Real app versions in this
-    project always contain a dot (e.g. ``430.0.0.53.80``), and build/release
+    project always contain a dot (e.g. ``21.16.256``), and build/release
     suffixes like ``(1575420)``, ``build 002`` or ``-release`` are still captured
     by the trailing character class after the required ``\\d+.\\d`` prefix.
 

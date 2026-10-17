@@ -1,16 +1,17 @@
 import React from 'react';
-import { LayoutGrid, ScrollText, Info } from 'lucide-react';
+import { LayoutGrid, ScrollText, Info, PackagePlus } from 'lucide-react';
 
 export function MobileNav({ activeTab, setActiveTab }) {
   const tabs = [
     { id: 'store', label: 'Store', icon: LayoutGrid },
+    { id: 'request', label: 'Request', icon: PackagePlus },
     { id: 'logs', label: 'Logs', icon: ScrollText },
     { id: 'info', label: 'Info', icon: Info },
   ];
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t border-border z-50">
-      <div className="grid grid-cols-3 px-2 pb-[env(safe-area-inset-bottom)]">
+      <div className="grid grid-cols-4 px-2 pb-[env(safe-area-inset-bottom)]">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;

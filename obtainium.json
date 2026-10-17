@@ -33,14 +33,6 @@
       "additionalSettings": "{\"apkFilterRegEx\":\"instagram-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"instagram-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
-      "id": "com.twitter.android",
-      "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
-      "author": "yashrajrocxx",
-      "name": "X (Twitter)",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"twitter-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"twitter-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
       "id": "com.pinterest",
       "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
       "author": "yashrajrocxx",
@@ -105,52 +97,12 @@
       "additionalSettings": "{\"apkFilterRegEx\":\"minimalwidgets-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"minimalwidgets-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
-      "id": "proton.android.pass",
-      "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
-      "author": "yashrajrocxx",
-      "name": "Proton Pass",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"protonpass-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"protonpass-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.server.auditor.ssh.client",
-      "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
-      "author": "yashrajrocxx",
-      "name": "Server Auditor (Termius)",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"serverauditor-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"serverauditor-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.hrd.vocabulary",
-      "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
-      "author": "yashrajrocxx",
-      "name": "Vocabulary",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"vocabulary-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"vocabulary-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
       "id": "com.google.android.inputmethod.latin",
       "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
       "author": "yashrajrocxx",
-      "name": "Gboard (Jasonwu, arm64-v8a)",
+      "name": "Gboard",
       "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"gboard-arm64-v8a-jasonwu-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"gboard-arm64-v8a-jasonwu-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.google.android.inputmethod.latin",
-      "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
-      "author": "yashrajrocxx",
-      "name": "Gboard (Flexboard, arm64-v8a)",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"gboard-arm64-v8a-flexboard-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"gboard-arm64-v8a-flexboard-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.roehl.habitkit",
-      "url": "https://yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html",
-      "author": "yashrajrocxx",
-      "name": "HabitKit",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"habitkit-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"habitkit-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+      "additionalSettings": "{\"apkFilterRegEx\":\"gboard-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"gboard-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
       "id": "com.duolingo",

@@ -16,18 +16,15 @@ export function FilterBar({
     if (!src || src === 'all') return 'All sources';
     const map = {
       morphe: 'Morphe',
-      piko: 'Piko',
+      'piko-newx': 'Piko NewX',
       paresh: 'Paresh',
       rookie: 'Rookie',
       rushiranpise: 'Rushi',
-      browzomje: 'Browzomje',
       hushgram: 'HushGram',
       hushpinterest: 'HushPinterest',
       hushtelegram: 'HushTelegram',
       hushthreads: 'HushThreads',
-      dh6k: 'dh6k',
       jasonwu: 'Jasonwu (Gboard)',
-      flexboard: 'Flexboard',
       kveld9: 'kveld9',
       hoodles: 'Hoodles'
     };

@@ -5,6 +5,7 @@ import { MobileNav } from './components/MobileNav';
 import { StorePage } from './pages/StorePage';
 import { LogsPage } from './pages/LogsPage';
 import { InfoPage } from './pages/InfoPage';
+import { RequestPage } from './pages/RequestPage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('store');
@@ -70,6 +71,7 @@ function App() {
 
         <main className="flex-1 h-full overflow-y-auto pb-20 md:pb-0">
           {activeTab === 'store' && <StorePage />}
+          {activeTab === 'request' && <RequestPage onOpenStore={() => setActiveTab('store')} />}
           {activeTab === 'logs' && <LogsPage />}
           {activeTab === 'info' && <InfoPage />}
         </main>

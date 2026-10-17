@@ -10,9 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from src import (
-    r2,
     utils,
-    release,
     downloader
 )
 
@@ -267,26 +265,16 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             logging.info(f"Verified APK manifest version: {version}")
 
         # --- ARCHITECTURE-SPECIFIC PROCESSING ---
-        try:
-            if arch != "universal":
-                logging.info(f"Processing APK for {arch} architecture...")
-                if arch == "arm64-v8a":
-                    utils.run_process([
-                        "zip", "--delete", str(input_apk),
-                        "lib/x86/*", "lib/x86_64/*", "lib/armeabi-v7a/*"
-                    ], silent=True, check=False)
-                elif arch == "armeabi-v7a":
-                    utils.run_process([
-                        "zip", "--delete", str(input_apk),
-                        "lib/x86/*", "lib/x86_64/*", "lib/arm64-v8a/*"
-                    ], silent=True, check=False)
-            else:
-                utils.run_process([
-                    "zip", "--delete", str(input_apk),
-                    "lib/x86/*", "lib/x86_64/*"
-                ], silent=True, check=False)
-        except FileNotFoundError:
-            logging.warning("zip utility not found on PATH; skipping architecture stripping")
+        # Keeping a single ABI is the biggest size win in the pipeline and it
+        # also cuts down the work the patcher has to do on the archive.
+        if arch == "arm64-v8a":
+            keep_abis = {"arm64-v8a"}
+        elif arch == "armeabi-v7a":
+            keep_abis = {"armeabi-v7a", "armeabi"}
+        else:
+            keep_abis = {"arm64-v8a", "armeabi-v7a", "armeabi"}
+        logging.info(f"Processing APK for {arch} architecture...")
+        utils.strip_apk_abis(input_apk, keep_abis)
 
         # FIX: Repair corrupted APK (e.g. from Uptodown) ONLY when integrity check fails.
         # Previously this ran on every build and could silently alter healthy APKs.
@@ -350,55 +338,27 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             # USE DIFFERENT COMMANDS BASED ON SOURCE TYPE
             if is_morphe:
                 logging.info("Using Morphe patching system...")
-                patch_error: subprocess.CalledProcessError | None = None
-                try:
-                    morphe_cmd = [
-                        "java", "-jar", str(cli),
-                        "patch", "--continue-on-error", "-f"
-                    ]
-                    for p in patches:
-                        morphe_cmd.extend(["--patches", str(p)])
-                    
-                    for p in exclude_patches:
-                        morphe_cmd.extend(["-d", str(p)])
-                    for p in current_include_patches:
-                        morphe_cmd.extend(["-e", str(p)])
+                # --continue-on-error: skip individual patch failures instead of aborting.
+                # Do NOT pass -f (force): we want Morphe to reject APKs whose version is
+                # not supported by the patches so the outer version-retry loop can fall
+                # back to an older, compatible version automatically.
+                morphe_cmd = [
+                    "java", "-jar", str(cli),
+                    "patch", "--continue-on-error",
+                ]
+                for p in patches:
+                    morphe_cmd.extend(["--patches", str(p)])
 
-                    morphe_cmd.extend([
-                        "--out", str(output_apk), str(input_apk)
-                    ])
-                    output = utils.run_process(morphe_cmd, capture=True, stream=True)
-                    _record_failed_patches(app_name, output)
-                except subprocess.CalledProcessError as e:
-                    # Remember the original failure so the retry logic below can
-                    # decide whether to fall back to an older version. We still
-                    # try the alternative argument format as a best-effort.
-                    patch_error = e
-                    logging.info("Trying alternative Morphe command format...")
-                    morphe_cmd = [
-                        "java", "-jar", str(cli),
-                        "--continue-on-error", "-f"
-                    ]
-                    for p in patches:
-                        morphe_cmd.extend(["--patches", str(p)])
-                    
-                    for p in exclude_patches:
-                        morphe_cmd.extend(["-d", str(p)])
-                    for p in current_include_patches:
-                        morphe_cmd.extend(["-e", str(p)])
+                for p in exclude_patches:
+                    morphe_cmd.extend(["-d", str(p)])
+                for p in current_include_patches:
+                    morphe_cmd.extend(["-e", str(p)])
 
-                    morphe_cmd.extend([
-                        "--input", str(input_apk),
-                        "--output", str(output_apk)
-                    ])
-                    try:
-                        output = utils.run_process(morphe_cmd, capture=True, stream=True)
-                        _record_failed_patches(app_name, output)
-                    except subprocess.CalledProcessError as e2:
-                        raise e2 from e
-                if patch_error is not None:
-                    # Fallback path succeeded; clear the error so we don't retry.
-                    patch_error = None
+                morphe_cmd.extend([
+                    "--out", str(output_apk), str(input_apk)
+                ])
+                output = utils.run_process(morphe_cmd, capture=True, stream=True)
+                _record_failed_patches(app_name, output)
             else:
                 logging.info("Using ReVanced patching system...")
                 cli_name = Path(cli).name.lower()
@@ -450,8 +410,34 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
                 continue
             raise
 
-        # Patch succeeded -> cleanup input and sign.
+        # Patch succeeded -> cleanup input, trim stray native libraries, align
+        # the archive, then sign.
         input_apk.unlink(missing_ok=True)
+
+        # Patches can add their own native code, so check the final archive even
+        # though the input was already trimmed above.
+        utils.strip_apk_abis(output_apk, keep_abis)
+
+        # zipalign must run after the archive stops changing and before
+        # apksigner: signing first would invalidate the signature. "-P 16"
+        # aligns uncompressed .so entries to 16 KB so Android 15+ devices with
+        # 16 KB memory pages can mmap them, and it restores the 4-byte alignment
+        # that zip --delete breaks.
+        zipalign = utils.find_zipalign()
+        if zipalign:
+            aligned_apk = output_apk.with_name(f"{output_apk.stem}-aligned{output_apk.suffix}")
+            try:
+                utils.run_process(
+                    [zipalign, "-f", "-P", "16", "4", str(output_apk), str(aligned_apk)],
+                    capture=True,
+                )
+                output_apk.unlink(missing_ok=True)
+                output_apk = aligned_apk
+            except subprocess.CalledProcessError as e:
+                logging.warning(f"zipalign failed; continuing with the unaligned APK: {e}")
+                aligned_apk.unlink(missing_ok=True)
+        else:
+            logging.warning("zipalign not found; native libraries may not be page-aligned")
 
         signed_apk = Path(f"{app_name}-{arch}-{name}-v{safe_version}.apk")
 

@@ -21,10 +21,6 @@
     "include": [],
     "exclude": []
   },
-  "gboard|flexboard": {
-    "include": [],
-    "exclude": []
-  },
   "gboard|jasonwu": {
     "include": [],
     "exclude": []
@@ -70,7 +66,7 @@
     "include": [],
     "exclude": []
   },
-  "twitter|piko": {
+  "twitter|piko-newx": {
     "include": [],
     "exclude": []
   },

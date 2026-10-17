@@ -1,5 +1,5 @@
 /**
- * High-quality metadata and verified high-res icons for all supported applications.
+ * Display metadata and icons for the apps currently in the build matrix.
  */
 
 export const APP_METADATA = {
@@ -52,13 +52,6 @@ export const APP_METADATA = {
     icon: "https://play-lh.googleusercontent.com/ZU9AnVdaacxATubdaFCVYduw2WPmnwapkcm4ApduPrFGbaAzIlMr4-9wfA1ajSBQiz8=w240-h480",
     color: "#229ED9"
   },
-  "vn": {
-    name: "VN Video Editor",
-    category: "Video Editing",
-    package: "com.frontrow.vlog",
-    icon: "https://play-lh.googleusercontent.com/Fw8_r8a-1J66x6r4bQ0XmQ_hF8b0oR4cTqQ0KzL_e9s=w240-h480",
-    color: "#0055FF"
-  },
   "sdmaidse": {
     name: "SD Maid 2 / SE",
     category: "System Tools",
@@ -79,13 +72,6 @@ export const APP_METADATA = {
     package: "com.google.android.apps.photos",
     icon: "https://play-lh.googleusercontent.com/u_Yv0X9uT0Z_z0K0q0x0v8=w240-h480",
     color: "#4285F4"
-  },
-  "tradingview": {
-    name: "TradingView",
-    category: "Finance & Markets",
-    package: "com.tradingview.tradingviewapp",
-    icon: "https://play-lh.googleusercontent.com/rN9yB_x8q8b0=w240-h480",
-    color: "#131722"
   },
   "pocketcasts": {
     name: "Pocket Casts",
@@ -108,54 +94,12 @@ export const APP_METADATA = {
     icon: "https://play-lh.googleusercontent.com/m8_x8q9=w240-h480",
     color: "#3F51B5"
   },
-  "protonpass": {
-    name: "Proton Pass",
-    category: "Security & Passwords",
-    package: "proton.android.pass",
-    icon: "https://play-lh.googleusercontent.com/kP9-x6a1=w240-h480",
-    color: "#6D4AFF"
-  },
-  "serverauditor": {
-    name: "Server Auditor",
-    category: "Developer Tools",
-    package: "com.server.auditor.ssh.client",
-    icon: "https://play-lh.googleusercontent.com/v8_x9a0=w240-h480",
-    color: "#2B3A42"
-  },
-  "vocabulary": {
-    name: "Vocabulary",
-    category: "Education",
-    package: "com.hrd.vocabulary",
-    icon: "https://play-lh.googleusercontent.com/m4_x9b0=w240-h480",
-    color: "#4A7C59"
-  },
-  "samsung-keyboard": {
-    name: "Samsung Keyboard",
-    category: "Tools & Keyboard",
-    package: "com.samsung.android.honeyboard",
-    icon: "https://play-lh.googleusercontent.com/s8_x9d0=w240-h480",
-    color: "#1428A0"
-  },
-  "pinnit": {
-    name: "Pinnit",
-    category: "Tools & Utilities",
-    package: "dev.sasikanth.pinnit2",
-    icon: "https://play-lh.googleusercontent.com/p8_x9e0=w240-h480",
-    color: "#E05A47"
-  },
   "gboard": {
     name: "Gboard",
     category: "Tools & Keyboard",
     package: "com.google.android.inputmethod.latin",
     icon: "https://play-lh.googleusercontent.com/g8_x9f0=w240-h480",
     color: "#4285F4"
-  },
-  "habitkit": {
-    name: "HabitKit",
-    category: "Productivity & Habits",
-    package: "com.roehl.habitkit",
-    icon: "https://play-lh.googleusercontent.com/h8_x9i0=w240-h480",
-    color: "#00E5FF"
   },
   "duolingo": {
     name: "Duolingo",

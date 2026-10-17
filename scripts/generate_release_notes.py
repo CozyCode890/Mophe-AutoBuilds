@@ -14,7 +14,7 @@ import re
 import sys
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
     try:
@@ -69,21 +69,13 @@ def format_app_display(app_name: str) -> str:
         "twitter": "X (Twitter)",
         "pinterest": "Pinterest",
         "telegram": "Telegram",
-        "vn": "VN Video Editor",
         "sdmaidse": "SD Maid 2 / SE",
         "threads": "Threads",
         "google-photos": "Google Photos",
-        "tradingview": "TradingView",
         "pocketcasts": "Pocket Casts",
         "depthwallpaper": "Depth Wallpaper",
         "minimalwidgets": "Minimal Widgets",
-        "protonpass": "Proton Pass",
-        "serverauditor": "Server Auditor (Termius)",
-        "vocabulary": "Vocabulary",
-        "pinnit": "Pinnit",
         "gboard": "Gboard",
-        "taskmanager": "TaskManager",
-        "habitkit": "HabitKit",
         "duolingo": "Duolingo",
         "brave": "Brave Browser",
     }
@@ -93,21 +85,15 @@ def format_app_display(app_name: str) -> str:
 def get_source_display_name(source: str) -> str:
     source_map = {
         "morphe": "Morphe Patches",
-        "piko": "Piko Patches",
-        "piko-dev": "Piko (Dev) Patches",
+        "piko-newx": "Piko (NewX) Patches",
         "paresh": "Paresh Patches",
         "rookie": "Rookie Patches",
         "rushiranpise": "Rushi (Doom) Patches",
-        "browzomje": "Browzomje Patches",
         "hushgram": "HushGram Patches",
         "hushpinterest": "HushPinterest Patches",
         "hushtelegram": "HushTelegram Patches",
         "hushthreads": "HushThreads Patches",
-        "dh6k": "dh6k Patches",
-        "morning-entree": "Morning Entree Patches",
-        "ample": "Ample Patches",
         "jasonwu": "Jasonwu (Gboard) Patches",
-        "flexboard": "Flexboard (JZ6) Patches",
         "kveld9": "kveld9 Patches",
         "hoodles": "Hoodles Patches",
     }
@@ -127,9 +113,9 @@ def parse_apk_details(filename: str) -> tuple[str, str, str]:
     # Try to extract source
     source = ""
     known_sources = [
-        "morphe", "piko-dev", "piko", "paresh", "durgesh", "chiggi", 
-        "rookie", "rushiranpise", "rushi", "browzomje", "dh6k", 
-        "morning-entree", "entree", "hxreborn", "ample", "jasonwu", "flexboard", "kveld9", "hoodles"
+        "morphe", "piko-newx", "paresh", "rookie", "rushiranpise",
+        "hushgram", "hushpinterest", "hushtelegram", "hushthreads",
+        "jasonwu", "kveld9", "hoodles",
     ]
     for s in known_sources:
         if f"-{s}-" in name_no_ext or f"-{s}" in name_no_ext:
@@ -350,19 +336,14 @@ def main() -> int:
     content.append("## Credits & Toolchains\n")
     content.append("Built with [Morphe](https://github.com/MorpheApp) CLI. Credits to all open-source patch developers:")
     content.append("- **Morphe/ReVanced:** [MorpheApp/morphe-patches](https://github.com/MorpheApp/morphe-patches)")
-    content.append("- **Piko:** [crimera/piko](https://github.com/crimera/piko)")
+    content.append("- **Piko (NewX):** [crimera/piko-newx](https://github.com/crimera/piko-newx)")
     content.append("- **Paresh:** [Paresh-Maheshwari/paresh-patches](https://gitlab.com/Paresh-Maheshwari/paresh-patches)")
     content.append("- **Rushi (Doom):** [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches)")
-    content.append("- **Morning Entree:** [Entree3k/Morning-Entree-Patches](https://github.com/Entree3k/Morning-Entree-Patches)")
     content.append("- **Gboard Patches:** [jasonwu1994/Gboard-patches](https://github.com/jasonwu1994/Gboard-patches)")
-    content.append("- **Flexboard:** [JZ6/Flexboard](https://github.com/JZ6/Flexboard)")
     content.append("- **kveld9 Patches:** [kveld9/kveld-morphe-patches](https://github.com/kveld9/kveld-morphe-patches)")
-    content.append("- **Ample Patches:** [AmpleReVanced/revanced-patches](https://github.com/AmpleReVanced/revanced-patches)")
     content.append("- **Hoodles:** [hoo-dles/morphe-patches](https://github.com/hoo-dles/morphe-patches)")
     content.append("- **SysAdminDoc (Hush):** [SysAdminDoc](https://github.com/SysAdminDoc)")
-    content.append("- **Rookie Patches:** [RookieEnough/De-ReVanced](https://github.com/RookieEnough/De-ReVanced)")
-    content.append("- **Browzomje:** [browzomje/browzomje-patches](https://github.com/browzomje/browzomje-patches)")
-    content.append("- **dh6k:** [dh6k/morphe-patches](https://github.com/dh6k/morphe-patches)\n")
+    content.append("- **Rookie Patches:** [RookieEnough/De-ReVanced](https://github.com/RookieEnough/De-ReVanced)\n")
 
     # 5. Non-root Note
     content.append("## Notes")

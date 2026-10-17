@@ -96,7 +96,7 @@ def delete_asset_by_name(release: str, name: str) -> tuple:
     asset — that was the original bug. The correct subcommand is `delete-asset`.
     Returns (ok, message)."""
     try:
-        result = subprocess.run(
+        subprocess.run(
             ["gh", "release", "delete-asset", release, name, "--yes"],
             capture_output=True, text=True, check=True,
         )
@@ -115,7 +115,7 @@ def delete_asset_by_id(name: str, asset_id: str) -> tuple:
     if not repo:
         return False, "GITHUB_REPOSITORY not set for API fallback"
     try:
-        result = subprocess.run(
+        subprocess.run(
             ["gh", "api", "-X", "DELETE",
              f"repos/{repo}/releases/assets/{asset_id}"],
             capture_output=True, text=True, check=True,
