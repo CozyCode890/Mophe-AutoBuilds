@@ -124,6 +124,90 @@ class TestApkMirrorVariantRejection(unittest.TestCase):
         self.assertTrue(url.endswith("/final.apk"))
 
 
+class TestApkMirrorVersionCodeSelection(unittest.TestCase):
+    """A target versionCode must select the matching .apkm bundle on APKMirror."""
+
+    VERSION = "18.0.3.954559732"
+    PACKAGE = "com.google.android.inputmethod.latin"
+
+    HTML_WITH_TWO_BUNDLES = """
+    <html>
+      <head><title>Gboard 18.0.3.954559732 APK Download by Google LLC - APKMirror</title></head>
+      <body>
+        <div class="table-row headerFont">
+          <span class="apkm-badge">BUNDLE</span>
+          <div class="table-cell">18.0.3.954559732</div>
+          <div class="table-cell">arm64-v8a</div>
+          <div class="table-cell">nodpi</div>
+          <div class="table-cell">541470077</div>
+          <a class="accent_color" href="/apk/google-inc/gboard/gboard-18-0-3-release/variant-first/">Download</a>
+        </div>
+        <div class="table-row headerFont">
+          <span class="apkm-badge">BUNDLE</span>
+          <div class="table-cell">18.0.3.954559732</div>
+          <div class="table-cell">arm64-v8a</div>
+          <div class="table-cell">nodpi</div>
+          <div class="table-cell">541470078</div>
+          <a class="accent_color" href="/apk/google-inc/gboard/gboard-18-0-3-release/variant-target/">Download</a>
+        </div>
+      </body>
+    </html>
+    """
+
+    GBOARD_CONFIG = {
+        "name": "gboard",
+        "org": "google-inc",
+        "release_prefix": "gboard-the-google-keyboard",
+        "type": "BUNDLE",
+        "arch": "arm64-v8a",
+        "dpi": "nodpi",
+        "package": "com.google.android.inputmethod.latin",
+    }
+
+    def setUp(self):
+        self._sleep_patch = patch("src.apkmirror.time.sleep", return_value=None)
+        self._sleep_patch.start()
+        self.addCleanup(self._sleep_patch.stop)
+        self._build_patch = patch("src.apkmirror.get_build_number_for_version", return_value=(None, None))
+        self._build_patch.start()
+        self.addCleanup(self._build_patch.stop)
+        self._find_patch = patch(
+            "src.apkmirror.find_release_page_from_main",
+            return_value="https://www.apkmirror.com/apk/google-inc/gboard/gboard-18-0-3-954559732-release/",
+        )
+        self._find_patch.start()
+        self.addCleanup(self._find_patch.stop)
+
+        saved = dict(utils.cli_version_codes)
+        self.addCleanup(lambda: (utils.cli_version_codes.clear(), utils.cli_version_codes.update(saved)))
+
+    def _run_download(self, desired_code, mock_cf_get):
+        utils.cli_version_codes[(self.PACKAGE, self.VERSION)] = {"arm64_v8a": desired_code}
+        release = Mock(status_code=200, content=self.HTML_WITH_TWO_BUNDLES.encode("utf-8"), url="https://apkmirror.com/release/")
+        final = Mock(status_code=200, content=b'<a id="download-link" href="/gboard.apkm">DL</a>', url="https://apkmirror.com/step2/")
+        mock_cf_get.side_effect = [release, release, final]
+        url = apkmirror.get_download_link(self.VERSION, "gboard", dict(self.GBOARD_CONFIG))
+        variant_url = mock_cf_get.call_args_list[1].args[0]
+        return url, variant_url
+
+    @patch("src.apkmirror._pick_download_button", return_value="https://apkmirror.com/step2/")
+    @patch("src.apkmirror._cf_get")
+    def test_picks_bundle_matching_target_version_code(self, mock_cf_get, _mock_pick):
+        """The .apkm bundle whose row carries the target versionCode must win."""
+        url, variant_url = self._run_download(541470078, mock_cf_get)
+        self.assertIsNotNone(url)
+        self.assertIn("variant-target", variant_url)
+        self.assertNotIn("variant-first", variant_url)
+
+    @patch("src.apkmirror._pick_download_button", return_value="https://apkmirror.com/step2/")
+    @patch("src.apkmirror._cf_get")
+    def test_falls_back_when_no_bundle_has_target_version_code(self, mock_cf_get, _mock_pick):
+        """An unknown or stale versionCode must not abort the download."""
+        url, variant_url = self._run_download(541470099, mock_cf_get)
+        self.assertIsNotNone(url)
+        self.assertIn("variant-first", variant_url)
+
+
 class TestApkPureVersionRejection(unittest.TestCase):
 
     @patch("src.apkpure._cdn_download_url", return_value=None)

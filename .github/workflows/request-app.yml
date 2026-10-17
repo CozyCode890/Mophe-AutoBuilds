@@ -41,13 +41,11 @@ on:
         type: string
         default: ''
       architecture:
-        description: 'Architecture to build'
+        description: 'Architecture to build (arm64-v8a is the only supported target)'
         required: false
         type: choice
         options:
           - arm64-v8a
-          - armeabi-v7a
-          - universal
         default: 'arm64-v8a'
       request_code:
         description: 'Optional request code (auto-generated when empty)'

@@ -25,7 +25,6 @@ export function StorePage() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSource, setSelectedSource] = useState('all');
-  const [selectedArch, setSelectedArch] = useState('all');
 
   useEffect(() => {
     Promise.allSettled([
@@ -70,12 +69,6 @@ export function StorePage() {
     return Array.from(s);
   }, [entries]);
 
-  const arches = useMemo(() => {
-    const a = new Set();
-    entries.forEach(e => { if (e.arch) a.add(e.arch.toLowerCase()); });
-    return Array.from(a);
-  }, [entries]);
-
   const filteredAppNames = useMemo(() => {
     return Object.keys(groupedApps).filter(appName => {
       const appEntries = groupedApps[appName];
@@ -88,12 +81,9 @@ export function StorePage() {
       const matchesSource = selectedSource === 'all' ||
         (firstEntry.source || '').toLowerCase() === selectedSource.toLowerCase();
 
-      const matchesArch = selectedArch === 'all' ||
-        appEntries.some(e => (e.arch || '').toLowerCase() === selectedArch.toLowerCase());
-
-      return matchesSearch && matchesSource && matchesArch;
+      return matchesSearch && matchesSource;
     });
-  }, [groupedApps, searchQuery, selectedSource, selectedArch]);
+  }, [groupedApps, searchQuery, selectedSource]);
 
   const { recentlyUpdatedApps, otherApps } = useMemo(() => {
     const recent = [];
@@ -159,10 +149,7 @@ export function StorePage() {
           setSearchQuery={setSearchQuery}
           selectedSource={selectedSource}
           setSelectedSource={setSelectedSource}
-          selectedArch={selectedArch}
-          setSelectedArch={setSelectedArch}
           sources={sources}
-          arches={arches}
           totalResults={filteredAppNames.length}
         />
       </div>

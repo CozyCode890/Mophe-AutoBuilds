@@ -611,14 +611,32 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
         logging.error(f"Could not find any release page matching version {version} for {app_name}")
         return None
     
-    # --- VARIANT FINDER (strictly matches target version) ---
+    # --- VARIANT FINDER (strictly matches target version and versionCode) ---
     rows = found_soup.find_all('div', class_='table-row headerFont')
     download_page_url = None
-    
+
+    # When the target versionCode is known (parsed from the patch CLI or cached
+    # from an earlier lookup), prefer the variant row that carries the same
+    # code: two rows can show the same version name and differ only by
+    # versionCode (e.g. Gboard ships separate arm64-v8a bundles). Downloading
+    # the wrong .apkm causes fingerprint failures once the bundle is merged.
+    desired_code = _desired_version_code(config, version, target_arch)
+    if not desired_code and build_number and build_format == 'parentheses' and 6 <= len(build_number) <= 11:
+        # The version string carried APKMirror's own "(NNNNNNN)" build code,
+        # which is also the versionCode shown on the variant rows.
+        try:
+            desired_code = int(build_number)
+        except (TypeError, ValueError):
+            desired_code = None
+    if desired_code:
+        logging.info(f"Targeting {target_arch} variant with versionCode {desired_code} for {app_name} {version}")
+
     # Try preferred type first (e.g. "APK"), then fallback to "BUNDLE" if APK was requested but not found
     types_to_try = [config['type']]
     if config['type'] == 'APK':
         types_to_try.append('BUNDLE')
+
+    fallback_match = None  # (url, try_type) used when no row carries desired_code
 
     for try_type in types_to_try:
         for row in rows:
@@ -651,20 +669,40 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
             if type_match and dpi_match and arch_match:
                 sub_url = row.find('a', class_='accent_color')
                 if sub_url:
-                    download_page_url = base_url + sub_url['href']
-                    # Opportunistically cache any versionCode visible in the row
+                    row_url = base_url + sub_url['href']
                     try:
                         _vc = _extract_version_code_from_text(row_text, version)
-                        if _vc and config.get("package"):
-                            register_version_code(config["package"], version, _vc, target_arch)
                     except Exception:
-                        pass
+                        _vc = None
+                    if desired_code and _vc != desired_code:
+                        # Same version name, different versionCode (or the row
+                        # exposes none): hold it as a last resort and keep
+                        # scanning for the row with the exact code.
+                        if fallback_match is None:
+                            fallback_match = (row_url, try_type)
+                        continue
+                    download_page_url = row_url
+                    # Cache the versionCode of the selected row for later lookups
+                    if _vc and config.get("package"):
+                        register_version_code(config["package"], version, _vc, target_arch)
                     if try_type != config['type']:
                         logging.info(f"Fallback to {try_type} variant succeeded for {app_name} {version}")
                     break
         
         if download_page_url:
             break
+
+    if not download_page_url and fallback_match:
+        # No variant exposed the expected code (it may be stale or unknown to
+        # APKMirror): fall back to the first structural match so the download
+        # still proceeds, and do not cache its unverified code.
+        download_page_url, try_type = fallback_match
+        logging.warning(
+            f"No {target_arch} variant with versionCode {desired_code} found for "
+            f"{app_name} {version}; using the closest version match instead"
+        )
+        if try_type != config['type']:
+            logging.info(f"Fallback to {try_type} variant succeeded for {app_name} {version}")
     
     if not download_page_url:
         logging.error(f"No variant found for {app_name} {version} with criteria {criteria}")
@@ -845,6 +883,32 @@ def _extract_version_code_from_text(text: str, version: str) -> int | None:
             return int(m.group(1))
         except ValueError:
             continue
+    return None
+
+
+def _normalize_arch_label(arch: str) -> str:
+    """Normalize an architecture label so 'ARM64_V8A' and 'arm64-v8a' compare equal."""
+    return (arch or "").lower().replace("-", "_")
+
+
+def _desired_version_code(config: dict, version: str, target_arch: str) -> int | None:
+    """Return the known versionCode for a (package, version, arch) target, if any.
+
+    Codes come from the patch CLI's list-versions output (utils.cli_version_codes)
+    and from earlier APKMirror lookups. Only an exact architecture match is
+    trusted: the same version name ships under different codes per ABI, so a
+    code belonging to another architecture would reject the correct bundle.
+    """
+    package = config.get("package")
+    if not package or not version:
+        return None
+    codes = utils.cli_version_codes.get((package, version)) or {}
+    for key, value in codes.items():
+        if _normalize_arch_label(key) == _normalize_arch_label(target_arch):
+            try:
+                return int(value)
+            except (TypeError, ValueError):
+                return None
     return None
 
 

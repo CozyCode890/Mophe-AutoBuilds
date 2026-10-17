@@ -17,7 +17,7 @@
 
 <p align="center">
   <strong>Professional, Automated Custom APK Builder</strong><br>
-  Multi-source • Multi-architecture • GitHub Actions Powered
+  Multi-source • arm64-v8a Optimized • GitHub Actions Powered
 </p>
 
 <p align="center">
@@ -87,7 +87,7 @@ This repository compiles optimized builds using specific community patch reposit
 | **YouTube** | `com.google.android.youtube` | morphe | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.youtube%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522YouTube%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522youtube-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522youtube-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
 | **YouTube Music** | `com.google.android.apps.youtube.music` | morphe | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.apps.youtube.music%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522YouTube%2520Music%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522youtube-music-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522youtube-music-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
 
-*(All builds are target-optimized for their respective architectures to reduce bundle sizes and increase device efficiency).*
+*(All builds are optimized for `arm64-v8a` to reduce bundle sizes and increase device efficiency).*
 
 ---
 
@@ -211,7 +211,7 @@ python -m src
 
 ### Manual Build (`manual-patch.yml`)
 * **Trigger:** Manually via the GitHub Actions "Run workflow" button.
-* **Capabilities:** Target specific apps, architectures, and force specific APK versions.
+* **Capabilities:** Target specific apps and force specific APK versions (all builds are `arm64-v8a`).
 
 ---
 
