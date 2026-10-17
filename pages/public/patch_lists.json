@@ -17,6 +17,10 @@
       "Native Bloat Slimmer"
     ]
   },
+  "chess|prathxm-patches": {
+    "include": [],
+    "exclude": []
+  },
   "depthwallpaper|rushiranpise": {
     "include": [],
     "exclude": []
