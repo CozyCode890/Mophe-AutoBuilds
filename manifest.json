@@ -11,7 +11,7 @@
       "patch_changelog": "## [1.47.0](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-11)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))\r\n* **Settings:** Search hint and tips ignore the Morphe language override...",
       "apk": "youtube-arm64-v8a-morphe-v21.20.405.apk",
       "built_version": "21.20.405",
-      "built_at": "2026-10-13T01:22:44Z",
+      "built_at": "2026-10-17T14:16:13Z",
       "package": "com.google.android.youtube",
       "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.youtube%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522YouTube%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522youtube-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522youtube-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -28,7 +28,7 @@
       "patch_changelog": "## [1.47.0](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-11)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))\r\n* **Settings:** Search hint and tips ignore the Morphe language override...",
       "apk": "youtube-music-arm64-v8a-morphe-v9.20.53.apk",
       "built_version": "9.20.53",
-      "built_at": "2026-10-13T01:22:03Z",
+      "built_at": "2026-10-17T14:15:43Z",
       "package": "com.google.android.apps.youtube.music",
       "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.apps.youtube.music%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522YouTube%2520Music%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522youtube-music-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522youtube-music-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -45,7 +45,7 @@
       "patch_changelog": "## [1.47.0](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-11)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))\r\n* **Settings:** Search hint and tips ignore the Morphe language override...",
       "apk": "reddit-arm64-v8a-morphe-v2026.24.0.apk",
       "built_version": "2026.24.0",
-      "built_at": "2026-10-13T01:21:42Z",
+      "built_at": "2026-10-17T14:15:30Z",
       "package": "com.reddit.frontpage",
       "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.reddit.frontpage%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Reddit%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522reddit-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522reddit-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -62,11 +62,28 @@
       "patch_changelog": "## [0.0.12](https://github.com/SysAdminDoc/HushGram/compare/v0.0.11...v0.0.12) (2026-10-16)\n\n### Features\n\n* **Instagram - Download any story:** A video story you filmed gets Download as photo under Download now, which saves one still picture from it at full size. Download still saves the video. Asked for in #215.\n* **Instagram - Download any reel:** New switch under Download, Download audio, off ...",
       "apk": "instagram-arm64-v8a-hushgram-patches-v451.0.0.53.80.apk",
       "built_version": "451.0.0.53.80",
-      "built_at": "2026-10-17T01:07:45Z",
+      "built_at": "2026-10-17T14:16:54Z",
       "package": "com.instagram.android",
       "icon_url": "https://play-lh.googleusercontent.com/yHi59jmO_lVamcyJ1i3rM1_E8bAiAspShnGjjURq05ipQQSUksO3QVEsXTegRSqul038-4YNA7O644XAcx251Q=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.instagram.android%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Instagram%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522instagram-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522instagram-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
       "obtainium_deep_link": "obtainium://app/%7B%22id%22%3A%22com.instagram.android%22%2C%22url%22%3A%22https%3A//yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html%22%2C%22author%22%3A%22yashrajrocxx%22%2C%22name%22%3A%22Instagram%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22instagram-arm64-v8a-.%2A-v.%2A%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22instagram-arm64-v8a-.%2A-v%28%5B%5E/%5D%2B%29%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%221%5C%22%7D%22%7D"
+    },
+    "twitter|piko-newx|arm64-v8a": {
+      "app_name": "twitter",
+      "source": "piko-newx",
+      "arch": "arm64-v8a",
+      "config_version": "",
+      "source_sig": "MorpheApp/morphe-cli@v1.18.1@2026-10-05T11:51:56Z@2026-10-05T11:53:13Z|morphe-desktop-1.18.1-all.jar:sha256:1b506ab5f03d16a2f65026d5e0e1910d01fc1e2152f21eaeb44ed2f30856597b|sha:e6c133010c86;crimera/piko-newx@v3.57.1@2026-10-17T00:54:37Z@2026-10-17T00:54:37Z|patches-3.57.1.mpp.asc:sha256:d4eebea1b66d6898046c892442da4fc6b2d42bc766161908dbcda040612b9886,patches-3.57.1.mpp:sha256:75972c2eb3c2a464a3da59a72354a011a9404812ff2d5413f58f4ecd99c57d22,patches-list.json:sha256:36cf2f3fabbd39c87b9513e53e9c84ab21cf8728458a8b959444c9440eacb7df|sha:eafea93e2744",
+      "patch_tag": "v3.57.1",
+      "patch_url": "https://github.com/crimera/piko-newx/releases/tag/v3.57.1",
+      "patch_changelog": "### \ud83d\udc1b Bug Fixes\n* **Twitter:** settings re-design ([8814a72](https://github.com/crimera/piko/commit/8814a7225ce188d92088e3b87aa4a0e24e312510))\n* **Twitter - newx:** support 12.35.0 production resolver drift ([35cf5f7](https://github.com/crimera/piko/commit/35cf5f7df252de3ac691c1db54ffbe7746d7c92e))\n* **Twitter - newx:** restore bird in pull-to-refresh logo ([6fc0967](https://github.com/crimera/pik...",
+      "apk": "twitter-arm64-v8a-piko-newx-patches-v12.35.0-prod.01.apk",
+      "built_version": "12.35.0-prod.01",
+      "built_at": "2026-10-17T14:15:33Z",
+      "package": "com.twitter.android",
+      "icon_url": "https://play-lh.googleusercontent.com/IsLsCD4eLC2CYvlkgTI6Z5TROj0BJIBgUF7BZ5eliTzyyTjqG_mbofeG4kw2s7oG_JZMSi5ErLz_qsDi169C8w=w240-h480",
+      "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.twitter.android%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522X%2520%2528Twitter%2529%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522twitter-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522twitter-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
+      "obtainium_deep_link": "obtainium://app/%7B%22id%22%3A%22com.twitter.android%22%2C%22url%22%3A%22https%3A//yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html%22%2C%22author%22%3A%22yashrajrocxx%22%2C%22name%22%3A%22X%20%28Twitter%29%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22twitter-arm64-v8a-.%2A-v.%2A%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22twitter-arm64-v8a-.%2A-v%28%5B%5E/%5D%2B%29%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%221%5C%22%7D%22%7D"
     },
     "pinterest|hushpinterest|arm64-v8a": {
       "app_name": "pinterest",
@@ -79,7 +96,7 @@
       "patch_changelog": "HushPinterest 0.0.11 has 29 patches for Pinterest 14.40.0. It's built on Morphe patcher 1.15.1, so it needs Morphe Manager 1.34.0 or newer. This one fixes Hide AI-labeled pins. Pinterest 14.40.0 changed how it marks AI pins, so with the switch on they still showed up in search and the home feed. HushPinterest now reads the new marks, including the ones Pinterest's own detection adds.\n\nIt's the sam...",
       "apk": "pinterest-arm64-v8a-hushpinterest-patches-v14.40.0.apk",
       "built_version": "14.40.0",
-      "built_at": "2026-10-15T01:06:56Z",
+      "built_at": "2026-10-17T14:16:06Z",
       "package": "com.pinterest",
       "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.pinterest%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Pinterest%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522pinterest-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522pinterest-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -96,7 +113,7 @@
       "patch_changelog": "HushTelegram v0.0.18 has 68 patches for telegram.org's Telegram 13.0.3 (`org.telegram.messenger.web`, version code 71839) and the official Telegram beta 13.0.3 (`org.telegram.messenger.beta`, also 71839). Sixty-four are selected by default, and every new switch starts off. This release moves to Telegram 13.0.3. Telegram 13 dropped the menu that slid in from the left, so the new `Side menu` switch ...",
       "apk": "telegram-arm64-v8a-hushtelegram-patches-v13.0.3.apk",
       "built_version": "13.0.3",
-      "built_at": "2026-10-17T01:06:50Z",
+      "built_at": "2026-10-17T14:15:11Z",
       "package": "org.telegram.messenger",
       "icon_url": "https://play-lh.googleusercontent.com/PyZ3akMGXPV0tKKirKNwfO--PSQW3FHR6rD_H9mAaukZ8LiHyYFuBLeU8UZ2ok6r5SP79-3prkfybWKh98AZAD0=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522org.telegram.messenger%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Telegram%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522telegram-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522telegram-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -113,7 +130,7 @@
       "patch_changelog": "# [1.20.0](https://gitlab.com/Paresh-Maheshwari/paresh-patches/compare/v1.19.0...v1.20.0) (2026-09-01)\n\n\n### Bug Fixes\n\n* add hiddenapibypass dependency for Plus Messenger signature spoof ([5beb880](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/5beb8807946a020e88c4060cac26335d2197ff91))\n* correct Telegram web target to 12.9.2 (closes [#112](https://gitlab.com/Paresh-Maheshwari/paresh-...",
       "apk": "sdmaidse-arm64-v8a-paresh-v1.7.3-rc0.apk",
       "built_version": "1.7.3-rc0",
-      "built_at": "2026-10-07T01:26:53Z",
+      "built_at": "2026-10-17T14:15:11Z",
       "package": "eu.darken.sdmse",
       "icon_url": "https://play-lh.googleusercontent.com/3prZ4AWUkRpB76xwwWQV_cvDrlu87YAmlEv2j_5QEB_ZC3-9lZiIXdwKW7-40in7Fs7l9iHUGVHcQZWmgdWqXA=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522eu.darken.sdmse%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522SD%2520Maid%25202%2520%2F%2520SE%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522sdmaidse-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522sdmaidse-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -130,7 +147,7 @@
       "patch_changelog": "HushThreads v0.0.14 has 19 patches for Threads 451.0.0.51.80 (`com.instagram.barcelona`), and it patches that version only. It's built on Morphe patcher 1.15.1, so you need Morphe Manager 1.34.0 or newer.\n\nThis one moves to Threads 451 and gives HushThreads settings a new look. All 11 pages are redesigned, and a long press on the Threads logo at the top of your feed opens them. Flip a switch that ...",
       "apk": "threads-arm64-v8a-hushthreads-patches-v451.0.0.51.80.apk",
       "built_version": "451.0.0.51.80",
-      "built_at": "2026-10-17T01:07:17Z",
+      "built_at": "2026-10-17T14:15:39Z",
       "package": "com.instagram.barcelona",
       "icon_url": "https://play-lh.googleusercontent.com/6PzXaP0KaRU4DifAfsXKbWNVA3JPrP9uklvEh5EDhzPRdPfHV4tzszhAavQa4bq0YGdbnphBucz9vEUXiu1Ebg=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.instagram.barcelona%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Threads%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522threads-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522threads-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -145,9 +162,9 @@
       "patch_tag": "v1.5.1",
       "patch_url": "https://github.com/RookieEnough/De-Vanced/releases/tag/v1.5.1",
       "patch_changelog": "## [1.5.1](https://github.com/RookieEnough/De-Vanced/compare/v1.5.0...v1.5.1) (2026-10-04)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Amazon Music:** Resolve app crash on startup ([114c5fc](https://github.com/RookieEnough/De-Vanced/commit/114c5fca44d634bf01f23bd58aac63eccd9120dd))\n",
-      "apk": "google-photos-arm64-v8a-morphe-patches-v7.95.0.989626323.apk",
-      "built_version": "7.95.0.989626323",
-      "built_at": "2026-10-07T01:27:44Z",
+      "apk": "google-photos-arm64-v8a-morphe-patches-v7.96.0.996044120.apk",
+      "built_version": "7.96.0.996044120",
+      "built_at": "2026-10-17T14:15:42Z",
       "package": "com.google.android.apps.photos",
       "icon_url": "https://play-lh.googleusercontent.com/kErBTF4VcGwhtKbCr80Bs2R1lNZiYkHbKcf1i3ZF6dg_5LqDAlCI4wU-nzwvo7PAbxeBXM_tv1hc11gr4aIIW-Q=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.apps.photos%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Google%2520Photos%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522google-photos-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522google-photos-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -164,7 +181,7 @@
       "patch_changelog": "## [1.23.0](https://github.com/rushiranpise/morphe-patches/compare/v1.22.0...v1.23.0) (2026-10-14)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove Relane patches ([29819ed](https://github.com/rushiranpise/morphe-patches/commit/29819edeab47def853a57a52a5b5fd6f5db6dbdc)), closes [#1033](https://github.com/rushiranpise/morphe-patches/issues/1033)\n* update verified app versions ([5ca039c](https://github.com/rushiranpise/m...",
       "apk": "depthwallpaper-arm64-v8a-morphe-patches-v2.1.07.apk",
       "built_version": "2.1.07",
-      "built_at": "2026-10-15T01:06:14Z",
+      "built_at": "2026-10-17T14:16:05Z",
       "package": "com.jndapp.depth.live.wallpaper",
       "icon_url": "https://play-lh.googleusercontent.com/h9g140jbgc6tR6o2VgL2lF0OYTr8cq2n9x_GihS_Toxe3PioggBfXHzIwM2OeNeEyWHfZFpqoMov5Whdm_qMeg=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.jndapp.depth.live.wallpaper%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Depth%2520Wallpaper%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522depthwallpaper-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522depthwallpaper-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -181,7 +198,7 @@
       "patch_changelog": "## [1.23.0](https://github.com/rushiranpise/morphe-patches/compare/v1.22.0...v1.23.0) (2026-10-14)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove Relane patches ([29819ed](https://github.com/rushiranpise/morphe-patches/commit/29819edeab47def853a57a52a5b5fd6f5db6dbdc)), closes [#1033](https://github.com/rushiranpise/morphe-patches/issues/1033)\n* update verified app versions ([5ca039c](https://github.com/rushiranpise/m...",
       "apk": "pocketcasts-arm64-v8a-morphe-patches-v8.16.apk",
       "built_version": "8.16",
-      "built_at": "2026-10-15T01:06:16Z",
+      "built_at": "2026-10-17T14:16:11Z",
       "package": "au.com.shiftyjelly.pocketcasts",
       "icon_url": "https://play-lh.googleusercontent.com/9VEAFZhJZgBzOnGXhSLqxwGt_11eQ4KBczz5UpaRGWK95z1isxCv4Xpp1T4gtCAtK6OlSBILVcbM9XaWaTK05hQ=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522au.com.shiftyjelly.pocketcasts%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Pocket%2520Casts%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522pocketcasts-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522pocketcasts-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -198,7 +215,7 @@
       "patch_changelog": "## [1.23.0](https://github.com/rushiranpise/morphe-patches/compare/v1.22.0...v1.23.0) (2026-10-14)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove Relane patches ([29819ed](https://github.com/rushiranpise/morphe-patches/commit/29819edeab47def853a57a52a5b5fd6f5db6dbdc)), closes [#1033](https://github.com/rushiranpise/morphe-patches/issues/1033)\n* update verified app versions ([5ca039c](https://github.com/rushiranpise/m...",
       "apk": "minimalwidgets-arm64-v8a-morphe-patches-v2.1.04.apk",
       "built_version": "2.1.04",
-      "built_at": "2026-10-15T01:06:21Z",
+      "built_at": "2026-10-17T14:16:28Z",
       "package": "com.jndapp.minimal.widgets",
       "icon_url": "https://play-lh.googleusercontent.com/YdxN2n40wSiPp-WZi832aZHxGFQSafDcHqNif-Wy9YH__t2nCXoB5yGaCQkisJaHWe13H37lI_olM7sKsfONBg=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.jndapp.minimal.widgets%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Minimal%2520Widgets%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522minimalwidgets-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522minimalwidgets-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -215,7 +232,7 @@
       "patch_changelog": "### \u2728 New Features\n\n* **Gboard:** add the `Swipe Down to Dismiss Keyboard` patch, allowing you to dismiss the keyboard by swiping down from the suggestion strip or toolbar.\n\n### \ud83d\udc1b Bug Fixes\n\n* **Gboard:** fix an issue where the `Frosted Glass` patch could cause the keyboard to crash when entering the password upon device startup (Direct Boot).\n* **Gboard:** fix the `Swipe Down to Dismiss Keyboard`...",
       "apk": "gboard-arm64-v8a-jasonwu-v18.0.3.954559732-release.apk",
       "built_version": "18.0.3.954559732-release",
-      "built_at": "2026-10-17T01:07:13Z",
+      "built_at": "2026-10-17T14:17:28Z",
       "package": "com.google.android.inputmethod.latin",
       "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.inputmethod.latin%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Gboard%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522gboard-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522gboard-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -232,7 +249,7 @@
       "patch_changelog": "# [1.47.0](https://github.com/hoo-dles/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-04)\n\n\n### Features\n\n* **Ling:** Update to `8.9.0` ([d5013e8](https://github.com/hoo-dles/morphe-patches/commit/d5013e892033f24d943ef8d4aabab3c1cb011d97))\n* **ProtonVPN:** Update patches to support `5.20.57.0` ([8f6d304](https://github.com/hoo-dles/morphe-patches/commit/8f6d3047017fdc088890d674aa287689c6690117...",
       "apk": "duolingo-arm64-v8a-hoodles-v6.98.4.apk",
       "built_version": "6.98.4",
-      "built_at": "2026-10-07T01:30:02Z",
+      "built_at": "2026-10-17T14:17:55Z",
       "package": "com.duolingo",
       "icon_url": "https://play-lh.googleusercontent.com/tw_coGKgk1K_zO-Ypf9zBKV1s-KT3dYN1MIUxIqtnbfmON5x_YmuoAr31gE4oSfJHNtA-aStTd-qe9R8S6NVyA=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.duolingo%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Duolingo%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522duolingo-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522duolingo-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
@@ -249,18 +266,58 @@
       "patch_changelog": "## [2.7.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0...v2.7.0) (2026-10-15)\n\n### Bug Fixes\n\n* **brave:** extend unsupported-build error to remaining bytecode hooks ([c8cfea1](https://github.com/kveld9/kveld-morphe-patches/commit/c8cfea1a9ba308ed59482de7e4ece139473d46a9))\n* **brave:** resolve variations seed hook on Universal variant ([193de43](https://github.com/kveld9/kveld-mo...",
       "apk": "brave-arm64-v8a-kveld9-v1.97.57.apk",
       "built_version": "1.97.57",
-      "built_at": "2026-10-17T01:06:41Z",
+      "built_at": "2026-10-17T14:17:06Z",
       "package": "com.brave.browser",
       "icon_url": "https://play-lh.googleusercontent.com/UBrZnuXGb-QACU0uUdF5r_n5nx5oBbdfPyEbtsr0xXv00RN7rpaTVu3GjLeE90aHFmNlbaCmm8vNcmY0eE98U9E=w240-h480",
       "obtainium_url": "https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.brave.browser%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fyashrajrocxx.github.io%2FMophe-AutoBuilds%2Fdownloads.html%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Brave%2520Browser%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522brave-arm64-v8a-.%252A-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522brave-arm64-v8a-.%252A-v%2528%255B%255E%2F%255D%252B%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D",
       "obtainium_deep_link": "obtainium://app/%7B%22id%22%3A%22com.brave.browser%22%2C%22url%22%3A%22https%3A//yashrajrocxx.github.io/Mophe-AutoBuilds/downloads.html%22%2C%22author%22%3A%22yashrajrocxx%22%2C%22name%22%3A%22Brave%20Browser%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22brave-arm64-v8a-.%2A-v.%2A%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22brave-arm64-v8a-.%2A-v%28%5B%5E/%5D%2B%29%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%221%5C%22%7D%22%7D"
     }
   },
-  "updated_at": "2026-10-17T01:08:04.851961+00:00",
+  "updated_at": "2026-10-17T14:18:24.336768+00:00",
   "patch_changelogs": {
+    "morphe": {
+      "source": "morphe",
+      "old_tag": "",
+      "new_tag": "v1.47.0",
+      "title": "v1.47.0",
+      "url": "https://github.com/MorpheApp/morphe-patches/releases/tag/v1.47.0",
+      "published_at": "2026-10-11T15:20:10Z",
+      "body": "## [1.47.0](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-11)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))\r\n* **Settings:** Search hint and tips ignore the Morphe language override ([a532649](https://github.com/MorpheApp/morphe-patches/commit/a5326492f7bd7ae8b1228a1f6603716c002b2433))\r\n* **Spoof video streams:** PoToken generation can stall and show \"Failed to generate PoToken\" ([#3663](https://github.com/MorpheApp/morphe-patches/issues/3663)) ([32fec71](https://github.com/MorpheApp/morphe-patches/commit/32fec713a9e7e555150b75078d476ddb6a6ba238))\r\n* **Spoof video streams:** Widgets may not play correctly ([#3656](https://github.com/MorpheApp/morphe-patches/issues/3656)) ([a60a3b6](https://github.com/MorpheApp/morphe-patches/commit/a60a3b6725ac8c984e2aa68bd50b3c9358df299f))\r\n* **YouTube - Background playback:** Respect server value of automatic pause and resume flags ([2fa79ef](https://github.com/MorpheApp/morphe-patches/commit/2fa79efa841870b13e18c61e0a54fad057e16b9c))\r\n* **YouTube - Channel search:** Searching again from same channel page may not show channel results ([14ec664](https://github.com/MorpheApp/morphe-patches/commit/14ec664125b49e139d553ec1b55384ecc722a468))\r\n* **YouTube - Force AVC:** Removed VP9 formats with enabled setting ([bb3e3ff](https://github.com/MorpheApp/morphe-patches/commit/bb3e3ff01dc2fcdf7debc4969fb6037b18eefc94))\r\n* **YouTube - Hide layout components:** Hide new type of video labels ([#3641](https://github.com/MorpheApp/morphe-patches/issues/3641)) ([4a7efd1](https://github.com/MorpheApp/morphe-patches/commit/4a7efd1c124c86cc169eb38fd50c311cdec923c7))\r\n* **YouTube - Hide layout components:** History shelf hidden after fullscreen on You tab ([91d9b2d](https://github.com/MorpheApp/morphe-patches/commit/91d9b2daccb9242a02f4fbaa7dcd408a09c5a28a))\r\n* **YouTube - Hide layout components:** Horizontal shelves show again after entering fullscreen ([#3618](https://github.com/MorpheApp/morphe-patches/issues/3618)) ([be4fffa](https://github.com/MorpheApp/morphe-patches/commit/be4fffa02de9d1d9258e148aae4617735c0c244e))\r\n* **YouTube - Hide player flyout menu components:** Add separate Shorts settings for the Captions and Audio Track menus ([963982d](https://github.com/MorpheApp/morphe-patches/commit/963982d54af7c0a10d840e7e940dca29438423d3))\r\n* **YouTube - Legacy player controls:** Autoplay end screen is broken in the miniplayer on 21.36+ ([#3649](https://github.com/MorpheApp/morphe-patches/issues/3649)) ([c3431a3](https://github.com/MorpheApp/morphe-patches/commit/c3431a3476c7d2508308c18d4f7ee8cfdde687ca))\r\n* **YouTube - Miniplayer:** Fixed incorrect check to prevent title/channel name overwriting ([#3576](https://github.com/MorpheApp/morphe-patches/issues/3576)) ([1671904](https://github.com/MorpheApp/morphe-patches/commit/1671904e728a69c3545c2b6e73ea077b8a67d8d4))\r\n* **YouTube - Navigation bar:** Added a setting to disable A/B navigation buttons layout ([2c3f5c8](https://github.com/MorpheApp/morphe-patches/commit/2c3f5c83131eb479c66a28d1a1c0ffbc810f19ac))\r\n* **YouTube - Picture-in-picture button:** Do not load the flyout icon when the patch is not included ([0902326](https://github.com/MorpheApp/morphe-patches/commit/09023263cd73e85a3a0ea975c5ec514e0aa116f9))\r\n* **YouTube - Playback speed:** Audio pitch controls not working on some devices ([44cf78b](https://github.com/MorpheApp/morphe-patches/commit/44cf78bcb556c2567511524e05e88308dc268486))\r\n* **YouTube - Restore original titles:** Find the description by its body instead of the longest text ([3f72696](https://github.com/MorpheApp/morphe-patches/commit/3f726964b9896c12711f578469bc6e522d84474e))\r\n* **YouTube - Restore original titles:** Replace the title in the fullscreen swipe-up panel ([9a966a9](https://github.com/MorpheApp/morphe-patches/commit/9a966a9d2c2f5fb0519218fd408d74653f2e89c7))\r\n* **YouTube - Restore original titles:** Titles of videos searched in different languages \u200b\u200bwere not restored ([41eee25](https://github.com/MorpheApp/morphe-patches/commit/41eee25b9ee9863ba0aed5762f802c91aeb0a6c5))\r\n* **YouTube - Skip silence:** Adapt the silence threshold to the audio level ([672830e](https://github.com/MorpheApp/morphe-patches/commit/672830e18c8fe47aedd6079bd8eb7b3441e0939d))\r\n* **YouTube - Spoof video streams:** Stream spoofing can show \"Failed to obtain poToken\" error ([c04605b](https://github.com/MorpheApp/morphe-patches/commit/c04605b743a1cd5a9de9d17a86abcfdcef359431))\r\n* **YouTube Music - Third-party lyrics:** App may crash when viewing lyrics ([#3569](https://github.com/MorpheApp/morphe-patches/issues/3569)) ([fe546ad](https://github.com/MorpheApp/morphe-patches/commit/fe546ad518d30833af7b7148f8a9b974088174a7))\r\n* **YouTube:** 'Minimal' miniplayer video area is empty in Arabic (RTL) ([c4f7eb9](https://github.com/MorpheApp/morphe-patches/commit/c4f7eb925e51c6cd91337ae9d4f9c23b7c95d4f2))\r\n* **YouTube:** Allow video upload/live with toolbar create button ([a8fb76a](https://github.com/MorpheApp/morphe-patches/commit/a8fb76ae2162bfab09af383013ee4e2717c3ef38))\r\n* **YouTube:** Audio pitch resets after playback speed ([696c2e4](https://github.com/MorpheApp/morphe-patches/commit/696c2e40bce52706cb5e99c9caa2a96f67a60c37))\r\n* **YouTube:** Fix crash when exiting fullscreen with the new player UI ([5651020](https://github.com/MorpheApp/morphe-patches/commit/56510203e25b8dc4619670a756e65c9439fdf66b))\r\n* **YouTube:** Hide microphone at lower right corner of search not working ([d18708b](https://github.com/MorpheApp/morphe-patches/commit/d18708b39d693abd765e98c735296fe2404308e1))\r\n* **YouTube:** Live chat input field is obscured by Android navigation bar on live streams ([f9f5d58](https://github.com/MorpheApp/morphe-patches/commit/f9f5d587eb796f3abc0686c753f8f0ef605633ba))\r\n\r\n### \u2728 New Features\r\n\r\n* Automatically save crash reports to user documents folder ([#3570](https://github.com/MorpheApp/morphe-patches/issues/3570)) ([f633697](https://github.com/MorpheApp/morphe-patches/commit/f63369780d8a69cd0fb868711ca97e148a650d56))\r\n* **Settings:** Show screen descriptions in a dialog from the toolbar info button ([a62ecc7](https://github.com/MorpheApp/morphe-patches/commit/a62ecc7dd3551a0b0954256a0797723d661bc32a))\r\n* **Spoof video streams:** Add Wii U TV client as a fallback for TV ([#3655](https://github.com/MorpheApp/morphe-patches/issues/3655)) ([28ea7f9](https://github.com/MorpheApp/morphe-patches/commit/28ea7f9fe44d45a1869603086ce6e6adb89e4f48))\r\n* **YouTube - Captions:** Add an option to select preferred caption language ([#3566](https://github.com/MorpheApp/morphe-patches/issues/3566)) ([435aa17](https://github.com/MorpheApp/morphe-patches/commit/435aa171aa30942530efae48159e9a61a94ccc8f))\r\n* **YouTube - Channel search:** Add a separate channel page button to search within channels ([#3572](https://github.com/MorpheApp/morphe-patches/issues/3572)) ([639908f](https://github.com/MorpheApp/morphe-patches/commit/639908fd12eb8126171b7a275eb63a3f564c8239))\r\n* **YouTube - DeArrow:** Add \"Casual mode\" setting ([#3668](https://github.com/MorpheApp/morphe-patches/issues/3668)) ([a13c11b](https://github.com/MorpheApp/morphe-patches/commit/a13c11b26b5a2b264d3fe4d0937e5814f18d2488))\r\n* **YouTube - DeArrow:** Add more fine-grained settings for showing DeArrow titles ([#3573](https://github.com/MorpheApp/morphe-patches/issues/3573)) ([4aa01d6](https://github.com/MorpheApp/morphe-patches/commit/4aa01d6068722f343857c16ae9d5b9bc08e57c27))\r\n* **YouTube - Hide layout components:** Add \"Hide 'Ask Gemini' button\" setting  ([#3662](https://github.com/MorpheApp/morphe-patches/issues/3662)) ([3da93d5](https://github.com/MorpheApp/morphe-patches/commit/3da93d5ac7d4abb22712f4725fe12cb8be5f1454))\r\n* **YouTube - Hide layout components:** Add \"Hide tap and hold gradient\" setting ([#3586](https://github.com/MorpheApp/morphe-patches/issues/3586)) ([bf43c38](https://github.com/MorpheApp/morphe-patches/commit/bf43c38ab1bcc2c0966f3cbd12411313ce2f2323))\r\n* **YouTube - Restore original titles:** Added support for media notification ([#3640](https://github.com/MorpheApp/morphe-patches/issues/3640)) ([a9ebf92](https://github.com/MorpheApp/morphe-patches/commit/a9ebf92c985e09fb551f9921c403478fd712ddf0))\r\n* **YouTube Music - Crossfade:** Support newer versions ([#3635](https://github.com/MorpheApp/morphe-patches/issues/3635)) ([68988d4](https://github.com/MorpheApp/morphe-patches/commit/68988d4ed5af8c079e44da3562de4cb85f3d18a4))\r\n* **YouTube Music - Settings:** Add a shortcut to change the app language on Android 13+ ([b3b5c11](https://github.com/MorpheApp/morphe-patches/commit/b3b5c11b85e2ddc15e18da2b3e27f1e35b70dfd5))\r\n* **YouTube Music - Third-party lyrics:** SponsorBlock segments as lyrics offset ([#3575](https://github.com/MorpheApp/morphe-patches/issues/3575)) ([a900dfa](https://github.com/MorpheApp/morphe-patches/commit/a900dfa93b330f5a6c4ecc81a47fe2e09fa378fe))\r\n* **YouTube Music:** Add `Enable audio/video switch` patch ([#3471](https://github.com/MorpheApp/morphe-patches/issues/3471)) ([87942b7](https://github.com/MorpheApp/morphe-patches/commit/87942b73da43a5fb1f8bf1bc46aea092badc12cb))\r\n* **YouTube Music:** Add `Playlist track tap action` patch ([#3446](https://github.com/MorpheApp/morphe-patches/issues/3446)) ([66b7e78](https://github.com/MorpheApp/morphe-patches/commit/66b7e7817fb56938a2b6e7bd5a06a4cb2e52e409))\r\n* **YouTube:** Add `Copy text` patch ([#3592](https://github.com/MorpheApp/morphe-patches/issues/3592)) ([f5312eb](https://github.com/MorpheApp/morphe-patches/commit/f5312eb35e275bddddd49696ae277f09d11efbeb))\r\n* **YouTube:** Add `Disable continue watching prompt` patch ([#3580](https://github.com/MorpheApp/morphe-patches/issues/3580)) ([255d917](https://github.com/MorpheApp/morphe-patches/commit/255d917abc874f12382943edff0340425053ef83))\r\n* **YouTube:** Add `Force system font` patch ([#3579](https://github.com/MorpheApp/morphe-patches/issues/3579)) ([3968284](https://github.com/MorpheApp/morphe-patches/commit/3968284900ab15a9d04575b359272759891d19c8))\r\n\r\n### \ud83d\ude80 Updated App Support\r\n\r\n* **Reddit:** Add experimental support for `2026.41.0` ([4e56069](https://github.com/MorpheApp/morphe-patches/commit/4e56069f64125347959f7a8b1efeffa3e8fac1d6))\r\n* **YouTube:** Add support for `21.20.405` ([4cb3bd8](https://github.com/MorpheApp/morphe-patches/commit/4cb3bd872d57f036dce22692dcfb76f80df5ec20))\r\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-patches",
+          "tag": "v1.47.0",
+          "title": "v1.47.0",
+          "body": "## [1.47.0](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-11)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))\r\n* **Settings:** Search hint and tips ignore the Morphe language override ([a532649](https://github.com/MorpheApp/morphe-patches/commit/a5326492f7bd7ae8b1228a1f6603716c002b2433))\r\n* **Spoof video streams:** PoToken generation can stall and show \"Failed to generate PoToken\" ([#3663](https://github.com/MorpheApp/morphe-patches/issues/3663)) ([32fec71](https://github.com/MorpheApp/morphe-patches/commit/32fec713a9e7e555150b75078d476ddb6a6ba238))\r\n* **Spoof video streams:** Widgets may not play correctly ([#3656](https://github.com/MorpheApp/morphe-patches/issues/3656)) ([a60a3b6](https://github.com/MorpheApp/morphe-patches/commit/a60a3b6725ac8c984e2aa68bd50b3c9358df299f))\r\n* **YouTube - Background playback:** Respect server value of automatic pause and resume flags ([2fa79ef](https://github.com/MorpheApp/morphe-patches/commit/2fa79efa841870b13e18c61e0a54fad057e16b9c))\r\n* **YouTube - Channel search:** Searching again from same channel page may not show channel results ([14ec664](https://github.com/MorpheApp/morphe-patches/commit/14ec664125b49e139d553ec1b55384ecc722a468))\r\n* **YouTube - Force AVC:** Removed VP9 formats with enabled setting ([bb3e3ff](https://github.com/MorpheApp/morphe-patches/commit/bb3e3ff01dc2fcdf7debc4969fb6037b18eefc94))\r\n* **YouTube - Hide layout components:** Hide new type of video labels ([#3641](https://github.com/MorpheApp/morphe-patches/issues/3641)) ([4a7efd1](https://github.com/MorpheApp/morphe-patches/commit/4a7efd1c124c86cc169eb38fd50c311cdec923c7))\r\n* **YouTube - Hide layout components:** History shelf hidden after fullscreen on You tab ([91d9b2d](https://github.com/MorpheApp/morphe-patches/commit/91d9b2daccb9242a02f4fbaa7dcd408a09c5a28a))\r\n* **YouTube - Hide layout components:** Horizontal shelves show again after entering fullscreen ([#3618](https://github.com/MorpheApp/morphe-patches/issues/3618)) ([be4fffa](https://github.com/MorpheApp/morphe-patches/commit/be4fffa02de9d1d9258e148aae4617735c0c244e))\r\n* **YouTube - Hide player flyout menu components:** Add separate Shorts settings for the Captions and Audio Track menus ([963982d](https://github.com/MorpheApp/morphe-patches/commit/963982d54af7c0a10d840e7e940dca29438423d3))\r\n* **YouTube - Legacy player controls:** Autoplay end screen is broken in the miniplayer on 21.36+ ([#3649](https://github.com/MorpheApp/morphe-patches/issues/3649)) ([c3431a3](https://github.com/MorpheApp/morphe-patches/commit/c3431a3476c7d2508308c18d4f7ee8cfdde687ca))\r\n* **YouTube - Miniplayer:** Fixed incorrect check to prevent title/channel name overwriting ([#3576](https://github.com/MorpheApp/morphe-patches/issues/3576)) ([1671904](https://github.com/MorpheApp/morphe-patches/commit/1671904e728a69c3545c2b6e73ea077b8a67d8d4))\r\n* **YouTube - Navigation bar:** Added a setting to disable A/B navigation buttons layout ([2c3f5c8](https://github.com/MorpheApp/morphe-patches/commit/2c3f5c83131eb479c66a28d1a1c0ffbc810f19ac))\r\n* **YouTube - Picture-in-picture button:** Do not load the flyout icon when the patch is not included ([0902326](https://github.com/MorpheApp/morphe-patches/commit/09023263cd73e85a3a0ea975c5ec514e0aa116f9))\r\n* **YouTube - Playback speed:** Audio pitch controls not working on some devices ([44cf78b](https://github.com/MorpheApp/morphe-patches/commit/44cf78bcb556c2567511524e05e88308dc268486))\r\n* **YouTube - Restore original titles:** Find the description by its body instead of the longest text ([3f72696](https://github.com/MorpheApp/morphe-patches/commit/3f726964b9896c12711f578469bc6e522d84474e))\r\n* **YouTube - Restore original titles:** Replace the title in the fullscreen swipe-up panel ([9a966a9](https://github.com/MorpheApp/morphe-patches/commit/9a966a9d2c2f5fb0519218fd408d74653f2e89c7))\r\n* **YouTube - Restore original titles:** Titles of videos searched in different languages \u200b\u200bwere not restored ([41eee25](https://github.com/MorpheApp/morphe-patches/commit/41eee25b9ee9863ba0aed5762f802c91aeb0a6c5))\r\n* **YouTube - Skip silence:** Adapt the silence threshold to the audio level ([672830e](https://github.com/MorpheApp/morphe-patches/commit/672830e18c8fe47aedd6079bd8eb7b3441e0939d))\r\n* **YouTube - Spoof video streams:** Stream spoofing can show \"Failed to obtain poToken\" error ([c04605b](https://github.com/MorpheApp/morphe-patches/commit/c04605b743a1cd5a9de9d17a86abcfdcef359431))\r\n* **YouTube Music - Third-party lyrics:** App may crash when viewing lyrics ([#3569](https://github.com/MorpheApp/morphe-patches/issues/3569)) ([fe546ad](https://github.com/MorpheApp/morphe-patches/commit/fe546ad518d30833af7b7148f8a9b974088174a7))\r\n* **YouTube:** 'Minimal' miniplayer video area is empty in Arabic (RTL) ([c4f7eb9](https://github.com/MorpheApp/morphe-patches/commit/c4f7eb925e51c6cd91337ae9d4f9c23b7c95d4f2))\r\n* **YouTube:** Allow video upload/live with toolbar create button ([a8fb76a](https://github.com/MorpheApp/morphe-patches/commit/a8fb76ae2162bfab09af383013ee4e2717c3ef38))\r\n* **YouTube:** Audio pitch resets after playback speed ([696c2e4](https://github.com/MorpheApp/morphe-patches/commit/696c2e40bce52706cb5e99c9caa2a96f67a60c37))\r\n* **YouTube:** Fix crash when exiting fullscreen with the new player UI ([5651020](https://github.com/MorpheApp/morphe-patches/commit/56510203e25b8dc4619670a756e65c9439fdf66b))\r\n* **YouTube:** Hide microphone at lower right corner of search not working ([d18708b](https://github.com/MorpheApp/morphe-patches/commit/d18708b39d693abd765e98c735296fe2404308e1))\r\n* **YouTube:** Live chat input field is obscured by Android navigation bar on live streams ([f9f5d58](https://github.com/MorpheApp/morphe-patches/commit/f9f5d587eb796f3abc0686c753f8f0ef605633ba))\r\n\r\n### \u2728 New Features\r\n\r\n* Automatically save crash reports to user documents folder ([#3570](https://github.com/MorpheApp/morphe-patches/issues/3570)) ([f633697](https://github.com/MorpheApp/morphe-patches/commit/f63369780d8a69cd0fb868711ca97e148a650d56))\r\n* **Settings:** Show screen descriptions in a dialog from the toolbar info button ([a62ecc7](https://github.com/MorpheApp/morphe-patches/commit/a62ecc7dd3551a0b0954256a0797723d661bc32a))\r\n* **Spoof video streams:** Add Wii U TV client as a fallback for TV ([#3655](https://github.com/MorpheApp/morphe-patches/issues/3655)) ([28ea7f9](https://github.com/MorpheApp/morphe-patches/commit/28ea7f9fe44d45a1869603086ce6e6adb89e4f48))\r\n* **YouTube - Captions:** Add an option to select preferred caption language ([#3566](https://github.com/MorpheApp/morphe-patches/issues/3566)) ([435aa17](https://github.com/MorpheApp/morphe-patches/commit/435aa171aa30942530efae48159e9a61a94ccc8f))\r\n* **YouTube - Channel search:** Add a separate channel page button to search within channels ([#3572](https://github.com/MorpheApp/morphe-patches/issues/3572)) ([639908f](https://github.com/MorpheApp/morphe-patches/commit/639908fd12eb8126171b7a275eb63a3f564c8239))\r\n* **YouTube - DeArrow:** Add \"Casual mode\" setting ([#3668](https://github.com/MorpheApp/morphe-patches/issues/3668)) ([a13c11b](https://github.com/MorpheApp/morphe-patches/commit/a13c11b26b5a2b264d3fe4d0937e5814f18d2488))\r\n* **YouTube - DeArrow:** Add more fine-grained settings for showing DeArrow titles ([#3573](https://github.com/MorpheApp/morphe-patches/issues/3573)) ([4aa01d6](https://github.com/MorpheApp/morphe-patches/commit/4aa01d6068722f343857c16ae9d5b9bc08e57c27))\r\n* **YouTube - Hide layout components:** Add \"Hide 'Ask Gemini' button\" setting  ([#3662](https://github.com/MorpheApp/morphe-patches/issues/3662)) ([3da93d5](https://github.com/MorpheApp/morphe-patches/commit/3da93d5ac7d4abb22712f4725fe12cb8be5f1454))\r\n* **YouTube - Hide layout components:** Add \"Hide tap and hold gradient\" setting ([#3586](https://github.com/MorpheApp/morphe-patches/issues/3586)) ([bf43c38](https://github.com/MorpheApp/morphe-patches/commit/bf43c38ab1bcc2c0966f3cbd12411313ce2f2323))\r\n* **YouTube - Restore original titles:** Added support for media notification ([#3640](https://github.com/MorpheApp/morphe-patches/issues/3640)) ([a9ebf92](https://github.com/MorpheApp/morphe-patches/commit/a9ebf92c985e09fb551f9921c403478fd712ddf0))\r\n* **YouTube Music - Crossfade:** Support newer versions ([#3635](https://github.com/MorpheApp/morphe-patches/issues/3635)) ([68988d4](https://github.com/MorpheApp/morphe-patches/commit/68988d4ed5af8c079e44da3562de4cb85f3d18a4))\r\n* **YouTube Music - Settings:** Add a shortcut to change the app language on Android 13+ ([b3b5c11](https://github.com/MorpheApp/morphe-patches/commit/b3b5c11b85e2ddc15e18da2b3e27f1e35b70dfd5))\r\n* **YouTube Music - Third-party lyrics:** SponsorBlock segments as lyrics offset ([#3575](https://github.com/MorpheApp/morphe-patches/issues/3575)) ([a900dfa](https://github.com/MorpheApp/morphe-patches/commit/a900dfa93b330f5a6c4ecc81a47fe2e09fa378fe))\r\n* **YouTube Music:** Add `Enable audio/video switch` patch ([#3471](https://github.com/MorpheApp/morphe-patches/issues/3471)) ([87942b7](https://github.com/MorpheApp/morphe-patches/commit/87942b73da43a5fb1f8bf1bc46aea092badc12cb))\r\n* **YouTube Music:** Add `Playlist track tap action` patch ([#3446](https://github.com/MorpheApp/morphe-patches/issues/3446)) ([66b7e78](https://github.com/MorpheApp/morphe-patches/commit/66b7e7817fb56938a2b6e7bd5a06a4cb2e52e409))\r\n* **YouTube:** Add `Copy text` patch ([#3592](https://github.com/MorpheApp/morphe-patches/issues/3592)) ([f5312eb](https://github.com/MorpheApp/morphe-patches/commit/f5312eb35e275bddddd49696ae277f09d11efbeb))\r\n* **YouTube:** Add `Disable continue watching prompt` patch ([#3580](https://github.com/MorpheApp/morphe-patches/issues/3580)) ([255d917](https://github.com/MorpheApp/morphe-patches/commit/255d917abc874f12382943edff0340425053ef83))\r\n* **YouTube:** Add `Force system font` patch ([#3579](https://github.com/MorpheApp/morphe-patches/issues/3579)) ([3968284](https://github.com/MorpheApp/morphe-patches/commit/3968284900ab15a9d04575b359272759891d19c8))\r\n\r\n### \ud83d\ude80 Updated App Support\r\n\r\n* **Reddit:** Add experimental support for `2026.41.0` ([4e56069](https://github.com/MorpheApp/morphe-patches/commit/4e56069f64125347959f7a8b1efeffa3e8fac1d6))\r\n* **YouTube:** Add support for `21.20.405` ([4cb3bd8](https://github.com/MorpheApp/morphe-patches/commit/4cb3bd872d57f036dce22692dcfb76f80df5ec20))\r\n",
+          "published_at": "2026-10-11T15:20:10Z",
+          "url": "https://github.com/MorpheApp/morphe-patches/releases/tag/v1.47.0",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "youtube",
+        "youtube-music",
+        "reddit"
+      ]
+    },
     "hushgram": {
       "source": "hushgram",
-      "old_tag": "v0.0.9",
+      "old_tag": "",
       "new_tag": "v0.0.12",
       "title": "v0.0.12",
       "url": "https://github.com/SysAdminDoc/HushGram/releases/tag/v0.0.12",
@@ -296,9 +353,85 @@
         "instagram"
       ]
     },
+    "piko-newx": {
+      "source": "piko-newx",
+      "old_tag": "",
+      "new_tag": "v3.57.1",
+      "title": "v3.57.1",
+      "url": "https://github.com/crimera/piko-newx/releases/tag/v3.57.1",
+      "published_at": "2026-10-17T00:54:37Z",
+      "body": "### \ud83d\udc1b Bug Fixes\n* **Twitter:** settings re-design ([8814a72](https://github.com/crimera/piko/commit/8814a7225ce188d92088e3b87aa4a0e24e312510))\n* **Twitter - newx:** support 12.35.0 production resolver drift ([35cf5f7](https://github.com/crimera/piko/commit/35cf5f7df252de3ac691c1db54ffbe7746d7c92e))\n* **Twitter - newx:** restore bird in pull-to-refresh logo ([6fc0967](https://github.com/crimera/piko/commit/6fc09670fd9f0f1cdf5a7d0dc8e83402394862c1))",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "crimera",
+          "repo": "piko-newx",
+          "tag": "v3.57.1",
+          "title": "v3.57.1",
+          "body": "### \ud83d\udc1b Bug Fixes\n* **Twitter:** settings re-design ([8814a72](https://github.com/crimera/piko/commit/8814a7225ce188d92088e3b87aa4a0e24e312510))\n* **Twitter - newx:** support 12.35.0 production resolver drift ([35cf5f7](https://github.com/crimera/piko/commit/35cf5f7df252de3ac691c1db54ffbe7746d7c92e))\n* **Twitter - newx:** restore bird in pull-to-refresh logo ([6fc0967](https://github.com/crimera/piko/commit/6fc09670fd9f0f1cdf5a7d0dc8e83402394862c1))",
+          "published_at": "2026-10-17T00:54:37Z",
+          "url": "https://github.com/crimera/piko-newx/releases/tag/v3.57.1",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "twitter"
+      ]
+    },
+    "hushpinterest": {
+      "source": "hushpinterest",
+      "old_tag": "",
+      "new_tag": "v0.0.11",
+      "title": "v0.0.11",
+      "url": "https://github.com/SysAdminDoc/HushPinterest/releases/tag/v0.0.11",
+      "published_at": "2026-10-14T14:21:06Z",
+      "body": "HushPinterest 0.0.11 has 29 patches for Pinterest 14.40.0. It's built on Morphe patcher 1.15.1, so it needs Morphe Manager 1.34.0 or newer. This one fixes Hide AI-labeled pins. Pinterest 14.40.0 changed how it marks AI pins, so with the switch on they still showed up in search and the home feed. HushPinterest now reads the new marks, including the ones Pinterest's own detection adds.\n\nIt's the same Pinterest version as 0.0.10. Patch 14.40.0 again and install it over your current HushPinterest with the same signing key, and your settings stay as they are.\n\n## What's new\n\n- Hide AI-labeled pins works on Pinterest 14.40.0 again. That version marks AI pins in a new way, including the ones Pinterest's own detection flags, and stopped sending the old label, so with the switch on they kept showing in search and the home feed. It now reads the new marks as well as the old label.\n\n## Behind the scenes\n\n- The release gate's advisory check asks OSV again when a connection drops or the server is busy, up to two more times, before it gives up. One lost request out of the hundred or so a release sends used to stop the whole gate.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.34.0 or newer.\n2. Add HushPinterest as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushPinterest\n3. Download Pinterest **14.40.0**, version code **14408010**, as the universal APK, and patch it. It needs Android 10 or newer.\n4. Uninstall the stock Pinterest first, since Android won't put one over the other. Save anything you keep only on the phone before you do. Your boards and pins come back when you sign in.\n5. Sign in with your email and a Pinterest password. If you joined through Google or Facebook, tap **Forgot your password?** on Pinterest's login page to set one first.\n6. Right after your first patch, export Morphe Manager's signing key (Settings, then System, then Import & export, then Signing key) and keep it somewhere private. Updates only install over a Pinterest signed with that same key.\n\nAlready on HushPinterest? Skip steps 4 and 5. Patch 14.40.0 with the same key and install it over the one you have.\n\nThe `.mpp` download is a patch bundle, not a Pinterest APK. [Installation instructions](https://github.com/SysAdminDoc/HushPinterest#install). `SHA256SUMS.txt` is signed with the HushPinterest release key, fingerprint `FCE5 ECE3 182A 647B 3AF2  C5ED 2DC3 5E8D 5C00 E8A6`. [How to check a download](https://github.com/SysAdminDoc/HushPinterest#verify-a-release-download).\n\n## Validation\n\nAll 221 patch tests and 948 extension tests passed on this commit, none skipped. The bundle attached here was patched onto a real Pinterest 14.40.0 APK with Morphe's desktop patcher, and all 29 patches applied without forcing. `release-receipt-0.0.11.json` records that result, the APK's hash and what patching changed in the app's manifest. The fix was also checked on a signed-in Android 16 emulator running Pinterest 14.40.0. With Hide AI-labeled pins on, a search for AI art on 0.0.10 still showed all 23 pins of the first page, and Pinterest had marked 22 of them as AI. With these patches the marked pins were gone, and none of the pins left showed Pinterest's \"AI modified\" line when opened. The home feed loaded as usual with no marked pins in it.\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "SysAdminDoc",
+          "repo": "HushPinterest",
+          "tag": "v0.0.11",
+          "title": "v0.0.11",
+          "body": "HushPinterest 0.0.11 has 29 patches for Pinterest 14.40.0. It's built on Morphe patcher 1.15.1, so it needs Morphe Manager 1.34.0 or newer. This one fixes Hide AI-labeled pins. Pinterest 14.40.0 changed how it marks AI pins, so with the switch on they still showed up in search and the home feed. HushPinterest now reads the new marks, including the ones Pinterest's own detection adds.\n\nIt's the same Pinterest version as 0.0.10. Patch 14.40.0 again and install it over your current HushPinterest with the same signing key, and your settings stay as they are.\n\n## What's new\n\n- Hide AI-labeled pins works on Pinterest 14.40.0 again. That version marks AI pins in a new way, including the ones Pinterest's own detection flags, and stopped sending the old label, so with the switch on they kept showing in search and the home feed. It now reads the new marks as well as the old label.\n\n## Behind the scenes\n\n- The release gate's advisory check asks OSV again when a connection drops or the server is busy, up to two more times, before it gives up. One lost request out of the hundred or so a release sends used to stop the whole gate.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.34.0 or newer.\n2. Add HushPinterest as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushPinterest\n3. Download Pinterest **14.40.0**, version code **14408010**, as the universal APK, and patch it. It needs Android 10 or newer.\n4. Uninstall the stock Pinterest first, since Android won't put one over the other. Save anything you keep only on the phone before you do. Your boards and pins come back when you sign in.\n5. Sign in with your email and a Pinterest password. If you joined through Google or Facebook, tap **Forgot your password?** on Pinterest's login page to set one first.\n6. Right after your first patch, export Morphe Manager's signing key (Settings, then System, then Import & export, then Signing key) and keep it somewhere private. Updates only install over a Pinterest signed with that same key.\n\nAlready on HushPinterest? Skip steps 4 and 5. Patch 14.40.0 with the same key and install it over the one you have.\n\nThe `.mpp` download is a patch bundle, not a Pinterest APK. [Installation instructions](https://github.com/SysAdminDoc/HushPinterest#install). `SHA256SUMS.txt` is signed with the HushPinterest release key, fingerprint `FCE5 ECE3 182A 647B 3AF2  C5ED 2DC3 5E8D 5C00 E8A6`. [How to check a download](https://github.com/SysAdminDoc/HushPinterest#verify-a-release-download).\n\n## Validation\n\nAll 221 patch tests and 948 extension tests passed on this commit, none skipped. The bundle attached here was patched onto a real Pinterest 14.40.0 APK with Morphe's desktop patcher, and all 29 patches applied without forcing. `release-receipt-0.0.11.json` records that result, the APK's hash and what patching changed in the app's manifest. The fix was also checked on a signed-in Android 16 emulator running Pinterest 14.40.0. With Hide AI-labeled pins on, a search for AI art on 0.0.10 still showed all 23 pins of the first page, and Pinterest had marked 22 of them as AI. With these patches the marked pins were gone, and none of the pins left showed Pinterest's \"AI modified\" line when opened. The home feed loaded as usual with no marked pins in it.\n",
+          "published_at": "2026-10-14T14:21:06Z",
+          "url": "https://github.com/SysAdminDoc/HushPinterest/releases/tag/v0.0.11",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "pinterest"
+      ]
+    },
     "hushtelegram": {
       "source": "hushtelegram",
-      "old_tag": "v0.0.17",
+      "old_tag": "",
       "new_tag": "v0.0.18",
       "title": "v0.0.18",
       "url": "https://github.com/SysAdminDoc/HushTelegram/releases/tag/v0.0.18",
@@ -334,9 +467,47 @@
         "telegram"
       ]
     },
+    "paresh": {
+      "source": "paresh",
+      "old_tag": "",
+      "new_tag": "v1.20.0",
+      "title": "v1.20.0",
+      "url": "https://gitlab.com/Paresh-Maheshwari/paresh-patches/-/releases/v1.20.0",
+      "published_at": "2026-09-01T16:37:52.954Z",
+      "body": "# [1.20.0](https://gitlab.com/Paresh-Maheshwari/paresh-patches/compare/v1.19.0...v1.20.0) (2026-09-01)\n\n\n### Bug Fixes\n\n* add hiddenapibypass dependency for Plus Messenger signature spoof ([5beb880](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/5beb8807946a020e88c4060cac26335d2197ff91))\n* correct Telegram web target to 12.9.2 (closes [#112](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/112)) ([66c3408](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/66c3408339fae9a2d70d9c2bb8f05068d07227b9))\n* restore Plus Messenger push on re-signed app + support 12.9.2.0 (closes [#114](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/114), closes [#106](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/106)) ([f4c99b7](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/f4c99b7a4d120d98e10bafb4b81dd35508803410))\n* restore TaskManager pro notification service on 1.5.2 ([3a5b67a](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/3a5b67afad29ad3a9c9311ecad3a08db5fb594b9))\n* restore TickTick push sync on re-signed app + support 8.1.3.3 ([0d2aaf4](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/0d2aaf4da7b5ef8836ca0ff9b7236429718b3484))\n* restore TickTick reminder alarms on re-signed 8.1.3.3 ([411df92](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/411df927b2d198a4afc1af5cce1feac37b63763c))\n* support Lumina Walls 1.0.2.4, update PairIP validateResponse fingerprint (closes [#113](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/113)) ([758fdf6](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/758fdf6f2eaec121122a045b1edc0b8c7b2d5e96))\n* support Proton VPN 5.19.72.0 (closes [#118](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/118)) ([1c6d656](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/1c6d656a1a839167c04b3efc0a2accf712f3e1ca))\n* support TaskManager 1.5.2, remove obsolete DiskScreen (closes [#117](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/117)) ([10ff8b8](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/10ff8b83d02a08fd46d223dd754f59e1faddf54f))\n* update recommended versions for ProtonVPN, Plus Messenger and Telegram ([7123d1c](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/7123d1c9c068fdc4d7752f2ff4965029595cacb6))\n\n\n### Features\n\n* add HabitKit premium patch ([c22cb6f](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/c22cb6fa71b655700c829e6fa329d79c27d259e3))\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "gitlab",
+          "user": "",
+          "repo": "Paresh-Maheshwari/paresh-patches",
+          "tag": "v1.20.0",
+          "title": "v1.20.0",
+          "body": "# [1.20.0](https://gitlab.com/Paresh-Maheshwari/paresh-patches/compare/v1.19.0...v1.20.0) (2026-09-01)\n\n\n### Bug Fixes\n\n* add hiddenapibypass dependency for Plus Messenger signature spoof ([5beb880](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/5beb8807946a020e88c4060cac26335d2197ff91))\n* correct Telegram web target to 12.9.2 (closes [#112](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/112)) ([66c3408](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/66c3408339fae9a2d70d9c2bb8f05068d07227b9))\n* restore Plus Messenger push on re-signed app + support 12.9.2.0 (closes [#114](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/114), closes [#106](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/106)) ([f4c99b7](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/f4c99b7a4d120d98e10bafb4b81dd35508803410))\n* restore TaskManager pro notification service on 1.5.2 ([3a5b67a](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/3a5b67afad29ad3a9c9311ecad3a08db5fb594b9))\n* restore TickTick push sync on re-signed app + support 8.1.3.3 ([0d2aaf4](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/0d2aaf4da7b5ef8836ca0ff9b7236429718b3484))\n* restore TickTick reminder alarms on re-signed 8.1.3.3 ([411df92](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/411df927b2d198a4afc1af5cce1feac37b63763c))\n* support Lumina Walls 1.0.2.4, update PairIP validateResponse fingerprint (closes [#113](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/113)) ([758fdf6](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/758fdf6f2eaec121122a045b1edc0b8c7b2d5e96))\n* support Proton VPN 5.19.72.0 (closes [#118](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/118)) ([1c6d656](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/1c6d656a1a839167c04b3efc0a2accf712f3e1ca))\n* support TaskManager 1.5.2, remove obsolete DiskScreen (closes [#117](https://gitlab.com/Paresh-Maheshwari/paresh-patches/issues/117)) ([10ff8b8](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/10ff8b83d02a08fd46d223dd754f59e1faddf54f))\n* update recommended versions for ProtonVPN, Plus Messenger and Telegram ([7123d1c](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/7123d1c9c068fdc4d7752f2ff4965029595cacb6))\n\n\n### Features\n\n* add HabitKit premium patch ([c22cb6f](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/c22cb6fa71b655700c829e6fa329d79c27d259e3))\n",
+          "published_at": "2026-09-01T16:37:52.954Z",
+          "url": "https://gitlab.com/Paresh-Maheshwari/paresh-patches/-/releases/v1.20.0",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "sdmaidse"
+      ]
+    },
     "hushthreads": {
       "source": "hushthreads",
-      "old_tag": "v0.0.14",
+      "old_tag": "",
       "new_tag": "v0.0.14",
       "title": "v0.0.14",
       "url": "https://github.com/SysAdminDoc/HushThreads/releases/tag/v0.0.14",
@@ -372,9 +543,87 @@
         "threads"
       ]
     },
+    "rookie": {
+      "source": "rookie",
+      "old_tag": "",
+      "new_tag": "v1.5.1",
+      "title": "v1.5.1",
+      "url": "https://github.com/RookieEnough/De-Vanced/releases/tag/v1.5.1",
+      "published_at": "2026-10-04T10:21:11Z",
+      "body": "## [1.5.1](https://github.com/RookieEnough/De-Vanced/compare/v1.5.0...v1.5.1) (2026-10-04)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Amazon Music:** Resolve app crash on startup ([114c5fc](https://github.com/RookieEnough/De-Vanced/commit/114c5fca44d634bf01f23bd58aac63eccd9120dd))\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "RookieEnough",
+          "repo": "De-ReVanced",
+          "tag": "v1.5.1",
+          "title": "v1.5.1",
+          "body": "## [1.5.1](https://github.com/RookieEnough/De-Vanced/compare/v1.5.0...v1.5.1) (2026-10-04)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Amazon Music:** Resolve app crash on startup ([114c5fc](https://github.com/RookieEnough/De-Vanced/commit/114c5fca44d634bf01f23bd58aac63eccd9120dd))\n",
+          "published_at": "2026-10-04T10:21:11Z",
+          "url": "https://github.com/RookieEnough/De-Vanced/releases/tag/v1.5.1",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "google-photos"
+      ]
+    },
+    "rushiranpise": {
+      "source": "rushiranpise",
+      "old_tag": "",
+      "new_tag": "v1.23.0",
+      "title": "v1.23.0",
+      "url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.23.0",
+      "published_at": "2026-10-14T17:39:11Z",
+      "body": "## [1.23.0](https://github.com/rushiranpise/morphe-patches/compare/v1.22.0...v1.23.0) (2026-10-14)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove Relane patches ([29819ed](https://github.com/rushiranpise/morphe-patches/commit/29819edeab47def853a57a52a5b5fd6f5db6dbdc)), closes [#1033](https://github.com/rushiranpise/morphe-patches/issues/1033)\n* update verified app versions ([5ca039c](https://github.com/rushiranpise/morphe-patches/commit/5ca039c16f9d766678d5c697d6dee6cd19f67f7a))\n\n### \u2728 New Features\n\n* **life360:** add themed icon patch with adaptive support ([83226e3](https://github.com/rushiranpise/morphe-patches/commit/83226e3034b86e8923915cf09831ad394d291d19))\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "rushiranpise",
+          "repo": "morphe-patches",
+          "tag": "v1.23.0",
+          "title": "v1.23.0",
+          "body": "## [1.23.0](https://github.com/rushiranpise/morphe-patches/compare/v1.22.0...v1.23.0) (2026-10-14)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove Relane patches ([29819ed](https://github.com/rushiranpise/morphe-patches/commit/29819edeab47def853a57a52a5b5fd6f5db6dbdc)), closes [#1033](https://github.com/rushiranpise/morphe-patches/issues/1033)\n* update verified app versions ([5ca039c](https://github.com/rushiranpise/morphe-patches/commit/5ca039c16f9d766678d5c697d6dee6cd19f67f7a))\n\n### \u2728 New Features\n\n* **life360:** add themed icon patch with adaptive support ([83226e3](https://github.com/rushiranpise/morphe-patches/commit/83226e3034b86e8923915cf09831ad394d291d19))\n",
+          "published_at": "2026-10-14T17:39:11Z",
+          "url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.23.0",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "depthwallpaper",
+        "pocketcasts",
+        "minimalwidgets"
+      ]
+    },
     "jasonwu": {
       "source": "jasonwu",
-      "old_tag": "v3.12.0",
+      "old_tag": "",
       "new_tag": "v3.13.0",
       "title": "v3.13.0",
       "url": "https://github.com/jasonwu1994/Gboard-patches/releases/tag/v3.13.0",
@@ -410,9 +659,47 @@
         "gboard"
       ]
     },
+    "hoodles": {
+      "source": "hoodles",
+      "old_tag": "",
+      "new_tag": "v1.47.0",
+      "title": "v1.47.0",
+      "url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.47.0",
+      "published_at": "2026-10-04T18:45:44Z",
+      "body": "# [1.47.0](https://github.com/hoo-dles/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-04)\n\n\n### Features\n\n* **Ling:** Update to `8.9.0` ([d5013e8](https://github.com/hoo-dles/morphe-patches/commit/d5013e892033f24d943ef8d4aabab3c1cb011d97))\n* **ProtonVPN:** Update patches to support `5.20.57.0` ([8f6d304](https://github.com/hoo-dles/morphe-patches/commit/8f6d3047017fdc088890d674aa287689c6690117))\n* Update `Universal MicroG` support for FotMob ([8c5f249](https://github.com/hoo-dles/morphe-patches/commit/8c5f2498c5a611b677b340bfcd49a9d60d53e98b))\n\n\n\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.18.1",
+          "title": "v1.18.1",
+          "body": "## [1.18.1](https://github.com/MorpheApp/morphe-desktop/compare/v1.18.0...v1.18.1) (2026-10-05)\r\n\r\n### Performance Improvements\r\n\r\n* Use multi-threaded file cleanup ([6976ee6](https://github.com/MorpheApp/morphe-desktop/commit/6976ee6795d316b93a9a9ab3b6e4e7637b4999a2))\r\n",
+          "published_at": "2026-10-05T11:51:56Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.18.1",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "hoo-dles",
+          "repo": "morphe-patches",
+          "tag": "v1.47.0",
+          "title": "v1.47.0",
+          "body": "# [1.47.0](https://github.com/hoo-dles/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-04)\n\n\n### Features\n\n* **Ling:** Update to `8.9.0` ([d5013e8](https://github.com/hoo-dles/morphe-patches/commit/d5013e892033f24d943ef8d4aabab3c1cb011d97))\n* **ProtonVPN:** Update patches to support `5.20.57.0` ([8f6d304](https://github.com/hoo-dles/morphe-patches/commit/8f6d3047017fdc088890d674aa287689c6690117))\n* Update `Universal MicroG` support for FotMob ([8c5f249](https://github.com/hoo-dles/morphe-patches/commit/8c5f2498c5a611b677b340bfcd49a9d60d53e98b))\n\n\n\n",
+          "published_at": "2026-10-04T18:45:44Z",
+          "url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.47.0",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "duolingo"
+      ]
+    },
     "kveld9": {
       "source": "kveld9",
-      "old_tag": "v2.6.0",
+      "old_tag": "",
       "new_tag": "v2.7.0",
       "title": "v2.7.0",
       "url": "https://github.com/kveld9/kveld-morphe-patches/releases/tag/v2.7.0",
