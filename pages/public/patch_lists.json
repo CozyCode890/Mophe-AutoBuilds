@@ -1,4 +1,8 @@
 {
+  "atvtools|hxreborn": {
+    "include": [],
+    "exclude": []
+  },
   "brave|kveld9": {
     "include": [
       "Block Brave Telemetry",
@@ -25,6 +29,10 @@
     "include": [],
     "exclude": []
   },
+  "facebook|hushfacebook": {
+    "include": [],
+    "exclude": []
+  },
   "gboard|jasonwu": {
     "include": [],
     "exclude": []
@@ -39,6 +47,14 @@
     ]
   },
   "instagram|hushgram": {
+    "include": [],
+    "exclude": []
+  },
+  "merriam-webster|hoodles": {
+    "include": [],
+    "exclude": []
+  },
+  "messenger|hushmessenger": {
     "include": [],
     "exclude": []
   },
@@ -70,7 +86,15 @@
     "include": [],
     "exclude": []
   },
+  "tiktok|hushfeed": {
+    "include": [],
+    "exclude": []
+  },
   "twitter|piko-newx": {
+    "include": [],
+    "exclude": []
+  },
+  "waze|bearinmind": {
     "include": [],
     "exclude": []
   },
@@ -87,5 +111,9 @@
     "exclude": [
       "AddResourcesPatch"
     ]
+  },
+  "zalo|zeldris": {
+    "include": [],
+    "exclude": []
   }
 }
