@@ -1,0 +1,2 @@
+# TikTok HushFeed Patches (SysAdminDoc/HushFeed)
+# Left empty to apply all default recommended patches automatically.

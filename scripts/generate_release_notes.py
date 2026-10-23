@@ -194,8 +194,8 @@ def main() -> int:
     manifest_entries = manifest_data.get("entries", {})
     apk_to_manifest = {v["apk"]: v for v in manifest_entries.values() if v.get("apk")}
 
-    repo_name = os.environ.get("GITHUB_REPOSITORY", "yashrajrocxx/Mophe-AutoBuilds")
-    pages_url = f"https://{repo_name.split('/')[0]}.github.io/{repo_name.split('/')[1]}/" if "/" in repo_name else "https://yashrajrocxx.github.io/Mophe-AutoBuilds/"
+    repo_name = os.environ.get("GITHUB_REPOSITORY", "CozyCode890/Mophe-AutoBuilds")
+    pages_url = f"https://{repo_name.split('/')[0]}.github.io/{repo_name.split('/')[1]}/" if "/" in repo_name else "https://CozyCode890.github.io/Mophe-AutoBuilds/"
     obtainium_raw_url = f"https://raw.githubusercontent.com/{repo_name}/main/obtainium.json"
 
     # Start human-written sleek markdown

@@ -14,7 +14,7 @@ import { AppCard } from '../components/AppCard';
 import { FilterBar } from '../components/FilterBar';
 import { formatTimeAgo } from '../utils/dateUtils';
 
-const BULK_URL = 'https://raw.githubusercontent.com/yashrajrocxx/Mophe-AutoBuilds/main/obtainium.json';
+const BULK_URL = 'https://raw.githubusercontent.com/CozyCode890/Mophe-AutoBuilds/main/obtainium.json';
 
 export function StorePage() {
   const [manifest, setManifest] = useState(null);

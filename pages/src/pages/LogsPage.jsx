@@ -196,7 +196,7 @@ export function LogsPage() {
             const lists = patchLists[`${r.app}|${r.source}`] || { include: [], exclude: [] };
             const injected = (r.patches || []).filter(p => p && p !== '-e');
             const apkUrl = r.apk
-              ? `https://github.com/yashrajrocxx/Mophe-AutoBuilds/releases/download/latest/${r.apk}`
+              ? `https://github.com/CozyCode890/Mophe-AutoBuilds/releases/download/latest/${r.apk}`
               : null;
 
             return (

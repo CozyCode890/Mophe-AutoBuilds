@@ -1,0 +1,17 @@
+[
+    {
+        "name": "zeldris"
+    },
+    {
+        "provider": "github",
+        "user": "MorpheApp",
+        "repo": "morphe-cli",
+        "tag": "latest"
+    },
+    {
+        "provider": "github",
+        "user": "zeldrisho",
+        "repo": "morphe-patches",
+        "tag": "latest"
+    }
+]

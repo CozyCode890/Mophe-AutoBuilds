@@ -11,13 +11,13 @@
  * is hit (requests can always be followed on GitHub itself).
  */
 
-const REPO = 'yashrajrocxx/Mophe-AutoBuilds';
+const REPO = 'CozyCode890/Mophe-AutoBuilds';
 const API = 'https://api.github.com';
 const RAW = `https://raw.githubusercontent.com/${REPO}/main`;
 export const REQUEST_TITLE_PREFIX = '[Build request]';
 
 export const REPO_URL = `https://github.com/${REPO}`;
-const SITE_URL = 'https://yashrajrocxx.github.io/Mophe-AutoBuilds/';
+const SITE_URL = 'https://cozycode890.github.io/Mophe-AutoBuilds/';
 export const ISSUES_URL = `${REPO_URL}/issues?q=is%3Aissue+%22Build+request%22`;
 export const WORKFLOW_URL = `${REPO_URL}/actions/workflows/request-app.yml`;
 export const RELEASES_URL = `${REPO_URL}/releases/latest`;

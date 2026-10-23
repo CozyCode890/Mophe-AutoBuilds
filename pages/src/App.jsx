@@ -58,7 +58,7 @@ function App() {
               {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
             </button>
             <a
-              href="https://github.com/yashrajrocxx/Mophe-AutoBuilds"
+              href="https://github.com/CozyCode890/Mophe-AutoBuilds"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"

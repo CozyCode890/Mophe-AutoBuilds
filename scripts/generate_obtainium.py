@@ -22,11 +22,18 @@ if sys.stdout and hasattr(sys.stdout, "reconfigure"):
     except Exception:
         pass
 
-DEFAULT_REPO = "yashrajrocxx/Mophe-AutoBuilds"
-DEFAULT_AUTHOR = "yashrajrocxx"
+DEFAULT_REPO = "CozyCode890/Mophe-AutoBuilds"
+DEFAULT_AUTHOR = "CozyCode890"
 
 NAME_MAP = {
     "youtube":          "YouTube",
+    "atvtools":         "atvTools",
+    "facebook":         "Facebook",
+    "merriam-webster":  "Merriam-Webster",
+    "messenger":        "Messenger",
+    "tiktok":           "TikTok",
+    "waze":             "Waze",
+    "zalo":             "Zalo",
     "youtube-music":    "YouTube Music",
     "reddit":           "Reddit",
     "instagram":        "Instagram",
@@ -84,6 +91,12 @@ SOURCE_MAP = {
     "hushpinterest": "HushPinterest",
     "hushtelegram": "HushTelegram",
     "hushthreads": "HushThreads",
+    "hxreborn": "hxreborn",
+    "hushfacebook": "HushFacebook",
+    "hushmessenger": "HushMessenger",
+    "hushfeed": "HushFeed",
+    "bearinmind": "bearinmind",
+    "zeldris": "Zeldris",
 }
 
 

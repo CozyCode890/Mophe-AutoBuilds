@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REPO = "yashrajrocxx/Mophe-AutoBuilds"
+DEFAULT_REPO = "CozyCode890/Mophe-AutoBuilds"
 
 
 def apk_download_url(repo_slug: str, apk_name: str) -> str:

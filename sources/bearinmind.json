@@ -1,0 +1,17 @@
+[
+    {
+        "name": "bearinmind"
+    },
+    {
+        "provider": "github",
+        "user": "MorpheApp",
+        "repo": "morphe-cli",
+        "tag": "latest"
+    },
+    {
+        "provider": "github",
+        "user": "bearinmindcat",
+        "repo": "morphe-patches",
+        "tag": "latest"
+    }
+]

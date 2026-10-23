@@ -1,0 +1,17 @@
+[
+  {
+    "name": "hushfacebook-patches"
+  },
+  {
+    "provider": "github",
+    "user": "MorpheApp",
+    "repo": "morphe-cli",
+    "tag": "latest"
+  },
+  {
+    "provider": "github",
+    "user": "SysAdminDoc",
+    "repo": "HushFacebook",
+    "tag": "latest"
+  }
+]

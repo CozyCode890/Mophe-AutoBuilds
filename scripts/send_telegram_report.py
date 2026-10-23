@@ -235,13 +235,13 @@ def main() -> int:
     logging.info(f"Preparing Telegram report for {len(chat_ids)} destination(s) (token={mask_token(token)})...")
 
     # Context info
-    repo = os.environ.get("GITHUB_REPOSITORY", "yashrajrocxx/Mophe-AutoBuilds")
+    repo = os.environ.get("GITHUB_REPOSITORY", "CozyCode890/Mophe-AutoBuilds")
     server_url = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
     run_id = os.environ.get("GITHUB_RUN_ID", "")
     workflow = os.environ.get("GITHUB_WORKFLOW", "Morphe AutoBuilds")
     run_url = f"{server_url}/{repo}/actions/runs/{run_id}" if run_id else f"{server_url}/{repo}/actions"
     release_url = f"{server_url}/{repo}/releases/tag/latest"
-    pages_url = f"https://{repo.split('/')[0]}.github.io/{repo.split('/')[1]}/" if "/" in repo else "https://yashrajrocxx.github.io/Mophe-AutoBuilds/"
+    pages_url = f"https://{repo.split('/')[0]}.github.io/{repo.split('/')[1]}/" if "/" in repo else "https://CozyCode890.github.io/Mophe-AutoBuilds/"
 
     reports = load_build_reports()
     failed_patches_map = load_failed_patches()

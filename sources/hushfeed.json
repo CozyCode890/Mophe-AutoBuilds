@@ -1,0 +1,17 @@
+[
+  {
+    "name": "hushfeed-patches"
+  },
+  {
+    "provider": "github",
+    "user": "MorpheApp",
+    "repo": "morphe-cli",
+    "tag": "latest"
+  },
+  {
+    "provider": "github",
+    "user": "SysAdminDoc",
+    "repo": "HushFeed",
+    "tag": "latest"
+  }
+]

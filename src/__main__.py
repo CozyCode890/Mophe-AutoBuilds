@@ -60,7 +60,35 @@ def _record_failed_patches(app_name: str, output: str):
         data[app_name] = failed_patches
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
-            
+
+
+def _keystore_args() -> list[str]:
+    """apksigner key arguments: the private keystore at KEYSTORE_PATH when one is
+    configured (CI decodes it from secrets), otherwise the bundled public keystore."""
+    keystore = (getenv("KEYSTORE_PATH") or "").strip()
+    if not keystore:
+        return [
+            "--ks", "keystore/public.jks",
+            "--ks-pass", "pass:public",
+            "--key-pass", "pass:public",
+            "--ks-key-alias", "public",
+        ]
+    # Never fall back to the public key here: APKs signed with a different key
+    # cannot be installed over the ones already on the device.
+    if not Path(keystore).is_file():
+        raise RuntimeError(f"KEYSTORE_PATH does not point to a file: {keystore}")
+    # Passwords are passed as env: references so they never show up in the
+    # process arguments. PKCS12 keys normally share the store password.
+    args = [
+        "--ks", keystore,
+        "--ks-pass", "env:KEYSTORE_PASSWORD",
+        "--key-pass", "env:KEY_PASSWORD" if getenv("KEY_PASSWORD") else "env:KEYSTORE_PASSWORD",
+    ]
+    alias = (getenv("KEY_ALIAS") or "").strip()
+    if alias:
+        args += ["--ks-key-alias", alias]
+    return args
+
 
 def run_build(app_name: str, source: str, arch: str = "universal", report: dict = None) -> str:
     """Build APK for specific architecture"""
@@ -445,13 +473,11 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
         if not apksigner:
             raise RuntimeError("apksigner not found")
 
+        keystore_args = _keystore_args()
         try:
             utils.run_process([
                 str(apksigner), "sign", "--verbose",
-                "--ks", "keystore/public.jks",
-                "--ks-pass", "pass:public",
-                "--key-pass", "pass:public",
-                "--ks-key-alias", "public",
+                *keystore_args,
                 "--in", str(output_apk), "--out", str(signed_apk)
             ], capture=True, stream=True)
         except Exception as e:
@@ -461,10 +487,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             utils.run_process([
                 str(apksigner), "sign", "--verbose",
                 "--min-sdk-version", "21",
-                "--ks", "keystore/public.jks",
-                "--ks-pass", "pass:public",
-                "--key-pass", "pass:public",
-                "--ks-key-alias", "public",
+                *keystore_args,
                 "--in", str(output_apk), "--out", str(signed_apk)
             ], capture=True, stream=True)
 

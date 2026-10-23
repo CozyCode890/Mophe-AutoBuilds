@@ -255,7 +255,7 @@ jobs:
               echo
               echo "No valid request payload was found in this issue. Please submit the request from the site form instead:"
               echo
-              echo "https://yashrajrocxx.github.io/Mophe-AutoBuilds/ (Request a build)"
+              echo "https://${REPO%%/*}.github.io/${REPO#*/}/ (Request a build)"
               echo
               echo "This issue is being closed."
             } > .request/unreadable.md
@@ -319,7 +319,7 @@ jobs:
                 echo "Rejected with: \`$code\`."
                 if [ "$code" = "app-exists" ] || [ "$code" = "package-in-use" ]; then
                   echo
-                  echo "Already available builds are listed in the [app store](https://yashrajrocxx.github.io/Mophe-AutoBuilds/) and in the [latest release](https://github.com/$REPO/releases/latest)."
+                  echo "Already available builds are listed in the [app store](https://${REPO%%/*}.github.io/${REPO#*/}/) and in the [latest release](https://github.com/$REPO/releases/latest)."
                 fi
               } > .request/reject.md
 

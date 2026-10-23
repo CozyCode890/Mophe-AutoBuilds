@@ -594,7 +594,7 @@ def _get_repo_owner_name() -> Optional[Tuple[str, str]]:
     except Exception:
         pass
         
-    return ("yashrajrocxx", "Mophe-AutoBuilds")
+    return ("CozyCode890", "Mophe-AutoBuilds")
 
 
 def fetch_existing_manifest() -> Optional[dict]:

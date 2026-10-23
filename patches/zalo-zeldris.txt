@@ -1,0 +1,2 @@
+# Zalo Zeldris Patches (zeldrisho/morphe-patches)
+# Left empty to apply all default recommended patches automatically.

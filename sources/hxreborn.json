@@ -1,0 +1,17 @@
+[
+    {
+        "name": "hxreborn"
+    },
+    {
+        "provider": "github",
+        "user": "MorpheApp",
+        "repo": "morphe-cli",
+        "tag": "latest"
+    },
+    {
+        "provider": "github",
+        "user": "hxreborn",
+        "repo": "morphe-patches",
+        "tag": "latest"
+    }
+]

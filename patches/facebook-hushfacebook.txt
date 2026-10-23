@@ -1,0 +1,2 @@
+# Facebook HushFacebook Patches (SysAdminDoc/HushFacebook)
+# Left empty to apply all default recommended patches automatically.

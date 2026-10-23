@@ -5,64 +5,40 @@
       "source": "morphe"
     },
     {
-      "app_name": "youtube-music",
-      "source": "morphe"
+      "app_name": "atvtools",
+      "source": "hxreborn"
     },
     {
-      "app_name": "reddit",
-      "source": "morphe"
+      "app_name": "facebook",
+      "source": "hushfacebook"
+    },
+    {
+      "app_name": "merriam-webster",
+      "source": "hoodles"
+    },
+    {
+      "app_name": "messenger",
+      "source": "hushmessenger"
+    },
+    {
+      "app_name": "tiktok",
+      "source": "hushfeed"
+    },
+    {
+      "app_name": "waze",
+      "source": "bearinmind"
+    },
+    {
+      "app_name": "zalo",
+      "source": "zeldris"
     },
     {
       "app_name": "instagram",
       "source": "hushgram"
     },
     {
-      "app_name": "twitter",
-      "source": "piko-newx"
-    },
-    {
-      "app_name": "pinterest",
-      "source": "hushpinterest"
-    },
-    {
-      "app_name": "telegram",
-      "source": "hushtelegram"
-    },
-    {
-      "app_name": "sdmaidse",
-      "source": "paresh"
-    },
-    {
       "app_name": "threads",
       "source": "hushthreads"
-    },
-    {
-      "app_name": "google-photos",
-      "source": "rookie"
-    },
-    {
-      "app_name": "depthwallpaper",
-      "source": "rushiranpise"
-    },
-    {
-      "app_name": "pocketcasts",
-      "source": "rushiranpise"
-    },
-    {
-      "app_name": "minimalwidgets",
-      "source": "rushiranpise"
-    },
-    {
-      "app_name": "gboard",
-      "source": "jasonwu"
-    },
-    {
-      "app_name": "duolingo",
-      "source": "hoodles"
-    },
-    {
-      "app_name": "brave",
-      "source": "kveld9"
     }
   ]
 }

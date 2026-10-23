@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Update README.md with Obtainium documentation and app badges."""
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -8,7 +9,7 @@ from pathlib import Path
 # Add project root to sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scripts.generate_obtainium import get_display_name
+from scripts.generate_obtainium import DEFAULT_REPO, get_display_name
 
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
     try:
@@ -29,6 +30,7 @@ def main() -> int:
         manifest = json.load(f)
 
     entries = manifest.get("entries", {})
+    repo_slug = os.environ.get("GITHUB_REPOSITORY", "").strip() or DEFAULT_REPO
 
     table_rows = [
         "| Application | Package Name | Patch Source | Arch | Obtainium (1-Click) |",
@@ -51,7 +53,7 @@ def main() -> int:
 
     table_text = "\n".join(table_rows)
 
-    obtainium_section = """### Obtainium Auto-Updates & 1-Click Install
+    obtainium_section = f"""### Obtainium Auto-Updates & 1-Click Install
 
 This repository provides full first-class integration with [**Obtainium**](https://github.com/ImranR98/Obtainium), allowing you to install and automatically receive daily background updates for any or all apps directly from GitHub Releases with zero manual downloads.
 
@@ -64,7 +66,7 @@ To import the entire curated catalog at once:
 2. Tap the **+** button (or navigate to **Import / Export**) $\\rightarrow$ select **Import from URL**.
 3. Paste the configuration URL:
    ```text
-   https://raw.githubusercontent.com/yashrajrocxx/Mophe-AutoBuilds/main/obtainium.json
+   https://raw.githubusercontent.com/{repo_slug}/main/obtainium.json
    ```
 4. Tap **Import**. All apps will be added to your Obtainium database and will automatically track daily releases.
 

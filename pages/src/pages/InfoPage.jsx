@@ -44,7 +44,7 @@ export function InfoPage() {
           Import the catalog once — every app then updates itself from new releases.
         </p>
         <code className="block text-xs font-mono bg-muted rounded-lg p-3 break-all">
-          https://raw.githubusercontent.com/yashrajrocxx/Mophe-AutoBuilds/main/obtainium.json
+          https://raw.githubusercontent.com/CozyCode890/Mophe-AutoBuilds/main/obtainium.json
         </code>
       </section>
 
@@ -73,8 +73,8 @@ export function InfoPage() {
         <h3 className="text-[15px] font-bold mb-3">Links</h3>
         <div className="flex flex-col gap-1">
           {[
-            { icon: <GitBranch size={15} />, label: 'GitHub repository', href: 'https://github.com/yashrajrocxx/Mophe-AutoBuilds' },
-            { icon: <RefreshCw size={15} />, label: 'Latest release', href: 'https://github.com/yashrajrocxx/Mophe-AutoBuilds/releases/latest' },
+            { icon: <GitBranch size={15} />, label: 'GitHub repository', href: 'https://github.com/CozyCode890/Mophe-AutoBuilds' },
+            { icon: <RefreshCw size={15} />, label: 'Latest release', href: 'https://github.com/CozyCode890/Mophe-AutoBuilds/releases/latest' },
             { icon: <Smartphone size={15} />, label: 'Telegram channel', href: 'https://t.me/morphe_autobuilds' },
           ].map(l => (
             <a
