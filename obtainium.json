@@ -1,3 +1,76 @@
 {
-  "apps": []
+  "apps": [
+    {
+      "id": "com.google.android.youtube",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "YouTube",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"youtube-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"youtube-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "dev.vodik7.atvtools",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "atvTools",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"atvtools-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"atvtools-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.facebook.katana",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "Facebook",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"facebook-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"facebook-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.merriamwebster",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "Merriam-Webster",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"merriam-webster-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"merriam-webster-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.zhiliaoapp.musically",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "TikTok",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"tiktok-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"tiktok-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.waze",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "Waze",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"waze-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"waze-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.zing.zalo",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "Zalo",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"zalo-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"zalo-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.instagram.android",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "Instagram",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"instagram-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"instagram-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.instagram.barcelona",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "Threads",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"threads-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"threads-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    }
+  ]
 }
