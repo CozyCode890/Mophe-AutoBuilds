@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "id": "com.google.android.youtube",
+      "id": "app.morphe.android.youtube",
       "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
       "author": "CozyCode890",
       "name": "YouTube",

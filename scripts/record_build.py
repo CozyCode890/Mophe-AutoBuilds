@@ -7,13 +7,16 @@ the release job will merge into the final manifest.json.
 
 Output file: ./build_records/<app>__<source>__<arch>.json
 Content:    {"key": "app|source|arch", "apk": "<filename>",
-             "resolved_version": "<version>", "app_name","source","arch"}
+             "resolved_version": "<version>", "apk_package": "<package in the APK>",
+             "app_name","source","arch"}
 """
 import os
 import re
 import sys
 import json
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 REC_DIR = Path("build_records")
 
@@ -77,6 +80,23 @@ def extract_version_from_filename(apk_name: str) -> str:
     return matches[-1].group(1).strip()
 
 
+def read_apk_package(apk_path: str) -> str:
+    """Package name inside the built APK.
+
+    Patches such as GmsCore support rename the package (YouTube installs as
+    app.morphe.android.youtube), and Obtainium refuses an APK whose package
+    differs from the tracked App ID, so the installed name has to be recorded.
+    Returns '' when the APK cannot be read.
+    """
+    if not apk_path or not Path(apk_path).is_file():
+        return ""
+    try:
+        from src.utils import get_apk_manifest_info
+        return get_apk_manifest_info(apk_path).get("package", "") or ""
+    except Exception:
+        return ""
+
+
 def main() -> int:
     app = os.environ.get("APP_NAME", "").strip()
     src = os.environ.get("SOURCE", "").strip()
@@ -107,6 +127,7 @@ def main() -> int:
         "key": f"{app}|{src}|{arch}",
         "apk": apk_name,
         "resolved_version": resolved_version,
+        "apk_package": read_apk_package(apk_path),
         "app_name": app,
         "source": src,
         "arch": arch,

@@ -76,6 +76,13 @@ class TestObtainiumHtmlEntries(unittest.TestCase):
         s = _settings(self._brave())
         self.assertIsNone(re.search(s["versionExtractionRegEx"], "latest"))
 
+    def test_id_is_the_installed_package(self):
+        """GmsCore support renames YouTube; Obtainium must track the new ID."""
+        entry = _entry("youtube", "arm64-v8a", "youtube-arm64-v8a-morphe-v21.20.405.apk")
+        self.assertEqual(build_obtainium_app("k", entry, "u/r", "u", {}, PAGES_URL)["id"], "com.example.youtube")
+        entry["apk_package"] = "app.morphe.android.youtube"
+        self.assertEqual(build_obtainium_app("k", entry, "u/r", "u", {}, PAGES_URL)["id"], "app.morphe.android.youtube")
+
     def test_bad_filename_raises(self):
         with self.assertRaises(ValueError):
             build_obtainium_app("k", _entry("x", "arm64-v8a", "not-an-apk"), "u/r", "u", {}, PAGES_URL)

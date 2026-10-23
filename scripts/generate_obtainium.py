@@ -136,7 +136,9 @@ def build_obtainium_app(
     arch = entry.get("arch", "arm64-v8a")
     source = entry.get("source", "")
     apk = entry.get("apk", "")
-    pkg = entry.get("package") or f"org.morphe.{app_name}"
+    # Track the package the APK actually installs as: patches like GmsCore
+    # support rename it, and Obtainium rejects an APK whose ID changed.
+    pkg = entry.get("apk_package") or entry.get("package") or f"org.morphe.{app_name}"
 
     prefix = extract_identity_prefix(apk)
     if not prefix:

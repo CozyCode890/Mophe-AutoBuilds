@@ -764,6 +764,7 @@ def plan_incremental(full_matrix: List[dict], old_manifest: Optional[dict],
             "built_version": old_built_ver,
             "built_at": (old or {}).get("built_at", ""),
             "package": package_name,
+            "apk_package": (old or {}).get("apk_package", ""),
             "icon_url": icon_url,
         }
 
