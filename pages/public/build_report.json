@@ -1,29 +1,5 @@
 [
   {
-    "app": "atvtools",
-    "arch": "arm64-v8a",
-    "source": "hxreborn",
-    "status": "success",
-    "version": "1.3.2",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "atvtools-arm64-v8a-hxreborn-v1.3.2.apk"
-  },
-  {
-    "app": "facebook",
-    "arch": "arm64-v8a",
-    "source": "hushfacebook",
-    "status": "success",
-    "version": "584.0.0.51.56",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "facebook-arm64-v8a-hushfacebook-patches-v584.0.0.51.56.apk"
-  },
-  {
     "app": "instagram",
     "arch": "arm64-v8a",
     "source": "hushgram",
@@ -36,18 +12,6 @@
     "apk": "instagram-arm64-v8a-hushgram-patches-v452.1.0.53.64.apk"
   },
   {
-    "app": "merriam-webster",
-    "arch": "arm64-v8a",
-    "source": "hoodles",
-    "status": "success",
-    "version": "5.6.3",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "merriam-webster-arm64-v8a-hoodles-v5.6.3.apk"
-  },
-  {
     "app": "messenger",
     "arch": "arm64-v8a",
     "source": "hushmessenger",
@@ -55,66 +19,5 @@
     "version": null,
     "patches": [],
     "error": "Failed to download version 584.0.0.49.98"
-  },
-  {
-    "app": "threads",
-    "arch": "arm64-v8a",
-    "source": "hushthreads",
-    "status": "success",
-    "version": "452.0.0.50.64",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "threads-arm64-v8a-hushthreads-patches-v452.0.0.50.64.apk"
-  },
-  {
-    "app": "tiktok",
-    "arch": "arm64-v8a",
-    "source": "hushfeed",
-    "status": "success",
-    "version": "47.5.3",
-    "patches": [
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "tiktok-arm64-v8a-hushfeed-patches-v47.5.3.apk"
-  },
-  {
-    "app": "waze",
-    "arch": "arm64-v8a",
-    "source": "bearinmind",
-    "status": "success",
-    "version": "5.24.5.0",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "waze-arm64-v8a-bearinmind-v5.24.5.0.apk"
-  },
-  {
-    "app": "youtube",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "21.20.405",
-    "patches": [
-      "GmsCore support",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "youtube-arm64-v8a-morphe-v21.20.405.apk"
-  },
-  {
-    "app": "zalo",
-    "arch": "arm64-v8a",
-    "source": "zeldris",
-    "status": "success",
-    "version": "26.08.01",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "zalo-arm64-v8a-zeldris-v26.08.01.apk"
   }
 ]
