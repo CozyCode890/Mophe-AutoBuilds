@@ -265,6 +265,19 @@ def strip_arch_suffix(version: str) -> str:
         flags=re.IGNORECASE,
     )
 
+# Built APKs end in "-v{version}-b{YYYYMMDDHHMM}.apk". The stamp gives every
+# rebuild a new file name, so Obtainium sees a patch-only rebuild (same app
+# version) as an update, and a download still running when the release changes
+# fails instead of silently mixing bytes from two builds.
+BUILD_STAMP_RE = re.compile(r"-b(\d{12})$")
+
+
+def build_stamp() -> str:
+    """UTC build stamp for APK filenames, e.g. ``202610250504``."""
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).strftime("%Y%m%d%H%M")
+
+
 def is_version_compatible(actual: str, target: str | None) -> bool:
     """Check if actual APK version is compatible with the requested target version.
 

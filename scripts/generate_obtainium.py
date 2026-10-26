@@ -168,6 +168,9 @@ def build_obtainium_app(
     else:
         head = f"{app_name}-{arch}-"
 
+    # The extracted version keeps the "-b{stamp}" build suffix on purpose: a
+    # patch-only rebuild has the same app version but a new stamp, so
+    # Obtainium still offers it as an update.
     filter_pat = f"{head}.*-v.*\\.apk$"
     ver_pat    = f"{head}.*-v([^/]+)\\.apk$"
 

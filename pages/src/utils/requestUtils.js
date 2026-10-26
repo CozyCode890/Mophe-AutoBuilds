@@ -346,7 +346,8 @@ export function versionFromAssetName(name, app, arch) {
   const prefix = `${app}-${arch}-`;
   let rest = String(name || '');
   if (rest.startsWith(prefix)) rest = rest.slice(prefix.length);
-  rest = rest.replace(/\.apk$/i, '');
+  // Drop the "-b{YYYYMMDDHHMM}" build stamp; it is not the app version.
+  rest = rest.replace(/\.apk$/i, '').replace(/-b\d{12}$/, '');
   const marker = rest.lastIndexOf('-v');
   if (marker >= 0) return rest.slice(marker + 2);
   if (/^v\d/.test(rest)) return rest.slice(1);

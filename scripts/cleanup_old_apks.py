@@ -51,8 +51,9 @@ from typing import List, Set
 # dots, parentheses for build numbers, hyphen, plus) so that the architecture
 # tokens "v8a"/"v7a" inside arm64-v8a / armeabi-v7a do NOT match (they have a
 # letter right after the digit, e.g. "v8a"). Otherwise the identity prefix would
-# be truncated at the arch segment.
-VERSION_MARKER = re.compile(r"-v\d[\d.()+\-]*\.apk$", re.IGNORECASE)
+# be truncated at the arch segment. Newer builds also end in a "-b{YYYYMMDDHHMM}"
+# build stamp (src.utils.BUILD_STAMP_RE), which belongs to the version part.
+VERSION_MARKER = re.compile(r"-v\d[\d.()+\-]*(?:-b\d{12})?\.apk$", re.IGNORECASE)
 
 
 def gh_release_assets(release: str) -> List[dict]:

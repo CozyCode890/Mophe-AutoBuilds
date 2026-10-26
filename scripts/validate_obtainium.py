@@ -12,7 +12,7 @@ Strict checks per app entry:
   1. Schema (id, name, pages downloads URL, additionalSettings JSON).
   2. apkFilterRegEx matches EXACTLY ONE link in downloads.html.
   3. versionExtractionRegEx extracts EXACTLY the manifest built_version
-     from that link.
+     (plus the link's build stamp, when it has one) from that link.
 Also verifies every manifest APK is linked from downloads.html.
 
 Exit code 0 on success, 1 on any error.
@@ -22,6 +22,9 @@ import sys
 import json
 from pathlib import Path
 from typing import Dict, Any, List
+
+# Trailing build stamp of built APKs (see src.utils.BUILD_STAMP_RE).
+BUILD_STAMP = re.compile(r"(-b\d{12})\.apk$")
 
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
     try:
@@ -151,6 +154,11 @@ def validate_obtainium_bundle(obtainium_path: Path, manifest_path: Path) -> bool
         matched_apk = matched_link.rsplit("/", 1)[-1]
         entry = apk_to_entry.get(matched_apk, {})
         expected_version = entry.get("built_version", "")
+        # Obtainium's version includes the build stamp, so patch-only rebuilds
+        # of the same app version still read as a new version.
+        stamp = BUILD_STAMP.search(matched_apk)
+        if stamp and expected_version:
+            expected_version += stamp.group(1)
 
         # 4. Test versionExtractionRegEx
         try:

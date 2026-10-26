@@ -107,7 +107,8 @@ def parse_apk_details(filename: str) -> tuple[str, str, str]:
     app_key = parts[0] if parts else "app"
     
     # Try to extract version
-    ver_match = re.search(r'-v?(\d+\.[\w\.\-]+)$', name_no_ext)
+    # Drop the trailing "-b{YYYYMMDDHHMM}" build stamp; it is not the app version.
+    ver_match = re.search(r'-v?(\d+\.[\w\.\-]+?)(?:-b\d{12})?$', name_no_ext)
     version = f"v{ver_match.group(1)}" if ver_match else ""
     
     # Try to extract source

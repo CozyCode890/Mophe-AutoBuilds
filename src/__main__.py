@@ -467,7 +467,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
         else:
             logging.warning("zipalign not found; native libraries may not be page-aligned")
 
-        signed_apk = Path(f"{app_name}-{arch}-{name}-v{safe_version}.apk")
+        signed_apk = Path(f"{app_name}-{arch}-{name}-v{safe_version}-b{utils.build_stamp()}.apk")
 
         apksigner = utils.find_apksigner()
         if not apksigner:

@@ -20,6 +20,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 REC_DIR = Path("build_records")
 
+BUILD_STAMP = re.compile(r"-b\d{12}$")
+
 # Known architecture tokens that may appear in the APK filename
 KNOWN_ARCHES = ("arm64-v8a", "armeabi-v7a", "x86_64", "x86", "universal")
 
@@ -50,8 +52,9 @@ def detect_arch_from_filename(apk_name: str, default: str = "universal") -> str:
 def extract_version_from_filename(apk_name: str) -> str:
     """Extract the app version from the APK filename.
 
-    APKs are named ``{app}-{arch}-{name}-v{version}.apk``, e.g.
-    ``youtube-arm64-v8a-morphe-v21.16.256.apk`` -> ``21.16.256``.
+    APKs are named ``{app}-{arch}-{name}-v{version}-b{stamp}.apk``, e.g.
+    ``youtube-arm64-v8a-morphe-v21.16.256-b202610250504.apk`` -> ``21.16.256``
+    (older builds have no ``-b{stamp}``).
 
     The version marker is the rightmost ``-v`` immediately followed by a dotted
     version (``-v<digit>.<digit>...``). We require the dotted shape because
@@ -77,7 +80,9 @@ def extract_version_from_filename(apk_name: str) -> str:
     matches = list(re.finditer(r"-v(\d+\.\d[\w.+\-() ]*)$", stem))
     if not matches:
         return ""
-    return matches[-1].group(1).strip()
+    # The trailing build stamp (src.utils.BUILD_STAMP_RE) is not part of the
+    # app version.
+    return BUILD_STAMP.sub("", matches[-1].group(1).strip())
 
 
 def read_apk_package(apk_path: str) -> str:
