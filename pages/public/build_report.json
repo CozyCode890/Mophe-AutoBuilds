@@ -9,7 +9,7 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "atvtools-arm64-v8a-hxreborn-v1.3.2-b202610270521.apk"
+    "apk": "atvtools-arm64-v8a-hxreborn-v1.3.2-b202610290607.apk"
   },
   {
     "app": "facebook",
@@ -21,28 +21,31 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "facebook-arm64-v8a-hushfacebook-patches-v584.0.0.51.56-b202610270522.apk"
+    "apk": "facebook-arm64-v8a-hushfacebook-patches-v584.0.0.51.56-b202610290608.apk"
   },
   {
     "app": "instagram",
     "arch": "arm64-v8a",
     "source": "hushgram",
     "status": "success",
-    "version": "452.1.0.53.64",
+    "version": "453.0.0.55.79",
     "patches": [
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "instagram-arm64-v8a-hushgram-patches-v452.1.0.53.64-b202610270522.apk"
+    "apk": "instagram-arm64-v8a-hushgram-patches-v453.0.0.55.79-b202610290608.apk"
   },
   {
     "app": "messenger",
     "arch": "arm64-v8a",
     "source": "hushmessenger",
-    "status": "failed",
-    "version": null,
-    "patches": [],
-    "error": "Failed to download version 584.0.0.49.98"
+    "status": "success",
+    "version": "584.1.0.61.98",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "messenger-arm64-v8a-hushmessenger-patches-v584.1.0.61.98-b202610290609.apk"
   },
   {
     "app": "tiktok",
@@ -54,7 +57,7 @@
       "Change installer source"
     ],
     "dl_method": "download_apkmirror",
-    "apk": "tiktok-arm64-v8a-hushfeed-patches-v47.5.3-b202610270522.apk"
+    "apk": "tiktok-arm64-v8a-hushfeed-patches-v47.5.3-b202610290609.apk"
   },
   {
     "app": "waze",
@@ -66,6 +69,6 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "waze-arm64-v8a-bearinmind-v5.24.5.0-b202610270521.apk"
+    "apk": "waze-arm64-v8a-bearinmind-v5.24.5.0-b202610290607.apk"
   }
 ]
