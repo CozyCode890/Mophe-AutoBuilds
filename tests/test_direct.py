@@ -66,6 +66,22 @@ class TestDirectSource(unittest.TestCase):
             direct.get_download_link("", "brave", {"package": "com.brave.browser", "url": self._TPL}),
         )
 
+    # ─── GitHub release mode (e.g. SD Maid SE FOSS builds) ───────────────────
+
+    _SDM = {"package": "eu.darken.sdmse", "repo": "d4rken-org/sdmaid-se", "tag": "v{version}"}
+
+    @patch("src.github.get_download_link", return_value="https://gh/asset.apk")
+    def test_github_mode_templates_tag(self, mock_link):
+        self.assertEqual(direct.get_download_link("2.2.2-rc0", "sdmaidse", self._SDM), "https://gh/asset.apk")
+        version, app, config = mock_link.call_args.args
+        self.assertEqual((version, app, config["tag"], config["repo"]),
+                         ("2.2.2-rc0", "sdmaidse", "v2.2.2-rc0", "d4rken-org/sdmaid-se"))
+
+    @patch("src.github.get_download_link")
+    def test_github_mode_needs_a_version(self, mock_link):
+        self.assertIsNone(direct.get_download_link("", "sdmaidse", self._SDM))
+        mock_link.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

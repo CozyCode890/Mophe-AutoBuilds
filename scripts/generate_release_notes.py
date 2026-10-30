@@ -97,6 +97,7 @@ def get_source_display_name(source: str) -> str:
         "hushthreads": "HushThreads Patches",
         "jasonwu": "Jasonwu (Gboard) Patches",
         "kveld9": "kveld9 Patches",
+        "kveld9-extra": "kveld9 Extra Patches",
         "hoodles": "Hoodles Patches",
     }
     return source_map.get(source.lower(), f"{source.capitalize()} Patches")
@@ -118,7 +119,7 @@ def parse_apk_details(filename: str) -> tuple[str, str, str]:
     known_sources = [
         "morphe", "piko-newx", "paresh", "rookie", "rushiranpise",
         "hushgram", "hushpinterest", "hushtelegram", "hushthreads",
-        "jasonwu", "kveld9", "hoodles",
+        "jasonwu", "kveld9-extra", "kveld9", "hoodles",
     ]
     for s in known_sources:
         if f"-{s}-" in name_no_ext or f"-{s}" in name_no_ext:
@@ -344,6 +345,7 @@ def main() -> int:
     content.append("- **Rushi (Doom):** [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches)")
     content.append("- **Gboard Patches:** [jasonwu1994/Gboard-patches](https://github.com/jasonwu1994/Gboard-patches)")
     content.append("- **kveld9 Patches:** [kveld9/kveld-morphe-patches](https://github.com/kveld9/kveld-morphe-patches)")
+    content.append("- **kveld9 Extra Patches:** [kveld9/kveld-extra-morphe-patches](https://github.com/kveld9/kveld-extra-morphe-patches)")
     content.append("- **Hoodles:** [hoo-dles/morphe-patches](https://github.com/hoo-dles/morphe-patches)")
     content.append("- **SysAdminDoc (Hush):** [SysAdminDoc](https://github.com/SysAdminDoc)")
     content.append("- **Rookie Patches:** [RookieEnough/De-ReVanced](https://github.com/RookieEnough/De-ReVanced)\n")

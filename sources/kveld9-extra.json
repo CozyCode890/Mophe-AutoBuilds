@@ -1,0 +1,17 @@
+[
+    {
+        "name": "kveld-extra-patches"
+    },
+    {
+        "provider": "github",
+        "user": "MorpheApp",
+        "repo": "morphe-cli",
+        "tag": "latest"
+    },
+    {
+        "provider": "github",
+        "user": "kveld9",
+        "repo": "kveld-extra-morphe-patches",
+        "tag": "latest"
+    }
+]

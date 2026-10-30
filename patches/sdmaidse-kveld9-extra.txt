@@ -1,0 +1,3 @@
+# SD Maid SE Patches (kveld9 / kveld-extra-morphe-patches)
+# Targets the FOSS build from d4rken-org/sdmaid-se GitHub releases.
+# Left empty to apply all default recommended patches automatically (Unlock Pro).

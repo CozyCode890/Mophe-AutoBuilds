@@ -27,6 +27,7 @@ export function PatchChangelogsSection({ patchChangelogs, onFilterByApp }) {
       hushthreads: 'HushThreads Patches',
       jasonwu: 'Jasonwu Patches',
       kveld9: 'kveld9 Patches',
+      'kveld9-extra': 'kveld9 Extra Patches',
       hoodles: 'Hoodles Patches',
     };
     return map[source.toLowerCase()] || `${source.charAt(0).toUpperCase() + source.slice(1)} Patches`;

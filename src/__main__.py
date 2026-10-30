@@ -90,6 +90,23 @@ def _keystore_args() -> list[str]:
     return args
 
 
+_ENV_REF = re.compile(r"\$\{(\w+)\}")
+
+
+def _resolve_patch_option(line: str) -> str | None:
+    """Expand ${VAR} references in a "key=value" patch option line.
+
+    Secrets such as API credentials live in the environment (CI secrets), not in
+    the public patches/ files. An option whose variable is unset is skipped, so
+    the patch keeps its own default instead of receiving a literal "${VAR}".
+    """
+    missing = [v for v in _ENV_REF.findall(line) if not (getenv(v) or "").strip()]
+    if missing:
+        logging.warning(f"Skipping patch option {line.split('=', 1)[0]!r}: {', '.join(missing)} not set")
+        return None
+    return _ENV_REF.sub(lambda m: getenv(m.group(1)).strip(), line)
+
+
 def run_build(app_name: str, source: str, arch: str = "universal", report: dict = None) -> str:
     """Build APK for specific architecture"""
     from src import apkmirror
@@ -209,6 +226,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
 
     exclude_patches = []
     include_patches = []
+    patch_options = {}
 
     patches_path = Path("patches") / f"{app_name}-{source}.txt"
     if patches_path.exists():
@@ -219,6 +237,11 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
                     exclude_patches.append(line[1:].strip())
                 elif line.startswith('+'):
                     include_patches.append(line[1:].strip())
+                elif include_patches and '=' in line and not line.startswith('#'):
+                    # "key=value" under a "+ Patch" line sets that patch's option.
+                    option = _resolve_patch_option(line)
+                    if option:
+                        patch_options.setdefault(include_patches[-1], []).append(option)
 
     # Start the grand loop!
     for attempt_idx, ver in enumerate(supported_versions):
@@ -381,6 +404,8 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
                     morphe_cmd.extend(["-d", str(p)])
                 for p in current_include_patches:
                     morphe_cmd.extend(["-e", str(p)])
+                    # -O applies to the patch enabled just before it.
+                    morphe_cmd.extend(f"-O{o}" for o in patch_options.get(p, []))
 
                 morphe_cmd.extend([
                     "--out", str(output_apk), str(input_apk)

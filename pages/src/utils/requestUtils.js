@@ -40,6 +40,7 @@ const BUILTIN_SOURCES = [
   'hushthreads',
   'jasonwu',
   'kveld9',
+  'kveld9-extra',
   'morphe',
   'paresh',
   'piko-newx',
@@ -59,6 +60,7 @@ const SOURCE_LABELS = {
   hushthreads: 'HushThreads',
   jasonwu: 'Jasonwu (Gboard)',
   kveld9: 'kveld9',
+  'kveld9-extra': 'kveld9 Extra',
   hoodles: 'Hoodles',
 };
 

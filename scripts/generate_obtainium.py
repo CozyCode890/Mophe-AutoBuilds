@@ -88,6 +88,7 @@ SOURCE_MAP = {
     "rushiranpise": "Rushi",
     "hoodles": "Hoodles",
     "kveld9": "Kveld9",
+    "kveld9-extra": "Kveld9 Extra",
     "jasonwu": "Jasonwu",
     "hushgram": "Hushgram",
     "hushpinterest": "HushPinterest",

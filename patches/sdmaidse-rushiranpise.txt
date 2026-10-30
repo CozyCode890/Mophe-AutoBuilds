@@ -1,2 +1,0 @@
-# SD Maid SE rushiranpise Patches
-# Left empty to apply all default recommended patches automatically (Unlock Pro).

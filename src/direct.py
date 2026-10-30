@@ -73,14 +73,28 @@ def get_download_link(version: str, app_name: str, config: dict) -> str | None:
                currently require, so no manual bump is needed on patch updates.
                The URL is HEAD-verified (GitHub returns 404 for unknown tags);
                unreachable/unknown versions fall through to scrapers.
-    An empty/missing `url` means "not configured yet" → None.
+      GitHub:  "repo": "d4rken-org/sdmaid-se", "tag": "v{version}" — the release
+               asset whose name carries the requested version.
+    An empty/missing `url` (and no `repo`) means "not configured yet" → None.
     """
     url = (config.get("url") or "").strip()
+    wanted = (version or "").strip()
+
+    # GitHub release mode: "repo" + "tag" (e.g. "v{version}") picks the asset
+    # carrying the version from that release. For apps whose asset names hold
+    # more than the version (SD Maid SE: ...-v2.2.2-rc0-20202000-FOSS-RELEASE.apk).
+    repo = (config.get("repo") or "").strip()
+    if repo and not url:
+        from src import github
+        if not wanted:
+            return None
+        tag = (config.get("tag") or "v{version}").replace("{version}", wanted)
+        return github.get_download_link(wanted, app_name, {**config, "tag": tag})
+
     if not url:
         logging.debug(f"Direct: no URL configured for {app_name}, falling through to scrapers")
         return None
 
-    wanted = (version or "").strip()
     if "{version}" in url:
         import re
         clean = re.sub(r"\(\d+\)$", "", wanted).strip()

@@ -1,3 +1,8 @@
 # Telegram HushTelegram Patches (SysAdminDoc/HushTelegram)
 # Target Package: org.telegram.messenger (Google Play build)
-# Left empty to apply all default recommended patches automatically.
+# Default recommended patches, plus the owner's own API credentials from my.telegram.org.
+# The values come from the TELEGRAM_API_ID / TELEGRAM_API_HASH repository secrets; quoting
+# keeps them strings for morphe-cli. Unset secrets leave Telegram's original credentials.
++ Use registered Telegram API credentials
+apiId='${TELEGRAM_API_ID}'
+apiHash='${TELEGRAM_API_HASH}'

@@ -23,6 +23,7 @@ export function FilterBar({
       hushthreads: 'HushThreads',
       jasonwu: 'Jasonwu (Gboard)',
       kveld9: 'kveld9',
+      'kveld9-extra': 'kveld9 Extra',
       hoodles: 'Hoodles'
     };
     return map[src.toLowerCase()] || src.charAt(0).toUpperCase() + src.slice(1);
