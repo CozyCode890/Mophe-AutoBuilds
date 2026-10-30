@@ -265,6 +265,20 @@ def strip_arch_suffix(version: str) -> str:
         flags=re.IGNORECASE,
     )
 
+def filename_version(version: str) -> str:
+    """App version as it appears in APK file names.
+
+    Some apps carry extra tokens in their versionName: Teams uses
+    ``1416/1.0.0.2026152302`` (a "/" would turn the file name into a path)
+    and MEGA uses ``16.12(262370820)(dcdf0a7f27)`` (GitHub rewrites
+    parentheses in release asset names). Keep the part after the last "/"
+    and drop parenthesized groups: ``1.0.0.2026152302`` and ``16.12``.
+    """
+    if not version:
+        return version
+    v = strip_arch_suffix(version).rsplit("/", 1)[-1]
+    return re.sub(r"\(.*?\)", "", v).strip() or strip_arch_suffix(version)
+
 # Built APKs end in "-v{version}-b{YYYYMMDDHHMM}.apk". The stamp gives every
 # rebuild a new file name, so Obtainium sees a patch-only rebuild (same app
 # version) as an update, and a download still running when the release changes

@@ -314,7 +314,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             )
             if integrity.returncode != 0:
                 logging.warning(f"APK integrity check failed; attempting repair: {integrity.stdout.strip()}")
-                fixed_apk = Path(f"{app_name}-fixed-v{version}.apk")
+                fixed_apk = Path(f"{app_name}-fixed-v{utils.filename_version(version)}.apk")
                 subprocess.run([
                     "zip", "-FF", str(input_apk), "--out", str(fixed_apk)
                 ], check=False, capture_output=True)
@@ -355,9 +355,9 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
         if dynamic_includes:
             logging.info(f"Dynamically injected global patches: {dynamic_includes}")
 
-        # Filenames/reports use the ABI-stripped version so trackers read a
-        # clean version (the full CLI string stays in use for downloads above).
-        safe_version = utils.strip_arch_suffix(version)
+        # Filenames use a cleaned version so trackers read a plain dotted
+        # version (the full CLI string stays in use for downloads above).
+        safe_version = utils.filename_version(version)
 
         # Include architecture in output filename
         output_apk = Path(f"{app_name}-{arch}-patch-v{safe_version}.apk")

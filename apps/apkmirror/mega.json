@@ -1,0 +1,9 @@
+{
+    "org": "mega-ltd",
+    "name": "mega",
+    "type": "APK",
+    "arch": "arm64-v8a",
+    "dpi": "nodpi",
+    "package": "mega.privacy.android.app",
+    "version": ""
+}

@@ -1,0 +1,2 @@
+# Microsoft Teams rushiranpise Patches
+# Left empty to apply all default recommended patches automatically (Unlock Teams, Privacy Enhancements).

@@ -49,6 +49,16 @@ class TestBuildStamp(unittest.TestCase):
         self.assertNotEqual(re.search(s["versionExtractionRegEx"], newer).group(1),
                             re.search(s["versionExtractionRegEx"], link).group(1))
 
+    def test_filename_version_is_path_and_asset_safe(self):
+        """Teams' "/" and MEGA's "(...)" tokens never reach the file name."""
+        self.assertEqual(utils.filename_version("1416/1.0.0.2026152302"), "1.0.0.2026152302")
+        self.assertEqual(utils.filename_version("16.12(262370820)(dcdf0a7f27)"), "16.12")
+        self.assertEqual(utils.filename_version("2.0.3-rc0"), "2.0.3-rc0")
+        self.assertEqual(utils.filename_version("18.2.4-armeabi-v7a"), "18.2.4")
+        name = f"teams-arm64-v8a-morphe-patches-v{utils.filename_version('1416/1.0.0.2026152302')}-b202610300730.apk"
+        self.assertEqual(extract_version_from_filename(name), "1.0.0.2026152302")
+        self.assertEqual(identity_prefix(name), "teams-arm64-v8a-morphe-patches")
+
 
 if __name__ == "__main__":
     unittest.main()

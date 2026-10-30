@@ -1,0 +1,3 @@
+# Google Photos rushiranpise Patches
+# Left empty to apply all default recommended patches automatically
+# (GmsCore support, Change package name, Spoof features, DCIM fixes). Needs MicroG RE installed.

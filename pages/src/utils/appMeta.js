@@ -48,7 +48,7 @@ export const APP_METADATA = {
   "telegram": {
     name: "Telegram",
     category: "Messaging",
-    package: "org.telegram.messenger.web",
+    package: "org.telegram.messenger",
     icon: "https://play-lh.googleusercontent.com/ZU9AnVdaacxATubdaFCVYduw2WPmnwapkcm4ApduPrFGbaAzIlMr4-9wfA1ajSBQiz8=w240-h480",
     color: "#229ED9"
   },
@@ -114,6 +114,20 @@ export const APP_METADATA = {
     package: "com.brave.browser",
     icon: "https://play-lh.googleusercontent.com/78b9_x8=w240-h480",
     color: "#FF3B00"
+  },
+  "mega": {
+    name: "MEGA",
+    category: "Cloud & Storage",
+    package: "mega.privacy.android.app",
+    icon: "",
+    color: "#D9272E"
+  },
+  "teams": {
+    name: "Microsoft Teams",
+    category: "Business & Communication",
+    package: "com.microsoft.teams",
+    icon: "",
+    color: "#6264A7"
   }
 };
 

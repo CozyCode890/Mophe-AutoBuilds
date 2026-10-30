@@ -530,7 +530,8 @@ def get_download_link(version: str, app_name: str, config: dict) -> str | None:
             logging.warning(f"PlayStore: Unexpected error resolving version ({e}) - Triggering scraper fallback.")
             return None
 
-    output_apk = Path(f"{app_name}-playstore-v{version}.apk")
+    from src import utils
+    output_apk = Path(f"{app_name}-playstore-v{utils.filename_version(version)}.apk")
     splits_dir = Path(f"playstore_splits_{package}")
 
     success = _download_splits(package, splits_dir, version_code)

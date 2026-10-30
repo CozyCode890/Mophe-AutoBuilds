@@ -78,6 +78,8 @@ def format_app_display(app_name: str) -> str:
         "gboard": "Gboard",
         "duolingo": "Duolingo",
         "brave": "Brave Browser",
+        "mega": "MEGA",
+        "teams": "Microsoft Teams",
     }
     return name_map.get(app_name.lower().strip(), app_name.replace("-", " ").title())
 

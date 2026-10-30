@@ -39,6 +39,26 @@
     {
       "app_name": "threads",
       "source": "hushthreads"
+    },
+    {
+      "app_name": "mega",
+      "source": "rushiranpise"
+    },
+    {
+      "app_name": "google-photos",
+      "source": "rushiranpise"
+    },
+    {
+      "app_name": "sdmaidse",
+      "source": "rushiranpise"
+    },
+    {
+      "app_name": "teams",
+      "source": "rushiranpise"
+    },
+    {
+      "app_name": "telegram",
+      "source": "hushtelegram"
     }
   ]
 }
