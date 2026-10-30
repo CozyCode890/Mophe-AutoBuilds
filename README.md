@@ -86,6 +86,17 @@ Every app is built with its source's default (recommended) patch selection, on t
 | Zalo | `zeldris` | [zeldrisho/morphe-patches](https://github.com/zeldrisho/morphe-patches) |
 | Instagram | `hushgram` | [SysAdminDoc/HushGram](https://github.com/SysAdminDoc/HushGram) |
 | Threads | `hushthreads` | [SysAdminDoc/HushThreads](https://github.com/SysAdminDoc/HushThreads) |
+| Telegram | `hushtelegram` | [SysAdminDoc/HushTelegram](https://github.com/SysAdminDoc/HushTelegram) |
+| MEGA | `rushiranpise` | [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches) (Doom) |
+| Google Photos | `rushiranpise` | [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches) (Doom) |
+| Microsoft Teams | `rushiranpise` | [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches) (Doom) |
+| SD Maid SE | `kveld9-extra` | [kveld9/kveld-extra-morphe-patches](https://github.com/kveld9/kveld-extra-morphe-patches) |
+
+Notes:
+* **Telegram** is the Google Play build (`org.telegram.messenger`). It also enables *Use registered Telegram API credentials* with the owner's own API ID and hash, read from repository secrets.
+* **SD Maid SE** is the FOSS build, downloaded from the author's [GitHub releases](https://github.com/d4rken-org/sdmaid-se/releases), because that is the build the kveld9 extra patches target.
+* **Google Photos** (Doom) changes the package name and needs [MicroG RE](https://github.com/MorpheApp/MicroG-RE).
+* The Doom patches only support specific app versions, so MEGA, Google Photos and Teams build only while a download site still offers that version.
 
 All patching is done with [MorpheApp/morphe-cli](https://github.com/MorpheApp/morphe-cli).
 
@@ -106,6 +117,7 @@ All patching is done with [MorpheApp/morphe-cli](https://github.com/MorpheApp/mo
 | `KEY_PASSWORD` | Optional | Key password, when it differs from the keystore password. |
 | `CUSTOM_GH_TOKEN` | Optional | Personal access token with a higher GitHub API rate limit. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Optional | Telegram build reports. |
+| `TELEGRAM_API_ID`, `TELEGRAM_API_HASH` | Optional | Your own API credentials from [my.telegram.org](https://my.telegram.org/apps), patched into the Telegram build. Without them Telegram keeps its original credentials. Note that the published APK contains these values. |
 
 > [!IMPORTANT]
 > Android only installs an update over an existing app when both are signed with the same key. Set the keystore secrets **before** installing anything from this repository. If the key changes later, run **Auto Build and Release Morphe** with *force_full_rebuild* so every APK is re-signed.
@@ -153,6 +165,15 @@ Specify which CPU architectures to target for each application. Every app here t
 
 Located in the `apps/` directory, one folder per download site (`playstore`, `apkmirror`, `apkpure`, `uptodown`, `apkcombo`, ...).
 
+`apps/direct/<app>.json` is tried first and pins an exact download location:
+
+```json
+{ "package": "com.brave.browser", "url": "https://github.com/brave/brave-browser/releases/download/v{version}/Bravemonoarm64.apk" }
+{ "package": "eu.darken.sdmse", "repo": "d4rken-org/sdmaid-se", "tag": "v{version}" }
+```
+
+`url` is a fixed link or a `{version}` template. `repo` + `tag` takes the asset carrying the requested version from that GitHub release.
+
 ### 4. Patch Rules
 
 Located in `patches/`, named `<app>-<source>.txt`. Use `+` to force include and `-` to exclude a patch; an empty file keeps the source's recommended selection.
@@ -163,6 +184,14 @@ Located in `patches/`, named `<app>-<source>.txt`. Use `+` to force include and 
 
 # Exclusions
 - Custom branding
+```
+
+Lines of the form `key=value` directly under a `+` line set that patch's options (passed to morphe-cli as `-Okey=value`). `${NAME}` is replaced with the environment variable / repository secret `NAME`; if it is unset, the option is skipped. Wrap numbers in single quotes to pass them as strings.
+
+```text
++ Use registered Telegram API credentials
+apiId='${TELEGRAM_API_ID}'
+apiHash='${TELEGRAM_API_HASH}'
 ```
 
 ---
