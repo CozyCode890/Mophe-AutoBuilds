@@ -107,6 +107,48 @@ def _resolve_patch_option(line: str) -> str | None:
     return _ENV_REF.sub(lambda m: getenv(m.group(1)).strip(), line)
 
 
+_bundle_names_cache: dict[tuple[str, str], set[str]] = {}
+
+
+def _bundle_patch_names(cli: Path, bundle: Path) -> set[str]:
+    """Patch names in one .mpp bundle, read from `list-patches` ("Name: ..." lines)."""
+    key = (str(cli), str(bundle))
+    if key not in _bundle_names_cache:
+        output = utils.run_process(
+            ["java", "-jar", str(cli), "list-patches", "--patches", str(bundle)],
+            capture=True, silent=True, check=False,
+        ) or ""
+        _bundle_names_cache[key] = {m.group(1).strip() for m in re.finditer(r"^Name:\s*(.+)$", output, re.MULTILINE)}
+    return _bundle_names_cache[key]
+
+
+def _morphe_selection_args(
+    cli: Path, bundles: list[Path], selections: list[tuple[str, str]], patch_options: dict[str, list[str]]
+) -> list[str]:
+    """`--patches` arguments with each -e/-d/-O placed after its own bundle.
+
+    morphe-cli binds name-based selections to the bundle they follow, so a
+    selection placed after the wrong bundle is silently ignored. A name found
+    in no bundle (or when listing fails) goes after the last bundle, as before.
+    """
+    names = {str(b): _bundle_patch_names(cli, b) for b in bundles}
+    placed = set()
+    args = []
+    for i, bundle in enumerate(bundles):
+        args += ["--patches", str(bundle)]
+        last = i == len(bundles) - 1
+        for flag, patch in selections:
+            if patch in names[str(bundle)] or (last and patch not in placed):
+                if patch not in names[str(bundle)]:
+                    logging.warning(f"Patch {patch!r} not found in any bundle; passing it to {bundle.name}")
+                placed.add(patch)
+                args += [flag, patch]
+                if flag == "-e":
+                    # -O applies to the patch enabled just before it.
+                    args += [f"-O{o}" for o in patch_options.get(patch, [])]
+    return args
+
+
 def run_build(app_name: str, source: str, arch: str = "universal", report: dict = None) -> str:
     """Build APK for specific architecture"""
     from src import apkmirror
@@ -397,15 +439,8 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
                     "java", "-jar", str(cli),
                     "patch", "--continue-on-error",
                 ]
-                for p in patches:
-                    morphe_cmd.extend(["--patches", str(p)])
-
-                for p in exclude_patches:
-                    morphe_cmd.extend(["-d", str(p)])
-                for p in current_include_patches:
-                    morphe_cmd.extend(["-e", str(p)])
-                    # -O applies to the patch enabled just before it.
-                    morphe_cmd.extend(f"-O{o}" for o in patch_options.get(p, []))
+                selections = [("-d", p) for p in exclude_patches] + [("-e", p) for p in current_include_patches]
+                morphe_cmd += _morphe_selection_args(cli, patches, selections, patch_options)
 
                 morphe_cmd.extend([
                     "--out", str(output_apk), str(input_apk)
