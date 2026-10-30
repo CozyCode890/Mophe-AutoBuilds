@@ -46,7 +46,15 @@
       "Enable DCIM folders backup control"
     ]
   },
+  "google-photos|rushiranpise": {
+    "include": [],
+    "exclude": []
+  },
   "instagram|hushgram": {
+    "include": [],
+    "exclude": []
+  },
+  "mega|rushiranpise": {
     "include": [],
     "exclude": []
   },
@@ -74,12 +82,22 @@
     "include": [],
     "exclude": []
   },
+  "sdmaidse|kveld9-extra": {
+    "include": [],
+    "exclude": []
+  },
   "sdmaidse|paresh": {
     "include": [],
     "exclude": []
   },
-  "telegram|hushtelegram": {
+  "teams|rushiranpise": {
     "include": [],
+    "exclude": []
+  },
+  "telegram|hushtelegram": {
+    "include": [
+      "Use registered Telegram API credentials"
+    ],
     "exclude": []
   },
   "threads|hushthreads": {
