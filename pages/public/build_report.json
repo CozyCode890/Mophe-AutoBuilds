@@ -9,7 +9,7 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "atvtools-arm64-v8a-hxreborn-v1.3.2-b202611070619.apk"
+    "apk": "atvtools-arm64-v8a-hxreborn-v1.3.2-b202611090659.apk"
   },
   {
     "app": "facebook",
@@ -21,19 +21,7 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "facebook-arm64-v8a-hushfacebook-patches-v585.0.0.47.54-b202611070620.apk"
-  },
-  {
-    "app": "google-photos",
-    "arch": "arm64-v8a",
-    "source": "rushiranpise",
-    "status": "success",
-    "version": "7.98.0.1001971222",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "google-photos-arm64-v8a-morphe-patches-v7.98.0.1001971222-b202611070621.apk"
+    "apk": "facebook-arm64-v8a-hushfacebook-patches-v585.0.0.47.54-b202611090659.apk"
   },
   {
     "app": "instagram",
@@ -45,31 +33,7 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "instagram-arm64-v8a-hushgram-patches-v454.0.0.54.77-b202611070620.apk"
-  },
-  {
-    "app": "mega",
-    "arch": "arm64-v8a",
-    "source": "rushiranpise",
-    "status": "success",
-    "version": "16.12(262370820)(dcdf0a7f27)",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "mega-arm64-v8a-morphe-patches-v16.12-b202611070620.apk"
-  },
-  {
-    "app": "merriam-webster",
-    "arch": "arm64-v8a",
-    "source": "hoodles",
-    "status": "success",
-    "version": "5.6.3",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "merriam-webster-arm64-v8a-hoodles-v5.6.3-b202611070620.apk"
+    "apk": "instagram-arm64-v8a-hushgram-patches-v454.0.0.54.77-b202611090700.apk"
   },
   {
     "app": "messenger",
@@ -81,44 +45,20 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "messenger-arm64-v8a-hushmessenger-patches-v586.0.0.55.92-b202611070620.apk"
-  },
-  {
-    "app": "sdmaidse",
-    "arch": "arm64-v8a",
-    "source": "kveld9-extra",
-    "status": "success",
-    "version": "2.2.2-rc0",
-    "patches": [
-      "Change installer source"
-    ],
-    "dl_method": "download_direct",
-    "apk": "sdmaidse-arm64-v8a-kveld-extra-patches-v2.2.2-rc0-b202611070620.apk"
-  },
-  {
-    "app": "teams",
-    "arch": "arm64-v8a",
-    "source": "rushiranpise",
-    "status": "success",
-    "version": "1416/1.0.0.2026152302",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "teams-arm64-v8a-morphe-patches-v1.0.0.2026152302-b202611070621.apk"
+    "apk": "messenger-arm64-v8a-hushmessenger-patches-v586.0.0.55.92-b202611090659.apk"
   },
   {
     "app": "telegram",
     "arch": "arm64-v8a",
     "source": "hushtelegram",
     "status": "success",
-    "version": "13.1.1",
+    "version": "13.2.1",
     "patches": [
       "Use registered Telegram API credentials",
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "telegram-arm64-v8a-hushtelegram-patches-v13.1.1-b202611070621.apk"
+    "apk": "telegram-arm64-v8a-hushtelegram-patches-v13.2.1-b202611090659.apk"
   },
   {
     "app": "threads",
@@ -130,7 +70,7 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "threads-arm64-v8a-hushthreads-patches-v454.0.0.54.79-b202611070620.apk"
+    "apk": "threads-arm64-v8a-hushthreads-patches-v454.0.0.54.79-b202611090659.apk"
   },
   {
     "app": "tiktok",
@@ -142,7 +82,7 @@
       "Change installer source"
     ],
     "dl_method": "download_apkmirror",
-    "apk": "tiktok-arm64-v8a-hushfeed-patches-v47.7.2-b202611070621.apk"
+    "apk": "tiktok-arm64-v8a-hushfeed-patches-v47.7.2-b202611090700.apk"
   },
   {
     "app": "waze",
@@ -154,31 +94,6 @@
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "waze-arm64-v8a-bearinmind-v5.27.0.1-b202611070619.apk"
-  },
-  {
-    "app": "youtube",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "21.30.216",
-    "patches": [
-      "GmsCore support",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "youtube-arm64-v8a-morphe-v21.30.216-b202611070620.apk"
-  },
-  {
-    "app": "zalo",
-    "arch": "arm64-v8a",
-    "source": "zeldris",
-    "status": "success",
-    "version": "26.10.02",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "zalo-arm64-v8a-zeldris-v26.10.02-b202611070620.apk"
+    "apk": "waze-arm64-v8a-bearinmind-v5.27.0.1-b202611090659.apk"
   }
 ]
