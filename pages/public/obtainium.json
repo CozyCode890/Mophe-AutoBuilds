@@ -9,6 +9,14 @@
       "additionalSettings": "{\"apkFilterRegEx\":\"youtube-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"youtube-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
+      "id": "anddea.youtube",
+      "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
+      "author": "CozyCode890",
+      "name": "YouTube RVX",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"youtube-rvx-arm64-v8a-.*-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"youtube-rvx-arm64-v8a-.*-v([^/]+)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
       "id": "dev.vodik7.atvtools",
       "url": "https://CozyCode890.github.io/Mophe-AutoBuilds/downloads.html",
       "author": "CozyCode890",
