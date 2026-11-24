@@ -543,54 +543,13 @@ jobs:
         run: |
           python scripts/send_telegram_report.py
 
-  deploy-pages:
-    name: Deploy to GitHub Pages
-    needs: create-single-release
-    runs-on: ubuntu-latest
-    if: always() && needs.create-single-release.result == 'success'
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: 'pages/package-lock.json'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Install dependencies
-        working-directory: ./pages
-        run: npm ci
-
-      - name: Build with Vite
-        working-directory: ./pages
-        run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./pages/dist
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  # Pages is deployed by pages.yml (workflow_run on this workflow). It must NOT be a job here:
+  # this run holds ~28 artifacts and actions/deploy-pages cannot find the github-pages one,
+  # which failed the run and made pages.yml skip, leaving downloads.html stale.
 
   cleanup:
     name: Cleanup Workflow Runs
-    needs: [build-apps, create-single-release, deploy-pages]
+    needs: [build-apps, create-single-release]
     runs-on: ubuntu-latest
     if: always()
     permissions:
