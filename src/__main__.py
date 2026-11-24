@@ -107,6 +107,20 @@ def _resolve_patch_option(line: str) -> str | None:
     return _ENV_REF.sub(lambda m: getenv(m.group(1)).strip(), line)
 
 
+def _source_uses_global_patches(source: str) -> bool:
+    """Whether the official Morphe patches bundle is added next to this source's own.
+
+    Sources whose bundle already patches the same apps as Morphe's (anddea's
+    ReVanced Extended for YouTube) opt out with "global_patches": false on their
+    first sources/<name>.json entry; otherwise both would patch the same package.
+    """
+    try:
+        info = json.loads((Path("sources") / f"{source}.json").read_text(encoding="utf-8"))
+        return bool(info[0].get("global_patches", True))
+    except Exception:
+        return True
+
+
 _bundle_names_cache: dict[tuple[str, str], set[str]] = {}
 
 
@@ -209,7 +223,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
 
         # Ensure universal/global patches bundle is loaded if not already present
         has_morphe_global = any("morphe-patches" in p.name.lower() for p in patches)
-        if not has_morphe_global:
+        if not has_morphe_global and _source_uses_global_patches(source):
             global_mpp = downloader.download_global_morphe_patches()
             if global_mpp and global_mpp not in patches:
                 patches.append(global_mpp)
@@ -410,6 +424,13 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             if patch_installer not in include_patches and patch_installer not in exclude_patches:
                 dynamic_includes.append(patch_installer)
         
+        if is_morphe and dynamic_includes:
+            # A bundle without these Morphe-named patches (e.g. anddea's) would
+            # be handed a name it does not know; drop what no bundle defines.
+            known = set().union(*(_bundle_patch_names(cli, b) for b in patches))
+            if known:
+                dynamic_includes = [p for p in dynamic_includes if p in known]
+
         current_include_patches = include_patches + dynamic_includes
 
         if report is not None:

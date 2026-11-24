@@ -10,6 +10,13 @@ export const APP_METADATA = {
     icon: "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg=w240-h480",
     color: "#FF0000"
   },
+  "youtube-rvx": {
+    name: "YouTube RVX",
+    category: "Video & Streaming",
+    package: "com.google.android.youtube",
+    icon: "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg=w240-h480",
+    color: "#FF0000"
+  },
   "youtube-music": {
     name: "YouTube Music",
     category: "Audio & Music",

@@ -27,6 +27,7 @@ DEFAULT_AUTHOR = "CozyCode890"
 
 NAME_MAP = {
     "youtube":          "YouTube",
+    "youtube-rvx":      "YouTube RVX",
     "atvtools":         "atvTools",
     "facebook":         "Facebook",
     "merriam-webster":  "Merriam-Webster",
@@ -82,6 +83,7 @@ def extract_identity_prefix(apk_name: str) -> str:
 
 SOURCE_MAP = {
     "morphe": "Morphe",
+    "anddea": "anddea",
     "piko-newx": "Piko NewX",
     "paresh": "Paresh",
     "rookie": "Rookie",

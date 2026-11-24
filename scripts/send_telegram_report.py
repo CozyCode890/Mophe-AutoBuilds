@@ -196,6 +196,7 @@ def load_counts() -> Dict[str, int]:
 def format_app_display(app_name: str) -> str:
     name_map = {
         "youtube": "YouTube",
+        "youtube-rvx": "YouTube RVX",
         "youtube-music": "YouTube Music",
         "reddit": "Reddit",
         "instagram": "Instagram",

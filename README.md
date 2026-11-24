@@ -83,6 +83,7 @@ Every app is built with its source's default (recommended) patch selection, on t
 | Application | Source id | Patch repository |
 | :--- | :--- | :--- |
 | YouTube | `morphe` | [MorpheApp/morphe-patches](https://github.com/MorpheApp/morphe-patches) |
+| YouTube RVX | `anddea` | [anddea/revanced-patches](https://github.com/anddea/revanced-patches) |
 | atvTools | `hxreborn` | [hxreborn/morphe-patches](https://github.com/hxreborn/morphe-patches) |
 | Facebook | `hushfacebook` | [SysAdminDoc/HushFacebook](https://github.com/SysAdminDoc/HushFacebook) |
 | Merriam-Webster | `hoodles` | [hoo-dles/morphe-patches](https://github.com/hoo-dles/morphe-patches) |

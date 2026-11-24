@@ -1,0 +1,2 @@
+# YouTube ReVanced Extended (anddea) Patches
++ GmsCore support
