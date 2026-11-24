@@ -130,6 +130,12 @@
       "AddResourcesPatch"
     ]
   },
+  "youtube-rvx|anddea": {
+    "include": [
+      "GmsCore support"
+    ],
+    "exclude": []
+  },
   "zalo|zeldris": {
     "include": [],
     "exclude": []
